@@ -2,8 +2,34 @@ apiVersion: v1
 entries:
   mercator:
   - apiVersion: v2
+    appVersion: 2026.05.19
+    created: "2026-05-19T11:17:43.56574565+02:00"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.x.x
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.x.x
+    description: Mercator is a powerful and versatile open-source web application
+      designed to facilitate the mapping of information systems, as outlined in the
+      Mapping The Information System Guide by ANSSI.
+    digest: f08eaf410d728042415e2cbceea9d8c016a24e35a1e4ee5376b44c56f4743e91
+    home: https://github.com/dbarzin/mercator
+    icon: https://raw.githubusercontent.com/dbarzin/mercator/refs/heads/master/public/images/mercator.png
+    maintainers:
+    - name: Mercator
+      url: https://github.com/dbarzin/mercator/chart
+    name: mercator
+    type: application
+    urls:
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2026.05.19.tgz
+    version: 2026.05.19
+  - apiVersion: v2
     appVersion: 2026.05.12
-    created: "2026-05-12T15:29:03.224338071+02:00"
+    created: "2026-05-19T11:17:43.553185218+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -25,11 +51,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-2026.05.12.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2026.05.12.tgz
     version: 2026.05.12
   - apiVersion: v2
     appVersion: 2026.05.09
-    created: "2026-05-12T15:29:03.210909023+02:00"
+    created: "2026-05-19T11:17:43.540036897+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -51,11 +77,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-2026.05.09.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2026.05.09.tgz
     version: 2026.05.09
   - apiVersion: v2
     appVersion: 2026.04.27
-    created: "2026-05-12T15:29:03.196573267+02:00"
+    created: "2026-05-19T11:17:43.526919408+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -77,11 +103,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-2026.04.27.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2026.04.27.tgz
     version: 2026.04.27
   - apiVersion: v2
     appVersion: 2026.04.23
-    created: "2026-05-12T15:29:03.182595312+02:00"
+    created: "2026-05-19T11:17:43.513721238+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -103,11 +129,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-2026.04.23.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2026.04.23.tgz
     version: 2026.04.23
   - apiVersion: v2
     appVersion: 2026.04.23
-    created: "2026-05-12T15:29:03.169007427+02:00"
+    created: "2026-05-19T11:17:43.500195543+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -129,7 +155,7 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-2.1.2.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-2.1.2.tgz
     version: 2.1.2
   - apiVersion: v2
     appVersion: 2025.06.30
@@ -211,7 +237,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-05-12T15:29:03.154623804+02:00"
+    created: "2026-05-19T11:17:43.485996199+02:00"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -230,6 +256,6 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.12/mercator-0.1.0.tgz
+    - https://github.com/dbarzin/mercator/releases/download/mercator-2026.05.19/mercator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-05-12T15:29:03.14147394+02:00"
+generated: "2026-05-19T11:17:43.473725854+02:00"
