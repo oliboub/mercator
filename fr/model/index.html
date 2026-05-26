@@ -1187,6 +1187,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#zones-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones de sécurité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#serveurs-physiques" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2150,6 +2161,17 @@
     <span class="md-ellipsis">
       
         Baies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zones-de-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zones de sécurité
       
     </span>
   </a>
@@ -6721,6 +6743,74 @@ salle.</p>
 </tbody>
 </table>
 <p>Dans l'application, une baie peut être rattachée à un bâtiment / baie depuis un objet baie.</p>
+<h3 id="zones-de-securite">Zones de sécurité<a class="headerlink" href="#zones-de-securite" title="Permanent link">&para;</a></h3>
+<p>Une zone est un espace physiquement sécurisé, accessible uniquement avec une accréditation ou des autorisations spécifiques.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Table</th>
+<th style="text-align: left;">api</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span style="color: blue;"><em>zones</em></span></td>
+<td style="text-align: left;"><code>/api/zones</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Champ</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">auto_increment</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Nom de la zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">description</td>
+<td style="text-align: left;">longtext</td>
+<td style="text-align: left;">Description de la zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de la zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs de la zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">created_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of creation</td>
+</tr>
+<tr>
+<td style="text-align: left;">updated_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of update</td>
+</tr>
+<tr>
+<td style="text-align: left;">deleted_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of deletion</td>
+</tr>
+</tbody>
+</table>
+<p>In the app, a rack can be linked to a building / room from a rack objet.</p>
 <h3 id="serveurs-physiques">Serveurs physiques<a class="headerlink" href="#serveurs-physiques" title="Permanent link">&para;</a></h3>
 <p>Les serveurs physiques sont des machines physiques exécutant un ensemble de services informatiques.</p>
 <table>

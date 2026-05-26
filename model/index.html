@@ -1187,6 +1187,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#security-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#physical-servers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2161,6 +2172,17 @@
     <span class="md-ellipsis">
       
         Racks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security zones
       
     </span>
   </a>
@@ -6741,6 +6763,73 @@ room.</p>
 </tbody>
 </table>
 <p>In the app, a rack can be linked to a building / room from a rack objet.</p>
+<h3 id="security-zones">Security zones<a class="headerlink" href="#security-zones" title="Permanent link">&para;</a></h3>
+<p>A Security Zone is a physically secured area accessible only with accreditation or specific authorizations.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Table</th>
+<th style="text-align: left;">api</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span style="color: blue;"><em>zones</em></span></td>
+<td style="text-align: left;"><code>/api/zones</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Champ</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">auto_increment</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Name of the rack</td>
+</tr>
+<tr>
+<td style="text-align: left;">description</td>
+<td style="text-align: left;">longtext</td>
+<td style="text-align: left;">Description of the zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type of the Zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributes of the zone</td>
+</tr>
+<tr>
+<td style="text-align: left;">created_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of creation</td>
+</tr>
+<tr>
+<td style="text-align: left;">updated_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of update</td>
+</tr>
+<tr>
+<td style="text-align: left;">deleted_at</td>
+<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;">Date of deletion</td>
+</tr>
+</tbody>
+</table>
 <h3 id="physical-servers">Physical servers<a class="headerlink" href="#physical-servers" title="Permanent link">&para;</a></h3>
 <p>Physical servers are physical machines running a set of IT services.</p>
 <table>
