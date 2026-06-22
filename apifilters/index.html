@@ -1619,14 +1619,17 @@ filter[&lt;field&gt;_&lt;operator&gt;]=&lt;value&gt;          # Filter with oper
 <td><code>name = 'Backup'</code></td>
 </tr>
 <tr>
-<td>(partial)</td>
-<td><code>filter[name]=backup</code></td>
-<td>Partial search (LIKE) *</td>
+<td><code>_like</code></td>
+<td><code>filter[name_like]=backup</code></td>
+<td>Partial search (LIKE)</td>
 <td><code>name LIKE '%backup%'</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>* Automatic partial search applies to fields containing: <code>name</code>, <code>description</code>, <code>email</code></em></p>
+<p>By default, <code>filter[&lt;field&gt;]=&lt;value&gt;</code> always performs an <strong>exact</strong> match, regardless of the
+field type. To perform a partial (LIKE) search instead, use the <code>_like</code> suffix on any
+filterable field: <code>filter[&lt;field&gt;_like]=&lt;value&gt;</code>. LIKE meta-characters (<code>%</code>, <code>_</code>, <code>\</code>) in the
+value are automatically escaped, so they are matched literally rather than as wildcards.</p>
 <h4 id="numeric-comparisons">Numeric Comparisons<a class="headerlink" href="#numeric-comparisons" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1809,7 +1812,7 @@ sort=-&lt;field&gt;       # Descending sort
 <h3 id="complete-cases">Complete cases<a class="headerlink" href="#complete-cases" title="Permanent link">&para;</a></h3>
 <h4 id="simple-filters">Simple Filters<a class="headerlink" href="#simple-filters" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err"># Activities with name containing &quot;backup&quot;</span>
-<span class="err">GET /api/activities?filter[name]=backup</span>
+<span class="err">GET /api/activities?filter[name_like]=backup</span>
 
 <span class="err"># Activities with RTO less than or equal to 4 hours</span>
 <span class="err">GET /api/activities?filter[recovery_time_objective_lte]=4</span>
@@ -1828,10 +1831,10 @@ sort=-&lt;field&gt;       # Descending sort
 </code></pre></div>
 <h4 id="combined-filters">Combined Filters<a class="headerlink" href="#combined-filters" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err"># Activities with name containing &quot;GDPR&quot; and RTO &gt;= 8</span>
-<span class="err">GET /api/activities?filter[name]=GDPR&amp;filter[recovery_time_objective_gte]=8</span>
+<span class="err">GET /api/activities?filter[name_like]=GDPR&amp;filter[recovery_time_objective_gte]=8</span>
 
 <span class="err"># Servers created after January 1, 2024 with name containing &quot;prod&quot;</span>
-<span class="err">GET /api/logical-servers?filter[created_at_after]=2024-01-01&amp;filter[name]=prod</span>
+<span class="err">GET /api/logical-servers?filter[created_at_after]=2024-01-01&amp;filter[name_like]=prod</span>
 
 <span class="err"># Applications with type different from &quot;opensource&quot; sorted by name</span>
 <span class="err">GET /api/applications?filter[type_not]=opensource&amp;sort=name</span>
@@ -2160,6 +2163,11 @@ curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>
 <td>Exact filter</td>
 <td><code>filter[field]=value</code></td>
 <td><code>filter[name]=Backup</code></td>
+</tr>
+<tr>
+<td>Partial filter</td>
+<td><code>filter[field_like]=value</code></td>
+<td><code>filter[name_like]=backup</code></td>
 </tr>
 <tr>
 <td>Comparison</td>

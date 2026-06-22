@@ -4018,6 +4018,16 @@ Les informations peuvent former des hiérarchies parent-enfant via des liaisons 
 <td style="text-align: left;">Nom de l'information</td>
 </tr>
 <tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de l'information</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
 <td style="text-align: left;">description</td>
 <td style="text-align: left;">longtext</td>
 <td style="text-align: left;">Description de l'information</td>
@@ -5400,6 +5410,16 @@ réseau en charge du trafic.</p>
 <td style="text-align: left;">Nom du réseau</td>
 </tr>
 <tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de réseau</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
 <td style="text-align: left;">description</td>
 <td style="text-align: left;">longtext</td>
 <td style="text-align: left;">Description du réseau</td>
@@ -5503,6 +5523,16 @@ Il s'active depuis le menu Configuration &gt; Paramètres.</p>
 <td style="text-align: left;">name</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Nom du réseau</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de sous-réseau</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
 </tr>
 <tr>
 <td style="text-align: left;">description</td>
@@ -6743,6 +6773,16 @@ Un serveur logique peut être rattaché à un conteneur depuis un objet conteneu
 <td style="text-align: left;">Nom du flux logique</td>
 </tr>
 <tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de flux logique</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
 <td style="text-align: left;">description</td>
 <td style="text-align: left;">text</td>
 <td style="text-align: left;">Description du flux logique</td>
@@ -7140,6 +7180,16 @@ utilisés par celui-ci.</p>
 <td style="text-align: left;">Nom du site</td>
 </tr>
 <tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de site</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
 <td style="text-align: left;">icon_id</td>
 <td style="text-align: left;">int unsigned</td>
 <td style="text-align: left;">Référence vers une image spécifique</td>
@@ -7302,9 +7352,14 @@ salle.</p>
 <td style="text-align: left;">Description de la baie</td>
 </tr>
 <tr>
-<td style="text-align: left;">room_id</td>
+<td style="text-align: left;">building_id</td>
 <td style="text-align: left;">int unsigned</td>
-<td style="text-align: left;">Référence vers le building / salle</td>
+<td style="text-align: left;">Référence vers le bâtiment / salle</td>
+</tr>
+<tr>
+<td style="text-align: left;">site_id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">Référence vers le site</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -7323,7 +7378,7 @@ salle.</p>
 </tr>
 </tbody>
 </table>
-<p>Dans l'application, une baie peut être rattachée à un bâtiment / baie depuis un objet baie.</p>
+<p>Dans l'application, une baie peut être rattachée à un bâtiment / salle et à un site depuis un objet baie.</p>
 <h3 id="zones-de-securite">Zones de sécurité<a class="headerlink" href="#zones-de-securite" title="Permanent link">&para;</a></h3>
 <p>Une zone est un espace physiquement sécurisé, accessible uniquement avec une accréditation ou des autorisations spécifiques.</p>
 <table>
@@ -8646,6 +8701,26 @@ Un flux logique décrit une relation au niveau des couches 3 et 4 du modèle OSI
 <td style="text-align: left;">ext_refs</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Référence(s) externe(s) vers des objets d'autres systèmes. Format : {ID_SOURCE}ID_OBJET, valeurs multiples séparées par « | »</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Type de lien (ex : Ethernet, fiber, etc.)</td>
+</tr>
+<tr>
+<td style="text-align: left;">color</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Couleur du lien</td>
+</tr>
+<tr>
+<td style="text-align: left;">attributes</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
+<td style="text-align: left;">description</td>
+<td style="text-align: left;">longtext</td>
+<td style="text-align: left;">Description du lien</td>
 </tr>
 <tr>
 <td style="text-align: left;"><em>device</em>_src_id</td>

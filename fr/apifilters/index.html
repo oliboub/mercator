@@ -1585,14 +1585,18 @@ filter[&lt;champ&gt;_&lt;operateur&gt;]=&lt;valeur&gt;        # Filtre avec opé
 <td><code>name = 'Backup'</code></td>
 </tr>
 <tr>
-<td>(partiel)</td>
-<td><code>filter[name]=backup</code></td>
-<td>Recherche partielle (LIKE) *</td>
+<td><code>_like</code></td>
+<td><code>filter[name_like]=backup</code></td>
+<td>Recherche partielle (LIKE)</td>
 <td><code>name LIKE '%backup%'</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>* La recherche partielle automatique s'applique aux champs contenant : <code>name</code>, <code>description</code>, <code>email</code></em></p>
+<p>Par défaut, <code>filter[&lt;champ&gt;]=&lt;valeur&gt;</code> effectue toujours une recherche <strong>exacte</strong>, quel que
+soit le champ. Pour effectuer une recherche partielle (LIKE), il faut utiliser le suffixe
+<code>_like</code> sur n'importe quel champ filtrable : <code>filter[&lt;champ&gt;_like]=&lt;valeur&gt;</code>. Les
+méta-caractères LIKE (<code>%</code>, <code>_</code>, <code>\</code>) présents dans la valeur sont automatiquement échappés,
+afin d'être recherchés littéralement plutôt qu'interprétés comme des jokers.</p>
 <h4 id="comparaisons-numeriques">Comparaisons numériques<a class="headerlink" href="#comparaisons-numeriques" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1775,7 +1779,7 @@ sort=-&lt;champ&gt;       # Tri descendant
 <h3 id="cas-dusage">Cas d'usage<a class="headerlink" href="#cas-dusage" title="Permanent link">&para;</a></h3>
 <h4 id="filtres-simples">Filtres simples<a class="headerlink" href="#filtres-simples" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err"># Activités dont le nom contient &quot;sauvegarde&quot;</span>
-<span class="err">GET /api/activities?filter[name]=sauvegarde</span>
+<span class="err">GET /api/activities?filter[name_like]=sauvegarde</span>
 
 <span class="err"># Activités avec un RTO inférieur ou égal à 4 heures</span>
 <span class="err">GET /api/activities?filter[recovery_time_objective_lte]=4</span>
@@ -1794,10 +1798,10 @@ sort=-&lt;champ&gt;       # Tri descendant
 </code></pre></div>
 <h4 id="filtres-combines">Filtres combinés<a class="headerlink" href="#filtres-combines" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err"># Activités dont le nom contient &quot;GDPR&quot; avec RTO &gt;= 8</span>
-<span class="err">GET /api/activities?filter[name]=GDPR&amp;filter[recovery_time_objective_gte]=8</span>
+<span class="err">GET /api/activities?filter[name_like]=GDPR&amp;filter[recovery_time_objective_gte]=8</span>
 
 <span class="err"># Serveurs créés après le 1er janvier 2024 avec un nom contenant &quot;prod&quot;</span>
-<span class="err">GET /api/logical-servers?filter[created_at_after]=2024-01-01&amp;filter[name]=prod</span>
+<span class="err">GET /api/logical-servers?filter[created_at_after]=2024-01-01&amp;filter[name_like]=prod</span>
 
 <span class="err"># Applications avec type différent de &quot;opensource&quot; triées par nom</span>
 <span class="err">GET /api/applications?filter[type_not]=opensource&amp;sort=name</span>
@@ -2147,6 +2151,11 @@ curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>
 <td>Filtre exact</td>
 <td><code>filter[champ]=valeur</code></td>
 <td><code>filter[name]=Backup</code></td>
+</tr>
+<tr>
+<td>Filtre partiel</td>
+<td><code>filter[champ_like]=valeur</code></td>
+<td><code>filter[name_like]=backup</code></td>
 </tr>
 <tr>
 <td>Comparaison</td>
