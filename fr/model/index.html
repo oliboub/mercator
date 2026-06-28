@@ -6526,52 +6526,67 @@ Ces stratégies décrivent :<br />
 </thead>
 <tbody>
 <tr>
-<td><strong>id</strong></td>
+<td>id</td>
 <td>int unsigned</td>
 <td>Identifiant unique du plan de sauvegarde (auto‑increment).</td>
 </tr>
 <tr>
-<td><strong>ext_refs</strong></td>
+<td>ext_refs</td>
 <td>varchar(255)</td>
 <td>Référence(s) externe(s) vers des objets d'autres systèmes. Format : {ID_SOURCE}ID_OBJET, valeurs multiples séparées par « | »</td>
 </tr>
 <tr>
-<td><strong>logical_server_id</strong></td>
-<td>int unsigned</td>
-<td>Identifiant du <strong>serveur logique</strong> concerné par la stratégie de sauvegarde.</td>
+<td>name</td>
+<td>varchar(255)</td>
+<td>Nom du unique backup</td>
 </tr>
 <tr>
-<td><strong>storage_device_id</strong></td>
-<td>int unsigned</td>
-<td>Identifiant de l’<strong>infrastructure de stockage</strong> utilisée pour recevoir la sauvegarde.</td>
+<td>type</td>
+<td>varchar(255)</td>
+<td>Type du backup</td>
 </tr>
 <tr>
-<td><strong>backup_frequency</strong></td>
+<td>attributes</td>
+<td>varchar(255)</td>
+<td>Attributs de la sauvegarde</td>
+</tr>
+<tr>
+<td>logical_server_ids</td>
+<td>List int [,]</td>
+<td>Liste d'id de(s) serveur(s) logique(s) utilisant(s) ce backup</td>
+</tr>
+<tr>
+<td>storage_device_ids</td>
+<td>List int [,]</td>
+<td>Liste d'id de(s) <strong>infrastructure(s) de stockage</strong> utilisée(s) pour recevoir la sauvegarde.</td>
+</tr>
+<tr>
+<td>backup_frequency</td>
 <td>tinyint unsigned</td>
 <td>Fréquence de sauvegarde. Valeur codée (ex. : horaire, quotidienne, hebdomadaire, mensuelle).</td>
 </tr>
 <tr>
-<td><strong>backup_cycle</strong></td>
+<td>backup_cycle</td>
 <td>tinyint unsigned</td>
 <td>Type de sauvegarde. Valeur codée (ex. : incrémentale, complète).</td>
 </tr>
 <tr>
-<td><strong>backup_retention</strong></td>
+<td>backup_retention</td>
 <td>smallint unsigned</td>
 <td>Durée de rétention des sauvegardes, exprimée en <strong>jours</strong>.</td>
 </tr>
 <tr>
-<td><strong>created_at</strong></td>
+<td>created_at</td>
 <td>timestamp</td>
 <td>Date et heure de création de l’enregistrement.</td>
 </tr>
 <tr>
-<td><strong>updated_at</strong></td>
+<td>updated_at</td>
 <td>timestamp</td>
 <td>Date et heure de la dernière mise à jour.</td>
 </tr>
 <tr>
-<td><strong>deleted_at</strong></td>
+<td>deleted_at</td>
 <td>timestamp</td>
 <td>Date de suppression logique (soft delete).</td>
 </tr>

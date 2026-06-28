@@ -6553,7 +6553,7 @@ These strategies describe:<br />
 </thead>
 <tbody>
 <tr>
-<td><strong>backups</strong></td>
+<td><span style="color: blue;"><em>backups</em></span></td>
 <td><code>/api/backups</code></td>
 </tr>
 </tbody>
@@ -6568,52 +6568,67 @@ These strategies describe:<br />
 </thead>
 <tbody>
 <tr>
-<td><strong>id</strong></td>
+<td>id</td>
 <td>int unsigned</td>
 <td>Unique identifier of the backup plan (auto‑increment).</td>
 </tr>
 <tr>
-<td><strong>ext_refs</strong></td>
+<td>ext_refs</td>
 <td>varchar(255)</td>
 <td>External reference(s) to objects in other systems. Format: {ID_SOURCE}ID_OBJECT, multiple values separated by "|"</td>
 </tr>
 <tr>
-<td><strong>logical_server_id</strong></td>
-<td>int unsigned</td>
-<td>Identifier of the <strong>logical server</strong> covered by the backup strategy.</td>
+<td>name</td>
+<td>varchar(255)</td>
+<td>Name of backup</td>
 </tr>
 <tr>
-<td><strong>storage_device_id</strong></td>
-<td>int unsigned</td>
-<td>Identifier of the <strong>storage device</strong> used to store the backup.</td>
+<td>type</td>
+<td>varchar(255)</td>
+<td>Type of backup</td>
 </tr>
 <tr>
-<td><strong>backup_frequency</strong></td>
+<td>attributes</td>
+<td>varchar(255)</td>
+<td>Attributes of backup (#tag...)</td>
+</tr>
+<tr>
+<td>logical_server_ids</td>
+<td>List int [,]</td>
+<td>IDs list of related <strong>logical servers</strong> covered by the backup strategy.</td>
+</tr>
+<tr>
+<td>storage_device_ids</td>
+<td>List int [,]</td>
+<td>IDs list of related <strong>storage device</strong> used to store the backup.</td>
+</tr>
+<tr>
+<td>backup_frequency</td>
 <td>tinyint unsigned</td>
 <td>Backup frequency. Encoded value (e.g., hourly, daily, weekly, monthly).</td>
 </tr>
 <tr>
-<td><strong>backup_cycle</strong></td>
+<td>backup_cycle</td>
 <td>tinyint unsigned</td>
 <td>Backup type. Encoded value (e.g., incremental, full).</td>
 </tr>
 <tr>
-<td><strong>backup_retention</strong></td>
+<td>backup_retention**</td>
 <td>smallint unsigned</td>
 <td>Retention period of the backup, expressed in <strong>days</strong>.</td>
 </tr>
 <tr>
-<td><strong>created_at</strong></td>
+<td>created_at</td>
 <td>timestamp</td>
 <td>Date and time when the record was created.</td>
 </tr>
 <tr>
-<td><strong>updated_at</strong></td>
+<td>updated_at</td>
 <td>timestamp</td>
 <td>Date and time of the last update.</td>
 </tr>
 <tr>
-<td><strong>deleted_at</strong></td>
+<td>deleted_at</td>
 <td>timestamp</td>
 <td>Logical deletion date (soft delete).</td>
 </tr>
