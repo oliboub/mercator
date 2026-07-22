@@ -10,33 +10,35 @@
       
       
       
-        <link rel="canonical" href="https://sourcentis.github.io/mercator/fr/">
+        <link rel="canonical" href="https://sourcentis.github.io/mercator/fr/monarc/">
       
       
+        <link rel="prev" href="../vulnerabilities/">
       
-        <link rel="next" href="cartography/">
+      
+        <link rel="next" href="../admin/">
       
       
         
-          <link rel="alternate" href="/mercator/" hreflang="en">
+          <link rel="alternate" href="../../monarc/" hreflang="en">
         
-          <link rel="alternate" href="/mercator/fr/" hreflang="fr">
+          <link rel="alternate" href="./" hreflang="fr">
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Introduction - Mercator</title>
+        <title>-- Monarc - Mercator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +57,9 @@
       
     
     
-      <link rel="stylesheet" href="../css/overrides.css">
+      <link rel="stylesheet" href="../../css/overrides.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#integration-monarc" class="md-skip">
           Aller au contenu
         </a>
       
@@ -98,7 +100,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="./" title="Mercator" class="md-header__button md-logo" aria-label="Mercator" data-md-component="logo">
+    <a href="../" title="Mercator" class="md-header__button md-logo" aria-label="Mercator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              -- Monarc
             
           </span>
         </div>
@@ -165,13 +167,13 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="/mercator/" hreflang="en" class="md-select__link">
+            <a href="../../monarc/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="/mercator/fr/" hreflang="fr" class="md-select__link">
+            <a href="./" hreflang="fr" class="md-select__link">
               Français
             </a>
           </li>
@@ -260,7 +262,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./" title="Mercator" class="md-nav__button md-logo" aria-label="Mercator" data-md-component="logo">
+    <a href="../" title="Mercator" class="md-nav__button md-logo" aria-label="Mercator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -287,8 +289,6 @@
       
   
   
-    
-  
   
   
     
@@ -317,15 +317,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -343,13 +345,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -369,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cartography/" class="md-nav__link">
+      <a href="../cartography/" class="md-nav__link">
         
   
   
@@ -397,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="application/" class="md-nav__link">
+      <a href="../application/" class="md-nav__link">
         
   
   
@@ -425,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="features/" class="md-nav__link">
+      <a href="../features/" class="md-nav__link">
         
   
   
@@ -453,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cartographers/" class="md-nav__link">
+      <a href="../cartographers/" class="md-nav__link">
         
   
   
@@ -481,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="usecases/" class="md-nav__link">
+      <a href="../usecases/" class="md-nav__link">
         
   
   
@@ -576,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="model/" class="md-nav__link">
+      <a href="../model/" class="md-nav__link">
         
   
   
@@ -604,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="maturity/" class="md-nav__link">
+      <a href="../maturity/" class="md-nav__link">
         
   
   
@@ -703,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="maps/" class="md-nav__link">
+      <a href="../maps/" class="md-nav__link">
         
   
   
@@ -731,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="bpmn/" class="md-nav__link">
+      <a href="../bpmn/" class="md-nav__link">
         
   
   
@@ -759,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="queries/" class="md-nav__link">
+      <a href="../queries/" class="md-nav__link">
         
   
   
@@ -787,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reports/" class="md-nav__link">
+      <a href="../reports/" class="md-nav__link">
         
   
   
@@ -819,8 +821,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -843,13 +847,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -870,7 +872,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -888,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/" class="md-nav__link">
+      <a href="../api/" class="md-nav__link">
         
   
   
@@ -916,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="apifilters/" class="md-nav__link">
+      <a href="../apifilters/" class="md-nav__link">
         
   
   
@@ -944,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="import/" class="md-nav__link">
+      <a href="../import/" class="md-nav__link">
         
   
   
@@ -972,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="vulnerabilities/" class="md-nav__link">
+      <a href="../vulnerabilities/" class="md-nav__link">
         
   
   
@@ -997,10 +999,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="monarc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -- Monarc
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1016,6 +1045,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#activer-et-configurer-la-connexion-monarc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activer et configurer la connexion Monarc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acces-a-lecran-de-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accès à l'écran de génération
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construction-de-lanalyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construction de l'analyse
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Construction de l&#39;analyse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modele-danalyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Modèle d'analyse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-referentiels-de-securite-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Référentiels de sécurité (optionnel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-selection-des-objets-de-la-cartographie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sélection des objets de la cartographie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronisation-directe-avec-monarc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronisation directe avec Monarc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinitialiser-la-liaison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Réinitialiser la liaison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-recapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1097,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="admin/" class="md-nav__link">
+      <a href="../admin/" class="md-nav__link">
         
   
   
@@ -1125,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="config/" class="md-nav__link">
+      <a href="../config/" class="md-nav__link">
         
   
   
@@ -1153,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="references/" class="md-nav__link">
+      <a href="../references/" class="md-nav__link">
         
   
   
@@ -1208,10 +1373,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objectif" class="md-nav__link">
+  <a href="#activer-et-configurer-la-connexion-monarc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Objectif
+        Activer et configurer la connexion Monarc
       
     </span>
   </a>
@@ -1219,10 +1384,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#limitations" class="md-nav__link">
+  <a href="#acces-a-lecran-de-generation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Limitations
+        Accès à l'écran de génération
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#construction-de-lanalyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construction de l'analyse
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Construction de l&#39;analyse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-modele-danalyse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Modèle d'analyse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-referentiels-de-securite-optionnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Référentiels de sécurité (optionnel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-selection-des-objets-de-la-cartographie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Sélection des objets de la cartographie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronisation-directe-avec-monarc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synchronisation directe avec Monarc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinitialiser-la-liaison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Réinitialiser la liaison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-recapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau récapitulatif
       
     </span>
   </a>
@@ -1246,7 +1505,7 @@
 
 
   
-    <a href="https://github.com/sourcentis/mercator/edit/master/docs/index.fr.md" title="Editer cette page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/sourcentis/mercator/edit/master/docs/monarc.fr.md" title="Editer cette page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1255,31 +1514,192 @@
     
       
     
-    <a href="https://github.com/sourcentis/mercator/raw/master/docs/index.fr.md" title="Consulter la source de cette page" class="md-content__button md-icon">
+    <a href="https://github.com/sourcentis/mercator/raw/master/docs/monarc.fr.md" title="Consulter la source de cette page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
-<p>Mercator est une application Web permettant de gérer la cartographie d’un système d’information comme
-décrit dans
-le <a href="https://messervices.cyber.gouv.fr/guides/cartographie-du-systeme-dinformation">Guide pour la cartographie du Système d’information</a>
-de l’<a href="https://cyber.gouv.fr">ANSSI</a>.</p>
-<h3 id="objectif">Objectif<a class="headerlink" href="#objectif" title="Permanent link">&para;</a></h3>
-<p>L’objectif de Mercator est de pouvoir gérer en équipe la cartographie d'un système d’information de manière complète et
-cohérente et de générer automatiquement les différents rapports qui permettent de faciliter le maintien et la
-communication de cette cartographie.</p>
-<p>Le maintien d’une cartographie à jour et complète est un travail long et complexe. Mercator permet de diviser ce travail
-entre plusieurs équipes (infrastructure, réseau, système, application...) et de générer automatiquement les schémas
-d’infrastructure, d’extraire les inventaires et de générer les rapports de cartographie.</p>
-<p>Mercator a l’avantage d’être simple à utiliser, à installer et à mettre en œuvre au sein d’une organisation.</p>
-<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
-<p>Le modèle de données utilisé dans Mercator est basé sur celui proposé par l’ANSSI. Si le système d’information qui doit
-être modélisé est grand, complexe, comporte de nombreux systèmes hétéroclites, ce modèle peut s’avérer incomplet.</p>
-<p>Cependant en faisant quelques concessions sur la complétude de la cartographie, il est souvent possible de modéliser le
-système d’information avec le modèle proposé ici.</p>
+<h1 id="integration-monarc">Intégration Monarc<a class="headerlink" href="#integration-monarc" title="Permanent link">&para;</a></h1>
+<p>Cette page décrit l'intégration entre Mercator et <a href="https://www.monarc.lu">MONARC</a> (Méthode Optimisée d'aNalyse des Risques), l'outil open source d'analyse de risques développé par le <a href="https://www/nc3.lu">NC3 Luxembourg</a>, conforme à la norme ISO/IEC 27005. Elle permet de générer une analyse de risques (analyse de risques) à partir de la cartographie du système d'information, puis de la synchroniser directement vers une instance MONARC Front Office.</p>
+<p>Les objets de la cartographie sont mis en correspondance avec les types d'actifs (« assets ») du référentiel public <a href="https://objects.monarc.lu/">MOSP</a> (MONARC Objects Sharing Platform), qui fournit la base de connaissance (actifs, menaces, vulnérabilités, risques et référentiels de sécurité) utilisée pour construire l'analyse.</p>
+<h2 id="activer-et-configurer-la-connexion-monarc">Activer et configurer la connexion Monarc<a class="headerlink" href="#activer-et-configurer-la-connexion-monarc" title="Permanent link">&para;</a></h2>
+<p>La connexion à une instance MONARC Front Office se configure dans <strong>Configuration → onglet Monarc</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activer l'intégration Monarc</td>
+<td>Affiche l'entrée « Monarc » dans le menu Outils et autorise l'accès à l'écran de génération</td>
+</tr>
+<tr>
+<td>URL de l'instance Monarc</td>
+<td>URL de base de l'instance MONARC Front Office</td>
+</tr>
+<tr>
+<td>Identifiant</td>
+<td>Compte utilisé pour s'authentifier sur l'API Monarc</td>
+</tr>
+<tr>
+<td>Mot de passe</td>
+<td>Laisser vide pour conserver le mot de passe déjà enregistré</td>
+</tr>
+</tbody>
+</table>
+<p>Un bouton <strong>Tester la connexion</strong> permet de vérifier que l'authentification fonctionne avant de générer une analyse.</p>
+<p>📢 <em>Ces valeurs peuvent également être pré-remplies via les variables d'environnement <code>MONARC_URL</code> et <code>MONARC_LOGIN</code> (le mot de passe se saisit uniquement depuis l'écran de configuration).</em></p>
+<p>Cette même page affiche l'état de la liaison avec l'analyse de risques Monarc actuellement suivie (voir <a href="#reinitialiser-la-liaison">Réinitialiser la liaison</a>).</p>
+<hr />
+<h2 id="acces-a-lecran-de-generation">Accès à l'écran de génération<a class="headerlink" href="#acces-a-lecran-de-generation" title="Permanent link">&para;</a></h2>
+<p>L'écran de génération de l'analyse de risques est accessible via le menu <strong>Outils → Monarc</strong>, uniquement lorsque l'intégration est activée et pour les utilisateurs disposant de la permission d'accès aux rapports.</p>
+<h2 id="construction-de-lanalyse">Construction de l'analyse<a class="headerlink" href="#construction-de-lanalyse" title="Permanent link">&para;</a></h2>
+<h3 id="1-modele-danalyse">1. Modèle d'analyse<a class="headerlink" href="#1-modele-danalyse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom de l'analyse</td>
+<td>Champ combiné : sélectionnez une analyse de risques déjà existante dans Monarc, ou saisissez un nouveau nom pour en créer une</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Description libre de l'analyse</td>
+</tr>
+<tr>
+<td>Langue</td>
+<td>Langue de l'analyse de risques (français ou anglais)</td>
+</tr>
+<tr>
+<td>Modèle d'analyse</td>
+<td>Modèle Monarc utilisé uniquement lors de la création d'une nouvelle analyse de risques</td>
+</tr>
+</tbody>
+</table>
+<p>Lorsqu'une analyse de risques existante est sélectionnée, Mercator interroge Monarc pour récupérer sa langue et reconstruit automatiquement la sélection d'objets ci-dessous à partir de ce qui lui a déjà été envoyé.</p>
+<p>⚠️ <em>Lier une analyse de risques qui n'a pas été créée depuis Mercator peut dupliquer des objets lors de la première synchronisation : Mercator ne peut pas savoir ce que l'analyse de risques contient déjà si elle n'a pas été alimentée par lui.</em></p>
+<h3 id="2-referentiels-de-securite-optionnel">2. Référentiels de sécurité (optionnel)<a class="headerlink" href="#2-referentiels-de-securite-optionnel" title="Permanent link">&para;</a></h3>
+<p>Sélectionnez un ou plusieurs référentiels publiés sur MOSP (par ex. ISO 27002, ISO 27017) pour inclure leurs mesures de sécurité dans l'export.</p>
+<h3 id="3-selection-des-objets-de-la-cartographie">3. Sélection des objets de la cartographie<a class="headerlink" href="#3-selection-des-objets-de-la-cartographie" title="Permanent link">&para;</a></h3>
+<p>Pour chaque vue de la cartographie (Écosystème, Système d'Information, Administration, Infrastructure logique, Infrastructure physique), un tableau liste une ligne par type d'actif Monarc rencontré :</p>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Objets Mercator correspondants</td>
+<td>Famille(s) d'objets Mercator associée(s) à ce type d'actif</td>
+</tr>
+<tr>
+<td>Type d'actif</td>
+<td>Code de l'actif MOSP</td>
+</tr>
+<tr>
+<td>Objet Monarc</td>
+<td>Libellé de l'actif dans la langue de l'utilisateur</td>
+</tr>
+<tr>
+<td>Risques</td>
+<td>Nombre de couples menace/vulnérabilité (AMV) associés à cet actif ; cliquer sur le nombre affiche le détail</td>
+</tr>
+<tr>
+<td>Type générique</td>
+<td>Ajoute un seul objet générique pour tout ce type d'actif, à la place des objets Mercator individuels</td>
+</tr>
+<tr>
+<td>Objets Mercator</td>
+<td>Sélection multiple des objets Mercator (application, processus, serveur…) à inclure dans l'analyse</td>
+</tr>
+</tbody>
+</table>
+<p>Cocher <strong>Type générique</strong> désactive la liste d'objets de la ligne (sans effacer une sélection déjà faite) et ajoute un unique objet représentant la catégorie entière.</p>
+<h3 id="4-actions">4. Actions<a class="headerlink" href="#4-actions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Bouton</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enregistrer</td>
+<td>Sauvegarde la sélection en cours sans générer de fichier ni contacter Monarc</td>
+</tr>
+<tr>
+<td>Exporter JSON</td>
+<td>Télécharge l'analyse construite au format JSON, importable manuellement dans Monarc</td>
+</tr>
+<tr>
+<td>Effacer</td>
+<td>Réinitialise l'ensemble de la sélection</td>
+</tr>
+</tbody>
+</table>
+<h2 id="synchronisation-directe-avec-monarc">Synchronisation directe avec Monarc<a class="headerlink" href="#synchronisation-directe-avec-monarc" title="Permanent link">&para;</a></h2>
+<p>En complément de l'export JSON, la carte <strong>Synchronisation analyse de risques Monarc</strong> permet de créer ou mettre à jour l'analyse de risques directement via l'API Monarc, sans passer par un fichier :</p>
+<ul>
+<li>si l'analyse de risques n'existe pas encore dans Monarc, elle est créée à partir du modèle d'analyse choisi ;</li>
+<li>seuls les objets Mercator (et leurs risques) qui n'ont <strong>pas déjà été envoyés</strong> lors d'une synchronisation précédente sont importés.</li>
+</ul>
+<p>Mercator tient à jour, pour chaque analyse de risques liée, la liste des objets déjà synchronisés. Une synchronisation répétée sans changement de sélection n'envoie donc rien de nouveau (« Déjà à jour »).</p>
+<p>⚠️ <em>Les suppressions ou modifications faites dans Mercator ne sont jamais répercutées vers Monarc lors d'une resynchronisation : seuls les ajouts sont synchronisés.</em></p>
+<p>L'état de la liaison est rappelé au-dessus du bouton de synchronisation :</p>
+<ul>
+<li>l'analyse de risques actuellement liée (numéro et nom) ou l'absence de liaison ;</li>
+<li>la date de la dernière synchronisation ;</li>
+<li>le nombre d'objets déjà suivis pour cette analyse de risques.</li>
+</ul>
+<p>Un message d'avertissement s'affiche si l'analyse de risques liée a été supprimée directement dans Monarc, ou si aucun modèle d'analyse n'a pu être récupéré.</p>
+<h2 id="reinitialiser-la-liaison">Réinitialiser la liaison<a class="headerlink" href="#reinitialiser-la-liaison" title="Permanent link">&para;</a></h2>
+<p>Le bouton <strong>Réinitialiser la liaison</strong> se trouve dans <strong>Configuration → onglet Monarc</strong>.</p>
+<p>Cette action supprime uniquement la liaison locale conservée par Mercator (l'analyse de risques suivie et la liste des objets déjà envoyés) : la prochaine synchronisation créera une toute nouvelle analyse de risques. <strong>L'analyse de risques et son contenu ne sont jamais supprimés dans Monarc.</strong></p>
+<h2 id="tableau-recapitulatif">Tableau récapitulatif<a class="headerlink" href="#tableau-recapitulatif" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fonctionnalité</th>
+<th>Emplacement</th>
+<th>Permission requise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activer/configurer la connexion Monarc</td>
+<td>Configuration → onglet Monarc</td>
+<td><code>configure</code></td>
+</tr>
+<tr>
+<td>Tester la connexion</td>
+<td>Configuration → onglet Monarc</td>
+<td><code>configure</code></td>
+</tr>
+<tr>
+<td>Réinitialiser la liaison</td>
+<td>Configuration → onglet Monarc</td>
+<td><code>configure</code></td>
+</tr>
+<tr>
+<td>Générer / exporter / synchroniser une analyse</td>
+<td>Outils → Monarc</td>
+<td><code>reports_access</code></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1334,10 +1754,10 @@ système d’information avec le modèle proposé ici.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "navigation.top", "content.code.copy", "content.action.edit", "content.action.view", "palette.toggle"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "navigation.top", "content.code.copy", "content.action.edit", "content.action.view", "palette.toggle"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
