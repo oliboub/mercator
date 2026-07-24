@@ -486,10 +486,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#infrastructure-view" class="md-nav__link">
+  <a href="#physical-infrastructure-view" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Infrastructure View
+        Physical Infrastructure View
       
     </span>
   </a>
@@ -1389,10 +1389,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#infrastructure-view" class="md-nav__link">
+  <a href="#physical-infrastructure-view" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Infrastructure View
+        Physical Infrastructure View
       
     </span>
   </a>
@@ -1457,28 +1457,33 @@ IS interacts, along with the relationships they maintain: support contracts, par
 <p>The business view of the information system represents the IS through its macro-processes, processes, activities,
 operations, actors, and the information they handle. These elements constitute the business values in the sense of the
 EBIOS Risk Manager risk assessment method.</p>
+<p><a href="../images/information_system.png"><img src="/mercator/images/information_system.png" width="700"></a></p>
 <h2 id="application-view">Application View<a class="headerlink" href="#application-view" title="Permanent link">&para;</a></h2>
 <p>The application view describes the software components of the information system: applications grouped into application
 blocks, databases, services and modules, along with their links to the business processes they support.</p>
 <p>The application flow view describes the information exchanges between the various applications, services, modules, and
 databases.</p>
+<p><a href="../images/applications.png"><img src="/mercator/images/applications.png" width="700"></a></p>
 <h2 id="administration-view">Administration View<a class="headerlink" href="#administration-view" title="Permanent link">&para;</a></h2>
 <p>The administration view lists the scopes and privilege levels of users and administrators, as well as the directories
 that reference them.</p>
+<p><a href="../images/administration.png"><img src="/mercator/images/administration.png" width="500"></a></p>
 <h2 id="logical-view">Logical View<a class="headerlink" href="#logical-view" title="Permanent link">&para;</a></h2>
 <p>The logical infrastructure view illustrates the logical segmentation of networks: IP address ranges, VLANs, filtering
 and routing functions. It notably makes it possible to compare what the system is <em>capable</em> of doing with what it was
 <em>authorized</em> to do.</p>
-<h2 id="infrastructure-view">Infrastructure View<a class="headerlink" href="#infrastructure-view" title="Permanent link">&para;</a></h2>
+<p><a href="../images/logical.png"><img src="/mercator/images/logical.png" width="500"></a></p>
+<h2 id="physical-infrastructure-view">Physical Infrastructure View<a class="headerlink" href="#physical-infrastructure-view" title="Permanent link">&para;</a></h2>
 <p>The physical infrastructure view describes the physical equipment that makes up the information system: servers, racks,
 server rooms, buildings, and sites.</p>
-<hr />
+<p><a href="../images/physical.png"><img src="/mercator/images/physical.png" width="700"></a></p>
 <h2 id="exploring-views-and-rendering-engines">Exploring Views and Rendering Engines<a class="headerlink" href="#exploring-views-and-rendering-engines" title="Permanent link">&para;</a></h2>
 <p>The mapping can be <a href="../application/#exploration">explored</a> organically: double-clicking on an object
 immediately displays all objects connected to
 it—physically or logically—and all incoming and outgoing flows.</p>
 <p>Hierarchical views are also available. From a macro-process, you can visualize all the processes, activities, and
 operations that depend on it, or take a site and display all the rooms and equipment it contains.</p>
+<p><a href="../images/explore.png"><img src="/mercator/images/explore.png" width="700"></a></p>
 <p>You can select the graphic rendering engine directly from each view. <strong>Dot, Neato, FDP, Sfdp, Twopi, Circo</strong> — each
 Graphviz engine produces a different rendering depending on the nature and density of the graph. This flexibility allows
 you to optimize readability according to the context: dense network mapping, application view, or multi-layered impact
