@@ -3449,9 +3449,11 @@ champ </em><em>informations</em>**</p>
         string technology
         string type
         string external
-        datetime install_date
-        datetime update_date
-        datetime next_update
+        string status
+        date prod_date
+        date install_date
+        date update_date
+        date next_update
         string documentation
         int security_need_c
         int security_need_i
@@ -3464,8 +3466,6 @@ champ </em><em>informations</em>**</p>
         string product
         string version
         int patching_frequency
-        string status
-        date date_prod
         string hosting
         string urls
         list entities
@@ -3752,7 +3752,7 @@ a un serveur logique par serveur physique.</p>
 <td style="text-align: left;">Date d'installation de l'application</td>
 </tr>
 <tr>
-<td style="text-align: left;">date_prod</td>
+<td style="text-align: left;">prod_date</td>
 <td style="text-align: left;">date</td>
 <td style="text-align: left;">Date de mise en production</td>
 </tr>
