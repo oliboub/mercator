@@ -4433,6 +4433,7 @@ opérateurs d’importance vitale (OIV).</p>
         text description
         string solution
         int zone_admin_id FK
+        int application_id FK
         timestamp created_at
         timestamp updated_at
         timestamp deleted_at
@@ -4479,6 +4480,7 @@ opérateurs d’importance vitale (OIV).</p>
 
     zone_admins ||--o{ annuaires : "zone_admin_id"
     zone_admins ||--o{ forest_ads : "zone_admin_id"
+    applications ||--o{ annuaires : "application_id"
     forest_ads }o--o{ domains : "domains"
     domains ||--o{ admin_users : "domain_id"
 </code></pre>
@@ -4551,7 +4553,7 @@ LDAP.</p>
 <p>Un service d’annuaire d’administration est une application regroupant les données sur les utilisateurs ou les
 équipements informatiques de l’entreprise et permettant leur administration.</p>
 <p>Il peut s’agir d’un outil d’inventaire servant à la gestion des changements ou des tickets ou d’un outil de cartographie
-comme Mercator.</p>
+comme Mercator. Il peut être rattaché, de manière facultative, à l’application qui le met en œuvre.</p>
 <table>
 <thead>
 <tr>
@@ -4604,6 +4606,11 @@ comme Mercator.</p>
 <td style="text-align: left;">zone_admin_id</td>
 <td style="text-align: left;">int unsigned</td>
 <td style="text-align: left;">Référence vers la zone d'administration</td>
+</tr>
+<tr>
+<td style="text-align: left;">application_id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">Référence vers l'application qui gère cet annuaire</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
