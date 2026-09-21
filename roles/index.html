@@ -10,19 +10,19 @@
       
       
       
-        <link rel="canonical" href="https://sourcentis.github.io/mercator/bpmn/">
+        <link rel="canonical" href="https://sourcentis.github.io/mercator/roles/">
       
       
-        <link rel="prev" href="../maps/">
+        <link rel="prev" href="../perimeters/">
       
       
-        <link rel="next" href="../queries/">
+        <link rel="next" href="../cartographers/">
       
       
         
           <link rel="alternate" href="./" hreflang="en">
         
-          <link rel="alternate" href="../fr/bpmn/" hreflang="fr">
+          <link rel="alternate" href="../fr/roles/" hreflang="fr">
         
       
       
@@ -31,7 +31,7 @@
     
     
       
-        <title>-- BPMN - Mercator</title>
+        <title>-- Roles - Mercator</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bpmn-20" class="md-skip">
+        <a href="#roles-in-mercator" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              -- BPMN
+              -- Roles
             
           </span>
         </div>
@@ -173,7 +173,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../fr/bpmn/" hreflang="fr" class="md-select__link">
+            <a href="../fr/roles/" hreflang="fr" class="md-select__link">
               Français
             </a>
           </li>
@@ -485,8 +485,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -505,13 +507,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -532,7 +532,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -575,10 +575,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../roles/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -- Roles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -594,6 +621,409 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-what-is-a-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction — What is a role?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-permission-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The permission model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The permission model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permission-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-role-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in role templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-and-managing-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating and managing roles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating and managing roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a new role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-an-existing-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edit an existing role
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete a role
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-roles-to-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assigning roles to users
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Assigning roles to users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assign-roles-to-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assign roles to a user
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-role-from-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove a role from a user
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-user-with-multiple-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A user with multiple roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-admin-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in admin role
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-and-perimeter-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role and perimeter relationship
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Role and perimeter relationship">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-multi-establishment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Multi-establishment setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-login-and-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User login and access
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User login and access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-first-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On first login
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-and-role-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session and role changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-for-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best practices for roles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best practices for roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-keep-role-names-clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Keep role names clear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-principle-of-least-privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Principle of least privilege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-role-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Use role templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-document-role-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Document role purposes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-review-role-assignments-regularly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Review role assignments regularly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-separate-by-concern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Separate by concern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-user-cant-see-objects-they-should-be-able-to-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "A user can't see objects they should be able to see"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-user-cant-edit-an-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "A user can't edit an object"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-cant-delete-a-role-because-its-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "I can't delete a role because it's in use"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-admin-can-see-everything-but-a-viewer-sees-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "An admin can see everything but a viewer sees nothing"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-changes-arent-taking-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Role changes aren't taking effect"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -761,10 +1191,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -785,11 +1213,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -810,7 +1240,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -853,37 +1283,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    -- BPMN
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../bpmn/" class="md-nav__link">
         
   
   
@@ -899,415 +1302,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introduction
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#association-with-mercator-cartography" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Association with Mercator Cartography
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Association with Mercator Cartography">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#information-system-view" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Information System View
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bpmn-conversations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BPMN Conversations
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#elements-of-the-bpmn-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Elements of the BPMN Diagram
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Elements of the BPMN Diagram">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#events" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Events
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Activities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gateways" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gateways
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flows-and-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flows and Connections
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#artifacts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Artifacts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lanes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lanes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Lanes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#orientation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orientation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#association-with-actors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Association with Actors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#view-and-navigation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        View and Navigation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="View and Navigation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#visualization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visualization Mode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#access-from-the-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access from the Map
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conversations-and-subprocesses" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversations and Subprocesses
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conversations and Subprocesses">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#conversation-association" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conversation Association
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#navigation-between-diagrams" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Navigation Between Diagrams
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-and-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Import and Export
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Import and Export">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bpmn-20-xml-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BPMN 2.0 XML Format
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#svg-export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SVG Export
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Best Practices
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Best Practices">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#modeling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Modeling
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#organization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Organization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maintenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Maintenance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#impact-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Impact Analysis
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compliance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compliance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#onboarding" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Onboarding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#digital-transformation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Digital Transformation
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1799,10 +1793,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#introduction-what-is-a-role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Introduction — What is a role?
       
     </span>
   </a>
@@ -1810,22 +1804,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#association-with-mercator-cartography" class="md-nav__link">
+  <a href="#the-permission-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Association with Mercator Cartography
+        The permission model
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Association with Mercator Cartography">
+    <nav class="md-nav" aria-label="The permission model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#information-system-view" class="md-nav__link">
+  <a href="#permission-categories" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Information System View
+        Permission categories
       
     </span>
   </a>
@@ -1833,10 +1827,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bpmn-conversations" class="md-nav__link">
+  <a href="#built-in-role-templates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BPMN Conversations
+        Built-in role templates
       
     </span>
   </a>
@@ -1849,22 +1843,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#elements-of-the-bpmn-diagram" class="md-nav__link">
+  <a href="#creating-and-managing-roles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Elements of the BPMN Diagram
+        Creating and managing roles
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Elements of the BPMN Diagram">
+    <nav class="md-nav" aria-label="Creating and managing roles">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#events" class="md-nav__link">
+  <a href="#create-a-new-role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Events
+        Create a new role
       
     </span>
   </a>
@@ -1872,10 +1866,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
+  <a href="#edit-an-existing-role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activities
+        Edit an existing role
       
     </span>
   </a>
@@ -1883,32 +1877,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gateways" class="md-nav__link">
+  <a href="#delete-a-role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gateways
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flows-and-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flows and Connections
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#artifacts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Artifacts
+        Delete a role
       
     </span>
   </a>
@@ -1921,22 +1893,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lanes" class="md-nav__link">
+  <a href="#assigning-roles-to-users" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lanes
+        Assigning roles to users
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lanes">
+    <nav class="md-nav" aria-label="Assigning roles to users">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#orientation" class="md-nav__link">
+  <a href="#assign-roles-to-a-user" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Orientation
+        Assign roles to a user
       
     </span>
   </a>
@@ -1944,10 +1916,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#association-with-actors" class="md-nav__link">
+  <a href="#remove-a-role-from-a-user" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Association with Actors
+        Remove a role from a user
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-user-with-multiple-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A user with multiple roles
       
     </span>
   </a>
@@ -1960,33 +1943,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#view-and-navigation" class="md-nav__link">
+  <a href="#built-in-admin-role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View and Navigation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="View and Navigation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#visualization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Visualization Mode
+        Built-in admin role
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#access-from-the-map" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#role-and-perimeter-relationship" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Access from the Map
+        Role and perimeter relationship
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Role and perimeter relationship">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-multi-establishment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Multi-establishment setup
       
     </span>
   </a>
@@ -1999,22 +1982,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conversations-and-subprocesses" class="md-nav__link">
+  <a href="#user-login-and-access" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conversations and Subprocesses
+        User login and access
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Conversations and Subprocesses">
+    <nav class="md-nav" aria-label="User login and access">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#conversation-association" class="md-nav__link">
+  <a href="#on-first-login" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conversation Association
+        On first login
       
     </span>
   </a>
@@ -2022,10 +2005,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#navigation-between-diagrams" class="md-nav__link">
+  <a href="#session-and-role-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Navigation Between Diagrams
+        Session and role changes
       
     </span>
   </a>
@@ -2038,22 +2021,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#import-and-export" class="md-nav__link">
+  <a href="#best-practices-for-roles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Import and Export
+        Best practices for roles
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Import and Export">
+    <nav class="md-nav" aria-label="Best practices for roles">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bpmn-20-xml-format" class="md-nav__link">
+  <a href="#1-keep-role-names-clear" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BPMN 2.0 XML Format
+        1. Keep role names clear
       
     </span>
   </a>
@@ -2061,10 +2044,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#svg-export" class="md-nav__link">
+  <a href="#2-principle-of-least-privilege" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SVG Export
+        2. Principle of least privilege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-role-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Use role templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-document-role-purposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Document role purposes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-review-role-assignments-regularly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Review role assignments regularly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-separate-by-concern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Separate by concern
       
     </span>
   </a>
@@ -2077,22 +2104,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
+  <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Best Practices
+        Troubleshooting
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Best Practices">
+    <nav class="md-nav" aria-label="Troubleshooting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#modeling" class="md-nav__link">
+  <a href="#a-user-cant-see-objects-they-should-be-able-to-see" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeling
+        "A user can't see objects they should be able to see"
       
     </span>
   </a>
@@ -2100,10 +2127,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#organization" class="md-nav__link">
+  <a href="#a-user-cant-edit-an-object" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Organization
+        "A user can't edit an object"
       
     </span>
   </a>
@@ -2111,38 +2138,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maintenance" class="md-nav__link">
+  <a href="#i-cant-delete-a-role-because-its-in-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Maintenance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use Cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Use Cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#impact-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Impact Analysis
+        "I can't delete a role because it's in use"
       
     </span>
   </a>
@@ -2150,10 +2149,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#compliance" class="md-nav__link">
+  <a href="#an-admin-can-see-everything-but-a-viewer-sees-nothing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compliance
+        "An admin can see everything but a viewer sees nothing"
       
     </span>
   </a>
@@ -2161,21 +2160,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#onboarding" class="md-nav__link">
+  <a href="#role-changes-arent-taking-effect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Onboarding
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#digital-transformation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Digital Transformation
+        "Role changes aren't taking effect"
       
     </span>
   </a>
@@ -2204,7 +2192,7 @@
 
 
   
-    <a href="https://github.com/sourcentis/mercator/edit/master/docs/bpmn.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/sourcentis/mercator/edit/master/docs/roles.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2213,210 +2201,347 @@
     
       
     
-    <a href="https://github.com/sourcentis/mercator/raw/master/docs/bpmn.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/sourcentis/mercator/raw/master/docs/roles.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="bpmn-20">BPMN 2.0<a class="headerlink" href="#bpmn-20" title="Permanent link">&para;</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The BPMN (Business Process Model and Notation) module allows you to
-create, edit, and visualize business process diagrams according to the BPMN 2.0 standard.</p>
-<p>This module offers complete integration with information system mapping, enabling you to link
-BPMN graphical elements to Mercator entities.</p>
-<h2 id="association-with-mercator-cartography">Association with Mercator Cartography<a class="headerlink" href="#association-with-mercator-cartography" title="Permanent link">&para;</a></h2>
-<p>BPMN diagrams enable business process modeling by linking them to Mercator cartography elements: processes,
-macro-processes, activities, and actors.</p>
-<p>These bidirectional links between BPMN diagrams and cartography objects provide complete traceability. A Mercator
-process can be associated with one or more BPMN diagrams that detail its execution, while a BPMN diagram can reference
-multiple processes, activities, or actors from the cartography.</p>
-<p>This integration facilitates understanding of business flows by enabling navigation between the cartographic view (who
-does what) and the process view (how it's done), while maintaining information consistency across the organization.</p>
-<h3 id="information-system-view">Information System View<a class="headerlink" href="#information-system-view" title="Permanent link">&para;</a></h3>
-<p>BPMN elements integrate with Mercator's information system view objects according to the following correspondences:</p>
+<h1 id="roles-in-mercator">Roles in Mercator<a class="headerlink" href="#roles-in-mercator" title="Permanent link">&para;</a></h1>
+<p>Role is the main mechanism to grant list, read and write access to objects in Mercator. This documentation explains what a role is, how to create and manage roles, and how they work with perimeters to control user access.</p>
+<h2 id="introduction-what-is-a-role">Introduction — What is a role?<a class="headerlink" href="#introduction-what-is-a-role" title="Permanent link">&para;</a></h2>
+<p>A <strong>role</strong> is a set of <strong>permissions</strong> that controls what a user can do in Mercator:</p>
 <ul>
-<li><strong>Activities</strong>: Mercator business activities correspond to high-level BPMN sub-processes</li>
-<li><strong>Operations</strong>: Detailed operations can be modeled as specific BPMN sub-processes</li>
-<li><strong>Tasks</strong>: BPMN tasks are directly linked to operational tasks in the cartography</li>
-<li><strong>Actors</strong>: Roles and actors are represented in lanes/pools, clearly identifying responsibilities</li>
-<li><strong>Information</strong>: BPMN data objects can be associated with information from the ecosystem view</li>
+<li><strong>List</strong> — list objects</li>
+<li><strong>View</strong> — display objects and view their details</li>
+<li><strong>Create</strong> — add new objects of a given type</li>
+<li><strong>Modify</strong> — edit existing objects</li>
+<li><strong>Delete</strong> — remove objects</li>
 </ul>
-<p><a href="../images/bpmn-1.png"><img src="/mercator/images/bpmn-1.png" width="500"></a></p>
-<p>This integration maintains consistency between business process modeling (BPMN) and the technical IS cartography.
-It enables:</p>
+<p>Each user can hold <strong>one or more roles</strong>, and roles can be assigned to perimeters to partition access by establishment.</p>
+<div class="admonition info">
+<p class="admonition-title">Three mechanisms for access control</p>
+<p>Mercator combines three complementary notions to control what users can do:</p>
 <ul>
-<li>Tracing data flows across the organization</li>
-<li>Identifying dependencies between the business view and technical infrastructure</li>
-<li>Aligning business processes with the technical components that support them</li>
+<li><strong>Role</strong> defines <em>what</em> a user can do (view, create, modify, delete which categories of objects)</li>
+<li><strong>Perimeter</strong> defines <em>which</em> establishment's objects those rights apply to (see the <em>Perimeters</em> documentation)</li>
+<li><strong>Cartographer</strong> assignment delegates responsibility for <strong>specific individual objects</strong>, regardless of perimeter or role (see the <em>Cartographers</em> documentation)</li>
 </ul>
-<h3 id="bpmn-conversations">BPMN Conversations<a class="headerlink" href="#bpmn-conversations" title="Permanent link">&para;</a></h3>
-<p>BPMN diagrams in Mercator support conversation elements as defined in the BPMN 2.0 specification. Conversation links
-represent message exchanges between participants (pools), visually materialized by double parallel lines.</p>
-<p>Conversations logically group multiple conversation links to model a coherent set of exchanges between participants.
-They can be represented either as standard conversations (simple hexagon) for basic interactions, or as
-sub-conversations
-(double-bordered hexagon) when they encapsulate more complex exchanges requiring decomposition.</p>
-<p><a href="../images/bpmn-2.png"><img src="/mercator/images/bpmn-2.png" width="400"></a></p>
-<p>This notation documents communication protocols between different business actors or systems, complementing the modeling
-of internal processes for each participant. BPMN conversations thus provide an architectural view of
-inter-organizational or inter-departmental interactions.</p>
-<h2 id="elements-of-the-bpmn-diagram">Elements of the BPMN Diagram<a class="headerlink" href="#elements-of-the-bpmn-diagram" title="Permanent link">&para;</a></h2>
-<p>The BPMN module offers a complete set of elements compliant with the BPMN 2.0 standard:</p>
-<h3 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
+<p>The three work together to give you fine-grained access control.</p>
+</div>
+<h2 id="the-permission-model">The permission model<a class="headerlink" href="#the-permission-model" title="Permanent link">&para;</a></h2>
+<h3 id="permission-categories">Permission categories<a class="headerlink" href="#permission-categories" title="Permanent link">&para;</a></h3>
+<p>Mercator organizes permissions by <strong>object type</strong> and <strong>action</strong>:</p>
 <ul>
-<li><strong>Start Event</strong>: Starting point of a process</li>
-<li><strong>Intermediate Event</strong>: Event occurring during the process</li>
-<li><strong>End Event</strong>: Ending point of a process</li>
+<li><strong>Servers</strong> → View, Create, Edit, Delete</li>
+<li><strong>Applications</strong> → View, Create, Edit, Delete</li>
+<li><strong>Networks</strong> → View, Create, Edit, Delete</li>
+<li><strong>Sites</strong> → View, Create, Edit, Delete</li>
+<li>... (one category per object type)</li>
 </ul>
-<p><a href="../images/bpmn-events.png"><img src="/mercator/images/bpmn-events.png" width="300"></a></p>
-<h3 id="activities">Activities<a class="headerlink" href="#activities" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Task</strong>: Atomic unit of work</li>
-<li><strong>Sub-Process</strong>: Process Decomposable into tasks</li>
-<li><strong>User task</strong>: Task requiring human interaction</li>
-<li><strong>Service task</strong>: Automated task</li>
-<li><strong>Script task</strong>: Code execution</li>
-</ul>
-<p><a href="../images/bpmn-tasks.png"><img src="/mercator/images/bpmn-tasks.png" width="500"></a></p>
-<h3 id="gateways">Gateways<a class="headerlink" href="#gateways" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Exclusive gateway</strong>: Selection of a single path from several</li>
-<li><strong>Parallel gateway</strong>: Simultaneous execution of multiple paths</li>
-<li><strong>Inclusive gateway</strong>: Activation of one or more paths</li>
-<li><strong>Event gateway</strong>: Waiting for multiple events</li>
-</ul>
-<p><a href="../images/bpmn-gateways.png"><img src="/mercator/images/bpmn-gateways.png" width="400"></a></p>
-<h3 id="flows-and-connections">Flows and Connections<a class="headerlink" href="#flows-and-connections" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong>Sequence Flow</strong>: Defines the order in which activities are executed within a process.</p>
-</li>
-<li>
-<p><strong>Message Flow</strong>: Represents the communication between different participants (pools) in a process.</p>
-</li>
-<li>
-<p><strong>Conditional Flow</strong>: A sequence flow accompanied by an activation condition.</p>
-</li>
-<li>
-<p><strong>Default Flow</strong>: The sequence flow used when no condition in other outgoing flows is met.</p>
-</li>
-<li>
-<p><strong>Association</strong>: A non-directional link connecting artifacts (annotations, data objects) to elements of the process.</p>
-</li>
-</ul>
-<p>-</p>
-<p><a href="../images/bpmn-flows.png"><img src="/mercator/images/bpmn-flows.png" width="400"></a></p>
-<h3 id="artifacts">Artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Data Object</strong>: Information representation</li>
-<li><strong>Data Store</strong>: Data persistence location</li>
-</ul>
-<p><a href="../images/bpmn-data.png"><img src="/mercator/images/bpmn-data.png" width="300"></a></p>
-<ul>
-<li><strong>Annotation</strong>: Comments and explanatory notes</li>
-</ul>
-<p><a href="../images/bpmn-annotation.png"><img src="/mercator/images/bpmn-annotation.png" width="150"></a></p>
-<h2 id="lanes">Lanes<a class="headerlink" href="#lanes" title="Permanent link">&para;</a></h2>
-<p>Lanes allow you to organize responsibilities within a process :</p>
-<h3 id="orientation">Orientation<a class="headerlink" href="#orientation" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Horizontal Lanes</strong>: Traditional organization, actors are listed vertically</li>
-<li><strong>Vertical Lanes</strong>: Alternative organization, actors are listed horizontally</li>
-</ul>
-<h3 id="association-with-actors">Association with Actors<a class="headerlink" href="#association-with-actors" title="Permanent link">&para;</a></h3>
-<p>Each lane can be associated with an actor in the Mercator map:</p>
-<ul>
-<li><strong>Organizational Entities</strong>: Departments, services, teams</li>
-<li><strong>Roles</strong>: Functions and responsibilities</li>
-<li><strong>External Actors</strong>: Partners, suppliers, etc.</li>
-</ul>
-<h2 id="view-and-navigation">View and Navigation<a class="headerlink" href="#view-and-navigation" title="Permanent link">&para;</a></h2>
-<h3 id="visualization-mode">Visualization Mode<a class="headerlink" href="#visualization-mode" title="Permanent link">&para;</a></h3>
-<p>Visualization mode offers an interactive experience:</p>
-<ul>
-<li><strong>Click-to-navigate</strong>: Clicking on an associated BPMN element redirects to the corresponding record in the
-  map</li>
-<li><strong>Contextual information</strong>: Hover over elements to display details</li>
-<li><strong>Zoom and pan</strong>: Smooth navigation within complex diagrams</li>
-<li><strong>Overview</strong>: Minimap for orientation within major processes</li>
-</ul>
-<p>This bidirectional integration between BPMN and mapping facilitates impact analysis and traceability.</p>
-<h3 id="access-from-the-map">Access from the Map<a class="headerlink" href="#access-from-the-map" title="Permanent link">&para;</a></h3>
-<p>From the process, activity, and task records in Mercator, a button provides direct access to the
-associated BPMN diagram.</p>
-<h2 id="conversations-and-subprocesses">Conversations and Subprocesses<a class="headerlink" href="#conversations-and-subprocesses" title="Permanent link">&para;</a></h2>
-<h3 id="conversation-association">Conversation Association<a class="headerlink" href="#conversation-association" title="Permanent link">&para;</a></h3>
-<p>BPMN message flows represent conversations that can point to:</p>
-<ul>
-<li><strong>Other BPMN Diagrams</strong>: Collaborative processes and inter-process exchanges</li>
-<li><strong>External Processes</strong>: Interactions with third-party systems</li>
-<li><strong>Detailed Subprocesses</strong>: Hierarchical navigation within complex processes</li>
-</ul>
-<p>This feature allows you to model distributed process architectures while maintaining the readability of each diagram.</p>
-<h3 id="navigation-between-diagrams">Navigation Between Diagrams<a class="headerlink" href="#navigation-between-diagrams" title="Permanent link">&para;</a></h3>
-<p>Clicking on a message flow associated with another BPMN diagram opens that diagram, allowing for intuitive exploration
-of interconnected processes.</p>
-<h2 id="import-and-export">Import and Export<a class="headerlink" href="#import-and-export" title="Permanent link">&para;</a></h2>
-<h3 id="bpmn-20-xml-format">BPMN 2.0 XML Format<a class="headerlink" href="#bpmn-20-xml-format" title="Permanent link">&para;</a></h3>
-<p><strong>Import</strong>:</p>
-<ul>
-<li>Full support for the BPMN 2.0 standard</li>
-<li>Preserves waypoints and positioning</li>
-<li>Retrieves existing associations if the identifiers match</li>
-</ul>
-<p><strong>Export</strong>:</p>
-<ul>
-<li>Generates compliant BPMN 2.0 files</li>
-<li>Preserves metadata and Mercator associations</li>
-<li>Compatible with standard BPMN tools (Camunda, Bonita, etc.)</li>
-</ul>
-<h3 id="svg-export">SVG Export<a class="headerlink" href="#svg-export" title="Permanent link">&para;</a></h3>
-<p>Exporting to SVG allows:</p>
-<ul>
-<li><strong>Documentation</strong>: Insertion into Word and PDF documents</li>
-<li><strong>Presentation</strong>: Vector quality for slides</li>
-<li><strong>Publication</strong>: Integration into intranets and wikis</li>
-<li><strong>Archiving</strong>: Open and long-lasting format</li>
-</ul>
-<p>The generated SVG preserves the formatting, colors, and readability of the original diagram.</p>
-<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
-<h3 id="modeling">Modeling<a class="headerlink" href="#modeling" title="Permanent link">&para;</a></h3>
+<h3 id="built-in-role-templates">Built-in role templates<a class="headerlink" href="#built-in-role-templates" title="Permanent link">&para;</a></h3>
+<p>Mercator provides standard role templates to simplify setup:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+<th>Typical permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Admin</strong></td>
+<td>Full access to all object types and perimeter management</td>
+<td>All permissions</td>
+</tr>
+<tr>
+<td><strong>Editor</strong></td>
+<td>Can view, create, and edit objects (not delete)</td>
+<td>All CRUD except Delete</td>
+</tr>
+<tr>
+<td><strong>Viewer</strong></td>
+<td>Read-only access to all objects</td>
+<td>View only</td>
+</tr>
+<tr>
+<td><strong>Operator</strong></td>
+<td>Manage servers and physical infrastructure</td>
+<td>Create/Edit Servers, Sites, Physical objects</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Administrators</p>
+<p><strong>Administrators</strong> have special status. They are never filtered by perimeter and always see the entire cartography, regardless of how perimeters are configured. Administrator roles are typically assigned to IT directors or system managers.</p>
+</div>
+<h2 id="creating-and-managing-roles">Creating and managing roles<a class="headerlink" href="#creating-and-managing-roles" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-new-role">Create a new role<a class="headerlink" href="#create-a-new-role" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Simplicity</strong>: Prioritize clarity over exhaustiveness</li>
-<li><strong>Consistency</strong>: Use the same naming conventions as the process map</li>
-<li><strong>Systematic Association</strong>: Link all BPMN elements to Mercator entities</li>
-<li><strong>Documentation</strong>: Use annotations for complex business rules</li>
+<li>Go to <strong>Administration → Roles</strong></li>
+<li>Click <strong>+ Create Role</strong></li>
+<li>Enter a <strong>role name</strong> (e.g., "Server Administrator", "Read-Only Audit")</li>
+<li>Select a <strong>perimeter</strong> (defaults to the default perimeter, id = 1)</li>
+<li><em>See the Perimeters documentation for details on perimeters</em></li>
+<li>Check the <strong>permissions</strong> you want to grant:</li>
+<li>For each object type, select: View, Create, Edit, Delete</li>
+<li>Click <strong>Create</strong></li>
 </ol>
-<h3 id="organization">Organization<a class="headerlink" href="#organization" title="Permanent link">&para;</a></h3>
+<h3 id="edit-an-existing-role">Edit an existing role<a class="headerlink" href="#edit-an-existing-role" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Structure</strong>: Create subprocesses for workflows with more than 20 elements</li>
-<li><strong>Lanes</strong>: One lane per main actor; avoid excessive lane duplication</li>
-<li><strong>Data</strong>: Position data objects close to the activities that manipulate them</li>
-<li><strong>Navigation</strong>: Use conversations to link interconnected processes</li>
+<li>Go to <strong>Administration → Roles</strong></li>
+<li>Find the role in the list</li>
+<li>Click <strong>Edit</strong></li>
+<li>Change the <strong>name</strong>, <strong>perimeter</strong>, or <strong>permissions</strong></li>
+<li>Click <strong>Save</strong></li>
 </ol>
-<h3 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h3>
+<h3 id="delete-a-role">Delete a role<a class="headerlink" href="#delete-a-role" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Versioning</strong>: Regularly export to BPMN 2.0 for historical data retention</li>
-<li><strong>Review</strong>: Synchronize changes with the process map</li>
+<li>Go to <strong>Administration → Roles</strong></li>
+<li>Find the role in the list</li>
+<li>Click <strong>Delete</strong></li>
+<li>Confirm</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Before deleting a role</p>
+<p>Check how many users are assigned to this role. Deleting it removes their access. Consider reassigning users to another role first.</p>
+</div>
+<h2 id="assigning-roles-to-users">Assigning roles to users<a class="headerlink" href="#assigning-roles-to-users" title="Permanent link">&para;</a></h2>
+<h3 id="assign-roles-to-a-user">Assign roles to a user<a class="headerlink" href="#assign-roles-to-a-user" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration → Users</strong></li>
+<li>Find the user in the list</li>
+<li>Click <strong>Edit</strong></li>
+<li>Under <strong>Roles</strong>, check the roles you want to assign</li>
+<li>A user can have multiple roles (for access to multiple perimeters)</li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<h3 id="remove-a-role-from-a-user">Remove a role from a user<a class="headerlink" href="#remove-a-role-from-a-user" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Go to <strong>Administration → Users</strong></li>
+<li>Find the user</li>
+<li>Click <strong>Edit</strong></li>
+<li>Under <strong>Roles</strong>, uncheck the role</li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<h3 id="a-user-with-multiple-roles">A user with multiple roles<a class="headerlink" href="#a-user-with-multiple-roles" title="Permanent link">&para;</a></h3>
+<p>A user may hold roles in multiple perimeters. The permissions are <strong>combined</strong>:</p>
+<div class="highlight"><pre><span></span><code>User "Alice" has:
+  - Role "Admin" in Perimeter 1 ("Head Office")
+    → Full access to all Head Office objects
+
+  - Role "Viewer" in Perimeter 2 ("Branch A")
+    → Read-only access to all Branch A objects
+
+Result: Alice sees and can edit objects in Perimeter 1,
+        and view-only objects in Perimeter 2
+</code></pre></div>
+<p>The <strong>perimeters the user can access</strong> are the union of all their roles' perimeters.</p>
+<div class="admonition tip">
+<p class="admonition-title">Mix permissions across perimeters</p>
+<p>A user can have a read-only role in one perimeter and a full-access role in another. This lets you balance access carefully.</p>
+</div>
+<h2 id="built-in-admin-role">Built-in admin role<a class="headerlink" href="#built-in-admin-role" title="Permanent link">&para;</a></h2>
+<p>The <strong>Administrator</strong> role is special:</p>
+<ul>
+<li>Has <strong>all permissions</strong> by default</li>
+<li>Is <strong>never filtered by perimeter</strong> — sees the entire cartography</li>
+<li>Has access to <strong>Administration</strong> features</li>
+<li>Cannot be deleted (always available)</li>
+<li>Should only be assigned to trusted IT staff</li>
+</ul>
+<p>Administrators are responsible for:</p>
+<ul>
+<li>Creating and managing other roles</li>
+<li>Assigning roles to users</li>
+<li>Managing perimeters</li>
+<li>Auditing access and changes</li>
+<li>Handling user requests for access changes</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Keep administrator access restricted</p>
+<p>Only assign the Administrator role to people who genuinely need full system access. For most users, create specific roles with limited permissions.</p>
+</div>
+<h2 id="role-and-perimeter-relationship">Role and perimeter relationship<a class="headerlink" href="#role-and-perimeter-relationship" title="Permanent link">&para;</a></h2>
+<p>Each role is attached to <strong>exactly one perimeter</strong>. The role's permissions apply only to objects within that perimeter.</p>
+<h3 id="example-multi-establishment-setup">Example: Multi-establishment setup<a class="headerlink" href="#example-multi-establishment-setup" title="Permanent link">&para;</a></h3>
+<p>Your organization has two sites: Head Office and Branch A. You want:</p>
+<ul>
+<li>Head Office staff to manage all Head Office objects</li>
+<li>Branch A staff to manage only Branch A objects</li>
+<li>Executives to view both sites (read-only)</li>
+</ul>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Create two perimeters:</li>
+<li>Perimeter 1: "Head Office"</li>
+<li>Perimeter 2: "Branch A"</li>
 <li>
-<p><strong>Validation</strong>: Verify that associations remain valid after Reorganization</p>
+<p>(See <em>Perimeters</em> documentation for details)</p>
 </li>
 <li>
-<p><strong>Archiving</strong>: Preserve SVG exports of major versions</p>
+<p>Create roles per site:</p>
 </li>
+<li>Role "HQ Admin" → Perimeter 1 → Admin permissions</li>
+<li>Role "Branch Admin" → Perimeter 2 → Admin permissions</li>
+<li>Role "Global Viewer" → Perimeter 1 → View only</li>
+<li>
+<p>Role "Global Viewer" → Perimeter 2 → View only</p>
+</li>
+<li>
+<p>Assign users:</p>
+</li>
+<li>HQ staff → "HQ Admin" role</li>
+<li>Branch staff → "Branch Admin" role</li>
+<li>Executives → Two "Global Viewer" roles (one per perimeter)</li>
 </ol>
-<h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
-<h3 id="impact-analysis">Impact Analysis<a class="headerlink" href="#impact-analysis" title="Permanent link">&para;</a></h3>
-<p>Quickly identify the systems and stakeholders impacted by a process change using associations.</p>
-<h3 id="compliance">Compliance<a class="headerlink" href="#compliance" title="Permanent link">&para;</a></h3>
-<p>Demonstrate traceability between business processes and technical controls for GDPR, ISO 27001, etc. audits.</p>
-<h3 id="onboarding">Onboarding<a class="headerlink" href="#onboarding" title="Permanent link">&para;</a></h3>
-<p>Facilitate new employees' understanding of the information system through visual diagrams linked to the detailed process
-map.</p>
-<h3 id="digital-transformation">Digital Transformation<a class="headerlink" href="#digital-transformation" title="Permanent link">&para;</a></h3>
-<p>Map the current state (AS-IS) and model the target state (TO-BE) with visual comparison.</p>
+<p>Result: Each team manages their own site, executives see both (read-only), and data is properly partitioned.</p>
+<div class="admonition info">
+<p class="admonition-title">See the Perimeters documentation</p>
+<p>For a complete explanation of how perimeters work, when to enable them, and how to migrate data, refer to the <em>Perimeters</em> documentation.</p>
+</div>
+<h2 id="user-login-and-access">User login and access<a class="headerlink" href="#user-login-and-access" title="Permanent link">&para;</a></h2>
+<h3 id="on-first-login">On first login<a class="headerlink" href="#on-first-login" title="Permanent link">&para;</a></h3>
+<p>A new user with assigned roles:</p>
+<ol>
+<li>Logs in with their credentials</li>
+<li>Is automatically granted all permissions from their assigned roles</li>
+<li>Can see all objects in the perimeters their roles grant access to</li>
+<li>If multiple perimeters: sees a <strong>perimeter selector</strong> to switch between them</li>
+</ol>
+<h3 id="session-and-role-changes">Session and role changes<a class="headerlink" href="#session-and-role-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Role changes take effect immediately</strong> on the next page reload</li>
+<li>If a role is removed while the user is logged in, they may still have cached access until they refresh or log back in</li>
+<li><strong>Admin role removal</strong> takes effect on next login</li>
+</ul>
+<h2 id="best-practices-for-roles">Best practices for roles<a class="headerlink" href="#best-practices-for-roles" title="Permanent link">&para;</a></h2>
+<h3 id="1-keep-role-names-clear">1. Keep role names clear<a class="headerlink" href="#1-keep-role-names-clear" title="Permanent link">&para;</a></h3>
+<p>Use descriptive names that indicate both the level and scope:</p>
+<p>✓ Good:
+- "HQ Server Administrator"
+- "Branch Read-Only Viewer"
+- "Audit Inspector"</p>
+<p>✗ Avoid:
+- "Role 1"
+- "Admin"
+- "User Role"</p>
+<h3 id="2-principle-of-least-privilege">2. Principle of least privilege<a class="headerlink" href="#2-principle-of-least-privilege" title="Permanent link">&para;</a></h3>
+<p>Assign users the <strong>minimum</strong> permissions they need:</p>
+<ul>
+<li>New staff → start with "Viewer" role</li>
+<li>Promote to "Editor" only when needed</li>
+<li>"Admin" or "Delete" permissions → only for trusted staff</li>
+</ul>
+<h3 id="3-use-role-templates">3. Use role templates<a class="headerlink" href="#3-use-role-templates" title="Permanent link">&para;</a></h3>
+<p>For consistency, base new roles on built-in templates:</p>
+<ul>
+<li>Copy "Editor" and customize instead of creating from scratch</li>
+<li>This ensures common patterns are consistent across your organization</li>
+</ul>
+<h3 id="4-document-role-purposes">4. Document role purposes<a class="headerlink" href="#4-document-role-purposes" title="Permanent link">&para;</a></h3>
+<p>For each custom role, document:</p>
+<ul>
+<li><strong>What it's for</strong> (e.g., "Manage physical server inventory")</li>
+<li><strong>Who uses it</strong> (e.g., "Infrastructure team")</li>
+<li><strong>When to grant it</strong> (e.g., "On hire, after training")</li>
+</ul>
+<p>This helps admins make consistent role assignments.</p>
+<h3 id="5-review-role-assignments-regularly">5. Review role assignments regularly<a class="headerlink" href="#5-review-role-assignments-regularly" title="Permanent link">&para;</a></h3>
+<p>Every quarter, audit:</p>
+<ul>
+<li><strong>Who has Admin roles</strong> (should be minimal)</li>
+<li><strong>Unused roles</strong> (delete or merge them)</li>
+<li><strong>Role creep</strong> (permissions expanded beyond original scope)</li>
+<li><strong>Orphaned roles</strong> (assigned to no one, clean up)</li>
+</ul>
+<h3 id="6-separate-by-concern">6. Separate by concern<a class="headerlink" href="#6-separate-by-concern" title="Permanent link">&para;</a></h3>
+<p>If possible, create roles for specific responsibilities:</p>
+<ul>
+<li>"Server Administrator" (manage servers only)</li>
+<li>"Network Administrator" (manage networks only)</li>
+<li>"General Read-Only" (view everything)</li>
+</ul>
+<p>This makes it easier to grant partial access and audit who can do what.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="a-user-cant-see-objects-they-should-be-able-to-see">"A user can't see objects they should be able to see"<a class="headerlink" href="#a-user-cant-see-objects-they-should-be-able-to-see" title="Permanent link">&para;</a></h3>
+<p>Check:</p>
+<ol>
+<li><strong>User's roles</strong> (Administration → Users → [user] → Roles)</li>
+<li>Is the user assigned at least one role?</li>
+<li>
+<p>Does that role have "View" permission for the object type?</p>
+</li>
+<li>
+<p><strong>Role's perimeter</strong> (Administration → Roles → [role])</p>
+</li>
+<li>Is the role assigned to the correct perimeter?</li>
+<li>
+<p>If using perimeters: is the object in that perimeter?</p>
+</li>
+<li>
+<p><strong>Object's perimeter</strong> (open the object, check the Perimeter field)</p>
+</li>
+<li>
+<p>If using perimeters: is the object in one of the user's role perimeters?</p>
+</li>
+<li>
+<p><strong>Cartographer assignments</strong></p>
+</li>
+<li>Is the user listed as a cartographer for this object?</li>
+<li>(See <em>Cartographers</em> documentation)</li>
+</ol>
+<p><strong>Fix:</strong> Assign the user a role in the correct perimeter with View permission for that object type.</p>
+<h3 id="a-user-cant-edit-an-object">"A user can't edit an object"<a class="headerlink" href="#a-user-cant-edit-an-object" title="Permanent link">&para;</a></h3>
+<p>Check:</p>
+<ol>
+<li><strong>Role permissions</strong> (Administration → Roles → [role])</li>
+<li>
+<p>Does the role have "Edit" permission for this object type?</p>
+</li>
+<li>
+<p><strong>Write permissions</strong></p>
+</li>
+<li>"View" role = read-only (can't edit)</li>
+<li>
+<p>"Edit" or "Admin" role = can edit</p>
+</li>
+<li>
+<p><strong>Perimeter ownership</strong> (if using perimeters)</p>
+</li>
+<li>Is the role's perimeter the same as the object's perimeter?</li>
+</ol>
+<p><strong>Fix:</strong> Assign the user a role with "Edit" permission in the correct perimeter.</p>
+<h3 id="i-cant-delete-a-role-because-its-in-use">"I can't delete a role because it's in use"<a class="headerlink" href="#i-cant-delete-a-role-because-its-in-use" title="Permanent link">&para;</a></h3>
+<p>This means users are still assigned to this role.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Go to <strong>Administration → Roles</strong> and find the role</li>
+<li>Click <strong>View assignments</strong> to see which users have it</li>
+<li>Reassign those users to another role (Administration → Users)</li>
+<li>Once no users are assigned, you can delete the role</li>
+</ol>
+<h3 id="an-admin-can-see-everything-but-a-viewer-sees-nothing">"An admin can see everything but a viewer sees nothing"<a class="headerlink" href="#an-admin-can-see-everything-but-a-viewer-sees-nothing" title="Permanent link">&para;</a></h3>
+<p><strong>For the viewer:</strong></p>
+<ol>
+<li>Check that the viewer has at least one role assigned (Administration → Users → [user] → Roles)</li>
+<li>Check that the role has "View" permission</li>
+<li>If using perimeters: check that objects are in the role's perimeter</li>
+</ol>
+<p><strong>For the admin:</strong></p>
+<ul>
+<li>Admins always see everything, regardless of role perimeter or permissions</li>
+<li>This is by design (admins manage the whole system)</li>
+</ul>
+<h3 id="role-changes-arent-taking-effect">"Role changes aren't taking effect"<a class="headerlink" href="#role-changes-arent-taking-effect" title="Permanent link">&para;</a></h3>
+<p>User may have cached permissions. Ask them to:</p>
+<ol>
+<li><strong>Reload the page</strong> (F5 or Cmd+R)</li>
+<li><strong>Log out and log back in</strong> (if page refresh doesn't work)</li>
+</ol>
+<p>After logout/login, new role permissions take effect immediately.</p>
 
 
 
