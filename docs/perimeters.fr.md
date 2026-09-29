@@ -6,7 +6,7 @@ Cette documentation explique ce qu'est un périmètre, comment il se combine ave
 
 ## Introduction — Qu'est-ce qu'un périmètre ?
 
-Un **périmètre** regroupe un sous-ensemble des objets de la cartographie. Chaque objet (serveur, application, réseau, site…) n'appartient jamais qu'à un seul périmètre (par défaut le périmètre n° 1).
+Un **périmètre** regroupe un sous-ensemble des objets de la cartographie indépendamment de leur type. Chaque objet (serveur, application, réseau, site…) n'appartient jamais qu'à un seul périmètre.
 
 Les périmètres permettent de :
 

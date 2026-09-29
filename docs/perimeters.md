@@ -6,7 +6,7 @@ This documentation explains what a perimeter is, how it combines with roles, and
 
 ## Introduction — What is a perimeter?
 
-A **perimeter** groups a subset of the objects in the cartography. Each object (server, application, network, site…) belongs to one and only one perimeter (by default, perimeter no. 1).
+A **scope** groups together a subset of the mapped objects, regardless of their type. Each object (server, application, network, site, etc.) belongs to only one scope.
 
 Perimeters allow you to:
 
