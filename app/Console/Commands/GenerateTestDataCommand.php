@@ -100,9 +100,9 @@ class GenerateTestDataCommand extends Command
         $applicationModulesPerService = config('data-scenarios.application_modules_per_service', ['min' => 0, 'max' => 3]);
         $macroProcessesPerPerimeter = config('data-scenarios.macro_processes_per_perimeter', ['min' => 3, 'max' => 5]);
         $processesPerMacroProcess = config('data-scenarios.processes_per_macro_process', ['min' => 3, 'max' => 10]);
-        $activitiesPerProcess = config('data-scenarios.activities_per_process', ['min' => 5, 'max' => 10]);
-        $operationsPerActivity = config('data-scenarios.operations_per_activity', ['min' => 1, 'max' => 3]);
-        $tasksPerOperation = config('data-scenarios.tasks_per_operation', ['min' => 1, 'max' => 3]);
+        $activitiesPerProcess = config('data-scenarios.activities_per_process', ['min' => 1, 'max' => 10]);
+        $operationsPerActivity = config('data-scenarios.operations_per_activity', ['min' => 0, 'max' => 3]);
+        $tasksPerOperation = config('data-scenarios.tasks_per_operation', ['min' => 0, 'max' => 2]);
         $actorsPerPerimeter = config('data-scenarios.actors_per_perimeter', ['min' => 5, 'max' => 20]);
         $actorOperationsPerActor = config('data-scenarios.actor_operations_per_actor', ['min' => 1, 'max' => 5]);
         $informationsPerPerimeter = config('data-scenarios.informations_per_perimeter', ['min' => 5, 'max' => 20]);

@@ -29,7 +29,7 @@ Perimeters allow you to:
 !!! note "Technical model"
     - Each object carries a `perimeter_id` integer (never NULL, always ≥ 1)
     - A default perimeter always exists with `id = 1` (created by the database bootstrap migration)
-    - Object names are **unique per (perimeter_id, name)** — two establishments can each have a "DNS Server"
+    - Object names are **unique per (perimeter_id, name)** — two entities can each have a "DNSServer"
     - Perimeters are managed in a dedicated `perimeters` table
 
 ## How perimeters work: before and after activation
