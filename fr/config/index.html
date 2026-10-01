@@ -1558,6 +1558,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Journalisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-des-connexions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic des connexions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journalisation-ldaprecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Journalisation LDAPRecord
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1977,6 +2005,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Journalisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-des-connexions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic des connexions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journalisation-ldaprecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Journalisation LDAPRecord
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2097,35 +2153,59 @@ Les comptes locaux restent toujours disponibles comme solution de repli si cela 
 <h3 id="autoriser-la-connexion-locale-en-cas-dechec-de-lauthentification-ldap">Autoriser la connexion locale en cas d'échec de l'authentification LDAP<a class="headerlink" href="#autoriser-la-connexion-locale-en-cas-dechec-de-lauthentification-ldap" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>LDAP_FALLBACK_LOCAL=true
 </code></pre></div>
+<p>Valeur par défaut : <code>true</code> (s'applique si la variable est absente du <code>.env</code>).</p>
+<p>Lorsque cette option est active, Mercator essaie le <strong>mot de passe local</strong> stocké dans sa base dès que l'authentification LDAP échoue, <strong>quelle qu'en soit la raison</strong> :</p>
+<ul>
+<li>serveur LDAP injoignable, échec du compte de service, erreur TLS</li>
+<li>utilisateur introuvable dans la base de recherche, ou non membre de <code>LDAP_GROUP</code></li>
+<li>plusieurs entrées LDAP correspondent à l'identifiant</li>
+<li><strong>mauvais mot de passe LDAP</strong> (l'annuaire a refusé l'authentification)</li>
+</ul>
+<p>Un mot de passe local valide reste donc toujours une autre façon de se connecter, même lorsque l'annuaire rejette le mot de passe. Positionnez <code>LDAP_FALLBACK_LOCAL=false</code> si les comptes LDAP ne doivent s'authentifier qu'auprès de l'annuaire (les comptes purement locaux, comme <code>admin</code>, ne peuvent alors plus se connecter tant que LDAP est activé).</p>
+<p>Seul cas où le mot de passe local n'est <strong>pas</strong> essayé : l'annuaire accepte le mot de passe, mais aucun utilisateur Mercator n'a ce <code>login</code> et l'auto-provisionnement est désactivé. La connexion est alors refusée.</p>
+<h4 id="deroulement-de-la-connexion">Déroulement de la connexion<a class="headerlink" href="#deroulement-de-la-connexion" title="Permanent link">&para;</a></h4>
+<ol>
+<li><code>LDAP_ENABLED=false</code> → authentification locale uniquement.</li>
+<li>Recherche LDAP de l'identifiant, puis authentification avec le DN et le mot de passe de l'utilisateur.</li>
+<li>Succès LDAP → connexion de l'utilisateur Mercator ayant le même <code>login</code> (créé si <code>LDAP_AUTO_PROVISION=true</code>, refusé sinon).</li>
+<li>Échec LDAP → authentification locale si <code>LDAP_FALLBACK_LOCAL=true</code>, refus sinon.</li>
+</ol>
 <h3 id="creer-automatiquement-les-utilisateurs-mercator-depuis-ldap">Créer automatiquement les utilisateurs Mercator depuis LDAP<a class="headerlink" href="#creer-automatiquement-les-utilisateurs-mercator-depuis-ldap" title="Permanent link">&para;</a></h3>
-<p>Si l'utilisateur LDAP existe mais qu'aucun utilisateur Mercator correspondant n'est trouvé, Mercator peut créer automatiquement le compte local correspondant.</p>
+<p>Si l'utilisateur LDAP existe mais qu'aucun utilisateur Mercator correspondant n'est trouvé, Mercator peut créer automatiquement le compte local correspondant.
+La correspondance se fait <strong>uniquement</strong> sur le champ <code>login</code> de Mercator, qui doit être identique à l'identifiant saisi sur la page de connexion.</p>
 <div class="highlight"><pre><span></span><code>LDAP_AUTO_PROVISION=true
 </code></pre></div>
 <p>Le compte local sera créé avec le rôle suivant :</p>
 <div class="highlight"><pre><span></span><code>LDAP_AUTO_PROVISION_ROLE=user
 </code></pre></div>
+<p>La valeur doit correspondre exactement au titre du rôle (sensible à la casse). Si le rôle n'existe pas, l'utilisateur est créé sans rôle et un avertissement est journalisé.
+Les comptes auto-provisionnés reçoivent un mot de passe local aléatoire : ils ne peuvent pas utiliser le repli local.</p>
 <hr />
 <h3 id="parametres-de-connexion-ldap">Paramètres de connexion LDAP<a class="headerlink" href="#parametres-de-connexion-ldap" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>LDAP_HOST=ldap.example.com
 LDAP_USERNAME="CN=ldap-reader,OU=Service Accounts,DC=example,DC=com"
 LDAP_PASSWORD="secret"
 LDAP_PORT=389
+LDAP_BASE_DN="DC=example,DC=com"
+LDAP_TIMEOUT=5
 LDAP_SSL=false
 LDAP_TLS=false
 </code></pre></div>
 <p>Ces valeurs sont transmises directement à la couche de connexion LDAPRecord de Laravel.</p>
+<p>Les mots de passe sont vérifiés auprès du seul serveur défini dans <code>LDAP_HOST</code>. Avec Active Directory, si ce contrôleur de domaine n'a pas encore reçu un changement de mot de passe (réplication en retard ou en échec), il n'accepte que l'<strong>ancien</strong> mot de passe de l'utilisateur.</p>
 <hr />
 <h3 id="base-de-recherche-des-utilisateurs-ldap">Base de recherche des utilisateurs LDAP<a class="headerlink" href="#base-de-recherche-des-utilisateurs-ldap" title="Permanent link">&para;</a></h3>
 <p>Définit l'emplacement où les utilisateurs doivent être recherchés :</p>
 <div class="highlight"><pre><span></span><code>LDAP_USERS_BASE_DN="OU=Users,DC=example,DC=com"
 </code></pre></div>
-<p>Si vide, Mercator recherche dans l'ensemble de l'annuaire.</p>
+<p>Si vide, Mercator recherche à partir de <code>LDAP_BASE_DN</code>.</p>
 <hr />
 <h3 id="attributs-de-connexion-ldap">Attributs de connexion LDAP<a class="headerlink" href="#attributs-de-connexion-ldap" title="Permanent link">&para;</a></h3>
 <p>Définit les attributs LDAP pouvant être utilisés comme identifiant de connexion :</p>
 <div class="highlight"><pre><span></span><code>LDAP_LOGIN_ATTRIBUTES=sAMAccountName,uid,mail
 </code></pre></div>
-<p>Mercator essaiera ces attributs avec un filtre OR.</p>
+<p>Valeur par défaut : <code>uid,cn,mail,sAMAccountName,userPrincipalName</code>.</p>
+<p>Mercator essaiera ces attributs avec un filtre OR. Une <strong>seule</strong> entrée LDAP doit correspondre : si plusieurs entrées correspondent (par exemple un utilisateur et un contact partageant le même <code>mail</code> ou <code>cn</code>), la connexion est refusée. Gardez cette liste aussi courte que possible (par exemple <code>sAMAccountName</code> sur Active Directory).</p>
 <hr />
 <h3 id="restriction-par-groupe-ldap">Restriction par groupe LDAP<a class="headerlink" href="#restriction-par-groupe-ldap" title="Permanent link">&para;</a></h3>
 <p>Il est possible de restreindre l'accès à Mercator aux membres d'un groupe LDAP spécifique.</p>
@@ -2206,13 +2286,68 @@ API_RATE_LIMIT_DECAY=1
 </code></pre></div>
 <hr />
 <h2 id="journalisation">Journalisation<a class="headerlink" href="#journalisation" title="Permanent link">&para;</a></h2>
-<p>Mercator utilise le système de journalisation de Laravel. Pour activer la journalisation LDAPRecord :</p>
+<p>Mercator utilise le système de journalisation de Laravel. Les journaux de l'application sont écrits dans :</p>
+<div class="highlight"><pre><span></span><code>storage/logs/laravel.log
+</code></pre></div>
+<p>Tous les niveaux (y compris <code>debug</code>) sont déjà écrits dans ce fichier : il n'y a pas de niveau à augmenter.</p>
+<h3 id="diagnostic-des-connexions">Diagnostic des connexions<a class="headerlink" href="#diagnostic-des-connexions" title="Permanent link">&para;</a></h3>
+<p>Chaque tentative de connexion est tracée dans <code>laravel.log</code> avec des messages préfixés par <code>[auth]</code>, l'identifiant saisi et l'adresse IP du client (jamais le mot de passe) :</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Login succeeded.</code></td>
+<td>Connexion acceptée (rôles et nombre de permissions)</td>
+</tr>
+<tr>
+<td><code>Login succeeded but user has no role.</code></td>
+<td>Connexion acceptée, mais toutes les pages répondront 403</td>
+</tr>
+<tr>
+<td><code>LDAP user not found (or not member of LDAP_GROUP).</code></td>
+<td>Aucune entrée trouvée : vérifier la base de recherche, le filtre et le groupe</td>
+</tr>
+<tr>
+<td><code>LDAP identifier collision: multiple entries match.</code></td>
+<td>Plusieurs entrées correspondent : les DN sont listés</td>
+</tr>
+<tr>
+<td><code>LDAP bind refused for user.</code></td>
+<td>L'annuaire a refusé le mot de passe (voir <code>ad_reason</code> et <code>host</code>)</td>
+</tr>
+<tr>
+<td><code>LDAP service bind / connection failed.</code></td>
+<td>Serveur injoignable, erreur TLS ou compte de service (<code>LDAP_USERNAME</code>) refusé</td>
+</tr>
+<tr>
+<td><code>LDAP OK but no local user with this login.</code></td>
+<td>Annuaire OK mais aucun utilisateur Mercator avec ce <code>login</code></td>
+</tr>
+<tr>
+<td><code>Login refused: local authentication failed.</code></td>
+<td>Échec du repli local (<code>unknown login</code> ou <code>wrong local password</code>)</td>
+</tr>
+<tr>
+<td><code>Login locked out: too many attempts.</code></td>
+<td>Trop de tentatives pour cet identifiant depuis cette IP</td>
+</tr>
+</tbody>
+</table>
+<p>Pour Active Directory, <code>ad_reason</code> décode le sous-code du message de diagnostic : <code>52e</code> identifiants invalides, <code>525</code> utilisateur introuvable, <code>530</code>/<code>531</code> connexion non autorisée (horaire/poste), <code>532</code> mot de passe expiré, <code>533</code> compte désactivé, <code>701</code> compte expiré, <code>773</code> changement de mot de passe obligatoire, <code>775</code> compte verrouillé.</p>
+<h3 id="journalisation-ldaprecord">Journalisation LDAPRecord<a class="headerlink" href="#journalisation-ldaprecord" title="Permanent link">&para;</a></h3>
+<p>Pour tracer également toutes les opérations LDAP (recherche, authentification) :</p>
 <div class="highlight"><pre><span></span><code>LDAP_LOGGING=true
 </code></pre></div>
 <p>Les journaux apparaîtront dans :</p>
 <div class="highlight"><pre><span></span><code>storage/logs/ldap.log
 </code></pre></div>
 <p>Si aucun fichier n'apparaît, vérifiez les permissions du répertoire.</p>
+<p>📢 <em>Note : si la configuration est en cache (<code>php artisan config:cache</code>), les modifications du <code>.env</code> ne s'appliquent qu'après <code>php artisan config:clear</code> (ou un nouveau <code>config:cache</code>).</em></p>
 <hr />
 <h2 id="export-import-de-fichiers">Export / Import de fichiers<a class="headerlink" href="#export-import-de-fichiers" title="Permanent link">&para;</a></h2>
 <p>Mercator prend en charge l'export Excel et PDF via :</p>
@@ -2266,8 +2401,8 @@ API_RATE_LIMIT_DECAY=1
 <tr>
 <td>Repli local</td>
 <td><code>LDAP_FALLBACK_LOCAL</code></td>
-<td>false</td>
-<td>Autorise la connexion locale en cas d'échec LDAP</td>
+<td>true</td>
+<td>Essaie le mot de passe local dès que LDAP échoue, y compris sur un mauvais mot de passe LDAP</td>
 </tr>
 <tr>
 <td>Auto-provisionnement</td>
@@ -2318,6 +2453,18 @@ API_RATE_LIMIT_DECAY=1
 <td>Pour la connexion au serveur LDAP</td>
 </tr>
 <tr>
+<td>Base DN LDAP</td>
+<td><code>LDAP_BASE_DN</code></td>
+<td>dc=local,dc=com</td>
+<td>Base de recherche par défaut</td>
+</tr>
+<tr>
+<td>Délai LDAP</td>
+<td><code>LDAP_TIMEOUT</code></td>
+<td>5</td>
+<td>Délai de connexion en secondes</td>
+</tr>
+<tr>
 <td>Groupes imbriqués</td>
 <td><code>LDAP_NESTED_GROUPS</code></td>
 <td>false</td>
@@ -2338,7 +2485,7 @@ API_RATE_LIMIT_DECAY=1
 <tr>
 <td>Attributs de connexion</td>
 <td><code>LDAP_LOGIN_ATTRIBUTES</code></td>
-<td><code>sAMAccountName</code></td>
+<td><code>uid,cn,mail,sAMAccountName,userPrincipalName</code></td>
 <td>Liste séparée par des virgules</td>
 </tr>
 <tr>

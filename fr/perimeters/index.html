@@ -2741,26 +2741,27 @@
 
 
 <h1 id="les-perimetres-dans-mercator">Les périmètres dans Mercator<a class="headerlink" href="#les-perimetres-dans-mercator" title="Permanent link">&para;</a></h1>
-<p>Les périmètres sont le mécanisme principal pour partitionner la cartographie. Ils permettent de cartographier <strong>plusieurs établissements (ou entités, sites, unités métier) dans une seule instance de Mercator</strong>, tout en laissant chacun gérer ses propres objets et en conservant la possibilité de créer des liens entre des objets de périmètres différents. Cette documentation explique ce qu'est un périmètre, comment il se combine avec les rôles, et comment les utilisateurs travaillent au sein de leur périmètre.</p>
+<p>Les périmètres permettent de cartographier plusieurs entités (établissements, sites, unités métier) dans une seule instance de Mercator. Chaque entité gère ses propres objets, tout en pouvant les relier à ceux des autres périmètres. </p>
+<p>Cette documentation explique ce qu'est un périmètre, comment il se combine avec les rôles, et comment les utilisateurs travaillent au sein de leur périmètre.</p>
 <h2 id="introduction-quest-ce-quun-perimetre">Introduction — Qu'est-ce qu'un périmètre ?<a class="headerlink" href="#introduction-quest-ce-quun-perimetre" title="Permanent link">&para;</a></h2>
-<p>Un <strong>périmètre</strong> est une partition de la cartographie dans laquelle chaque objet nommé (serveur, application, réseau, site…) appartient à <strong>exactement un périmètre</strong>. Par défaut, tous les objets appartiennent au <strong>périmètre par défaut</strong> (id = 1).</p>
+<p>Un <strong>périmètre</strong> regroupe un sous-ensemble des objets de la cartographie. Chaque objet (serveur, application, réseau, site…) n'appartient jamais qu'à un seul périmètre (par défaut le périmètre n° 1).</p>
 <p>Les périmètres permettent de :</p>
 <ul>
-<li>Héberger la cartographie de <strong>plusieurs établissements</strong> dans une seule instance</li>
-<li>Laisser chaque établissement <strong>gérer ses propres objets</strong> de manière indépendante</li>
-<li>Continuer à <strong>identifier les flux et les liens</strong> qui traversent les établissements</li>
-<li>Partitionner la visibilité et le contrôle d'accès par établissement</li>
+<li>Héberger la cartographie de <strong>plusieurs entités</strong> dans une seule instance</li>
+<li>Laisser chaque entité <strong>gérer ses propres objets</strong> de manière indépendante</li>
+<li>Identifier <strong>les flux et les liens physiques</strong> qui relient les entités</li>
+<li>Partitionner la visibilité et le contrôle d'accès par entité</li>
 </ul>
-<p><strong>Note :</strong> la gestion des périmètres est une <strong>fonctionnalité optionnelle</strong>. Tant que vous ne l'activez pas, tous les objets restent dans le périmètre par défaut et aucun filtrage n'est appliqué.</p>
+<p><strong>Note :</strong> la gestion des périmètres est une <strong>fonctionnalité optionnelle</strong>. Tant que vous ne l'activez pas, tous les objets restent dans le périmètre par défaut et aucun filtrage ou partitionnement de la cartographie n'est appliqué.</p>
 <div class="admonition info">
 <p class="admonition-title">Trois mécanismes de contrôle d'accès</p>
 <p>Mercator combine trois notions complémentaires :</p>
 <ul>
-<li>Le <strong>rôle</strong> définit <em>ce que</em> l'utilisateur peut faire (voir la documentation <em>Rôles</em>)</li>
-<li>Le <strong>périmètre</strong> définit <em>sur les objets de quel établissement</em> ces droits s'appliquent</li>
-<li>L'assignation d'un <strong>cartographe</strong> délègue la responsabilité d'<strong>objets individuels précis</strong>, indépendamment du périmètre (voir la documentation <em>Cartographes</em>)</li>
+<li>Le <strong>périmètre</strong> définit <em>sur les objets de quel entité</em> ces droits s'appliquent </li>
+<li>Le <a href="../roles/">rôle</a> définit <em>ce que</em> l'utilisateur peut faire dans un périmètre</li>
+<li>L'assignation d'un <a href="../cartographers/">cartographe</a> délègue la responsabilité d'<strong>objets individuels précis</strong>, indépendamment du périmètre</li>
 </ul>
-<p>Les rôles et les périmètres fonctionnent ensemble : les permissions d'un utilisateur dans un périmètre sont déterminées par son rôle dans ce périmètre.</p>
+<p>Les rôles et les périmètres fonctionnent ensemble : les permissions d'un utilisateur dans un périmètre sont déterminées par son <strong>rôle</strong> dans ce <strong>périmètre</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Modèle technique</p>
@@ -2790,7 +2791,10 @@
 <li>Les administrateurs peuvent <strong>créer de nouveaux périmètres</strong> (id &gt; 1)</li>
 <li>Les administrateurs peuvent <strong>déplacer des objets</strong> entre périmètres</li>
 </ul>
-<p><strong>Important :</strong> activer la fonctionnalité ne modifie pas les données existantes. Tous les objets restent assignés au périmètre par défaut (id = 1). Le partitionnement ne prend effet que lorsque vous créez de nouveaux périmètres et réassignez des objets.</p>
+<div class="admonition note">
+<p class="admonition-title">Important</p>
+<p>Activer les périmètres ne modifie pas les données existantes. Tous les objets restent assignés au périmètre par défaut (id = 1). Le  partitionnement ne prend effet que lorsque vous créez de nouveaux périmètres et réassignez des objets dans ceux-ci.</p>
+</div>
 <h3 id="le-perimetre-par-defaut">Le périmètre par défaut<a class="headerlink" href="#le-perimetre-par-defaut" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Existe toujours</strong> avec <code>id = 1</code> (créé par la migration d'initialisation de la base de données)</li>
@@ -2799,7 +2803,6 @@
 <li>Ne peut pas être renommé avec une chaîne vide</li>
 <li>Est le périmètre de tous les objets tant que vous ne les déplacez pas explicitement</li>
 </ul>
-<hr />
 <h2 id="activer-la-gestion-des-perimetres">Activer la gestion des périmètres<a class="headerlink" href="#activer-la-gestion-des-perimetres" title="Permanent link">&para;</a></h2>
 <p>La gestion des périmètres est <strong>désactivée par défaut</strong>. Pour l'activer :</p>
 <ol>

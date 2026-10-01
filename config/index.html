@@ -1558,6 +1558,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Login troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldaprecord-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LDAPRecord logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1977,6 +2005,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Login troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldaprecord-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LDAPRecord logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2097,35 +2153,59 @@ Local accounts always remain available for fallback if configured.</p>
 <h3 id="allow-local-login-when-ldap-authentication-fails">Allow local login when LDAP authentication fails<a class="headerlink" href="#allow-local-login-when-ldap-authentication-fails" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>LDAP_FALLBACK_LOCAL=true
 </code></pre></div>
+<p>Default: <code>true</code> (applies when the variable is missing from <code>.env</code>).</p>
+<p>When enabled, Mercator tries the <strong>local password</strong> stored in its database whenever LDAP authentication fails, <strong>whatever the reason</strong>:</p>
+<ul>
+<li>LDAP server unreachable, service account bind failure, TLS error</li>
+<li>user not found in the search base, or not a member of <code>LDAP_GROUP</code></li>
+<li>several LDAP entries match the identifier</li>
+<li><strong>wrong LDAP password</strong> (the directory refused the bind)</li>
+</ul>
+<p>A valid local password is therefore always an alternative way to log in, even when the directory rejects the password. Set <code>LDAP_FALLBACK_LOCAL=false</code> if LDAP accounts must only authenticate against the directory (local-only accounts such as <code>admin</code> can then no longer log in while LDAP is enabled).</p>
+<p>The only case where the local password is <strong>not</strong> tried: the directory accepts the password but no Mercator user has this <code>login</code> and auto-provisioning is disabled. The login is then refused.</p>
+<h4 id="login-flow">Login flow<a class="headerlink" href="#login-flow" title="Permanent link">&para;</a></h4>
+<ol>
+<li><code>LDAP_ENABLED=false</code> → local authentication only.</li>
+<li>LDAP search for the identifier, then bind with the user's DN and password.</li>
+<li>LDAP success → the Mercator user with the same <code>login</code> is logged in (created if <code>LDAP_AUTO_PROVISION=true</code>, refused otherwise).</li>
+<li>LDAP failure → local authentication if <code>LDAP_FALLBACK_LOCAL=true</code>, refused otherwise.</li>
+</ol>
 <h3 id="automatically-create-mercator-users-from-ldap">Automatically create Mercator users from LDAP<a class="headerlink" href="#automatically-create-mercator-users-from-ldap" title="Permanent link">&para;</a></h3>
-<p>If the LDAP user exists but no matching Mercator user is found, Mercator can auto-create the corresponding local account.</p>
+<p>If the LDAP user exists but no matching Mercator user is found, Mercator can auto-create the corresponding local account.
+The match is made <strong>only</strong> on the Mercator <code>login</code> field, which must equal the identifier typed on the login page.</p>
 <div class="highlight"><pre><span></span><code>LDAP_AUTO_PROVISION=true
 </code></pre></div>
 <p>The local account will be created with the following role:</p>
 <div class="highlight"><pre><span></span><code>LDAP_AUTO_PROVISION_ROLE=user
 </code></pre></div>
+<p>The value must match the role title exactly (case-sensitive). If the role does not exist, the user is created without a role and a warning is logged.
+Auto-provisioned accounts get a random local password: they cannot use the local fallback.</p>
 <hr />
 <h3 id="ldap-connection-settings">LDAP Connection Settings<a class="headerlink" href="#ldap-connection-settings" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>LDAP_HOST=ldap.example.com
 LDAP_USERNAME="CN=ldap-reader,OU=Service Accounts,DC=example,DC=com"
 LDAP_PASSWORD="secret"
 LDAP_PORT=389
+LDAP_BASE_DN="DC=example,DC=com"
+LDAP_TIMEOUT=5
 LDAP_SSL=false
 LDAP_TLS=false
 </code></pre></div>
 <p>These values are passed directly to Laravel's LDAPRecord connection layer.</p>
+<p>Passwords are checked against the single server set in <code>LDAP_HOST</code>. With Active Directory, if this domain controller has not yet received a password change (replication delay or failure), it only accepts the user's <strong>previous</strong> password.</p>
 <hr />
 <h3 id="ldap-user-search-base">LDAP User Search Base<a class="headerlink" href="#ldap-user-search-base" title="Permanent link">&para;</a></h3>
 <p>Define where users should be searched:</p>
 <div class="highlight"><pre><span></span><code>LDAP_USERS_BASE_DN="OU=Users,DC=example,DC=com"
 </code></pre></div>
-<p>If empty, Mercator searches the entire directory.</p>
+<p>If empty, Mercator searches from <code>LDAP_BASE_DN</code>.</p>
 <hr />
 <h3 id="ldap-login-attributes">LDAP Login Attributes<a class="headerlink" href="#ldap-login-attributes" title="Permanent link">&para;</a></h3>
 <p>Defines which LDAP attributes can be used as a login identifier:</p>
 <div class="highlight"><pre><span></span><code>LDAP_LOGIN_ATTRIBUTES=sAMAccountName,uid,mail
 </code></pre></div>
-<p>Mercator will try these attributes with an OR filter.</p>
+<p>Default: <code>uid,cn,mail,sAMAccountName,userPrincipalName</code>.</p>
+<p>Mercator will try these attributes with an OR filter. Exactly <strong>one</strong> LDAP entry must match: if several entries match (for example a user and a contact sharing the same <code>mail</code> or <code>cn</code>), the login is refused. Keep this list as short as possible (e.g. <code>sAMAccountName</code> on Active Directory).</p>
 <hr />
 <h3 id="ldap-group-restriction">LDAP Group Restriction<a class="headerlink" href="#ldap-group-restriction" title="Permanent link">&para;</a></h3>
 <p>You can restrict access to Mercator to members of a specific LDAP group.</p>
@@ -2206,13 +2286,68 @@ API_RATE_LIMIT_DECAY=1
 </code></pre></div>
 <hr />
 <h2 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h2>
-<p>Mercator uses Laravel's logging system. To activate LDAPRecord logging:</p>
+<p>Mercator uses Laravel's logging system. Application logs are written to:</p>
+<div class="highlight"><pre><span></span><code>storage/logs/laravel.log
+</code></pre></div>
+<p>All levels (including <code>debug</code>) are already written to this file: there is no level to raise.</p>
+<h3 id="login-troubleshooting">Login troubleshooting<a class="headerlink" href="#login-troubleshooting" title="Permanent link">&para;</a></h3>
+<p>Every login attempt is traced in <code>laravel.log</code> with messages prefixed by <code>[auth]</code>, the identifier typed and the client IP (never the password):</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Login succeeded.</code></td>
+<td>Login accepted (roles and number of permissions)</td>
+</tr>
+<tr>
+<td><code>Login succeeded but user has no role.</code></td>
+<td>Login accepted, but every page will return 403</td>
+</tr>
+<tr>
+<td><code>LDAP user not found (or not member of LDAP_GROUP).</code></td>
+<td>No entry found: check search base, filter and group</td>
+</tr>
+<tr>
+<td><code>LDAP identifier collision: multiple entries match.</code></td>
+<td>Several entries match: the DNs are listed</td>
+</tr>
+<tr>
+<td><code>LDAP bind refused for user.</code></td>
+<td>The directory refused the password (see <code>ad_reason</code> and <code>host</code>)</td>
+</tr>
+<tr>
+<td><code>LDAP service bind / connection failed.</code></td>
+<td>Server unreachable, TLS error or service account (<code>LDAP_USERNAME</code>) refused</td>
+</tr>
+<tr>
+<td><code>LDAP OK but no local user with this login.</code></td>
+<td>Directory OK but no Mercator user with this <code>login</code></td>
+</tr>
+<tr>
+<td><code>Login refused: local authentication failed.</code></td>
+<td>Local fallback failed (<code>unknown login</code> or <code>wrong local password</code>)</td>
+</tr>
+<tr>
+<td><code>Login locked out: too many attempts.</code></td>
+<td>Too many attempts for this identifier from this IP</td>
+</tr>
+</tbody>
+</table>
+<p>For Active Directory, <code>ad_reason</code> decodes the sub-code of the diagnostic message: <code>52e</code> invalid credentials, <code>525</code> user not found, <code>530</code>/<code>531</code> logon not permitted (time/workstation), <code>532</code> password expired, <code>533</code> account disabled, <code>701</code> account expired, <code>773</code> user must reset password, <code>775</code> account locked out.</p>
+<h3 id="ldaprecord-logging">LDAPRecord logging<a class="headerlink" href="#ldaprecord-logging" title="Permanent link">&para;</a></h3>
+<p>To also trace every LDAP operation (search, bind):</p>
 <div class="highlight"><pre><span></span><code>LDAP_LOGGING=true
 </code></pre></div>
 <p>Logs will appear in:</p>
 <div class="highlight"><pre><span></span><code>storage/logs/ldap.log
 </code></pre></div>
 <p>If no file appears, ensure directory permissions are correct.</p>
+<p>📢 <em>Note: if the configuration is cached (<code>php artisan config:cache</code>), changes to <code>.env</code> only apply after <code>php artisan config:clear</code> (or a new <code>config:cache</code>).</em></p>
 <hr />
 <h2 id="file-export-import">File Export / Import<a class="headerlink" href="#file-export-import" title="Permanent link">&para;</a></h2>
 <p>Mercator supports Excel and PDF export via:</p>
@@ -2266,8 +2401,8 @@ API_RATE_LIMIT_DECAY=1
 <tr>
 <td>Local fallback</td>
 <td><code>LDAP_FALLBACK_LOCAL</code></td>
-<td>false</td>
-<td>Allows local login when LDAP fails</td>
+<td>true</td>
+<td>Tries the local password whenever LDAP fails, including a wrong LDAP password</td>
 </tr>
 <tr>
 <td>Auto-provision</td>
@@ -2318,6 +2453,18 @@ API_RATE_LIMIT_DECAY=1
 <td>For connecting to the LDAP server</td>
 </tr>
 <tr>
+<td>LDAP base DN</td>
+<td><code>LDAP_BASE_DN</code></td>
+<td>dc=local,dc=com</td>
+<td>Default search base</td>
+</tr>
+<tr>
+<td>LDAP timeout</td>
+<td><code>LDAP_TIMEOUT</code></td>
+<td>5</td>
+<td>Connection timeout in seconds</td>
+</tr>
+<tr>
 <td>Nested groups</td>
 <td><code>LDAP_NESTED_GROUPS</code></td>
 <td>false</td>
@@ -2338,7 +2485,7 @@ API_RATE_LIMIT_DECAY=1
 <tr>
 <td>Login attributes</td>
 <td><code>LDAP_LOGIN_ATTRIBUTES</code></td>
-<td><code>sAMAccountName</code></td>
+<td><code>uid,cn,mail,sAMAccountName,userPrincipalName</code></td>
 <td>CSV list</td>
 </tr>
 <tr>
