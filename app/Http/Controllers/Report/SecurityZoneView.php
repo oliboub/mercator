@@ -7,6 +7,7 @@ use App\Http\Controllers\Report\Concerns\AutoloadsRelations;
 use App\Models\Cartographer;
 use App\Models\Zone;
 use App\Services\Graph\SecurityZoneGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +43,9 @@ class SecurityZoneView extends Controller
         $this->autoloadRelations($zones, $buildings, $adminUsers);
 
         $graphBuilder = new SecurityZoneGraphBuilder;
-        $dotSrc = $graphBuilder->buildDot($zones, $buildings, $adminUsers);
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count($zones, $buildings, $adminUsers));
+        $dotSrc = $graphTooLarge ? '' : $graphBuilder->buildDot($zones, $buildings, $adminUsers);
         $imageManifest = $graphBuilder->imageManifest();
 
         return view('admin/reports/security_zones', compact(
@@ -52,6 +55,7 @@ class SecurityZoneView extends Controller
             'buildings',
             'adminUsers',
             'dotSrc',
+            'graphTooLarge',
             'imageManifest',
         ));
     }

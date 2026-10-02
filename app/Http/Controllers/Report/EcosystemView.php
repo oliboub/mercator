@@ -7,6 +7,7 @@ use App\Models\Cartographer;
 use App\Models\Entity;
 use App\Models\Relation;
 use App\Services\Graph\EcosystemGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -68,6 +69,9 @@ class EcosystemView extends Controller
                 ->values();
         }
 
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count($entities));
+
         $graphBuilder = new EcosystemGraphBuilder;
 
         return view('admin/reports/ecosystem')
@@ -75,7 +79,8 @@ class EcosystemView extends Controller
             ->with('selectedEntities', $selectedEntities->all())
             ->with('entities', $entities)
             ->with('relations', $relations)
-            ->with('dotSrc', $graphBuilder->buildDot($entities, $relations))
+            ->with('graphTooLarge', $graphTooLarge)
+            ->with('dotSrc', $graphTooLarge ? '' : $graphBuilder->buildDot($entities, $relations))
             ->with('imageManifest', $graphBuilder->imageManifest($entities));
     }
 }

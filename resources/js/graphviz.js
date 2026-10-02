@@ -273,6 +273,14 @@ window.checkGraphSize = function (dotSrc, target = 'graph') {
  *                                     false : ignorer la limite
  */
 window.initGraphvizReport = function ({dotSrc, engine, images = [], checkSize = true}) {
+    // Graphe trop grand détecté côté serveur (GraphSize) : le DOT n'a pas été
+    // construit et le message est déjà dans #graph, on ne fait rien d'autre
+    const tooLarge = document.querySelector('#graph [data-graph-too-large]');
+    if (tooLarge) {
+        console.warn(`Graphviz: graph too large (${tooLarge.dataset.nodeCount} nodes, limit ${tooLarge.dataset.maxNodes})`);
+        return;
+    }
+
     const render = (eng) => window.renderGraphviz(dotSrc, eng, {images});
 
     window.graphvizReady.then(() => {

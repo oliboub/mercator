@@ -54,7 +54,9 @@
                     </div>
                 </div>
                 <div id="graph-container">
-                    <div id="graph" class="graphviz"></div>
+                    <div id="graph" class="graphviz">
+                        @include('admin.reports._graph_too_large')
+                    </div>
                     <div class="graph-resize-handle"></div>
                 </div>
 

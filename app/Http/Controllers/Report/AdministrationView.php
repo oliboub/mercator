@@ -11,6 +11,7 @@ use App\Models\Domain;
 use App\Models\ForestAd;
 use App\Models\ZoneAdmin;
 use App\Services\Graph\AdministrationGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,6 +45,13 @@ class AdministrationView extends Controller
 
         $this->autoloadRelations($zones, $annuaires, $forests, $domains, $adminUsers);
 
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        // (+ les applications des annuaires, ajoutées par AdministrationGraphBuilder)
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count(
+            $zones, $annuaires, $forests, $domains, $adminUsers,
+            $annuaires->pluck('application')->filter()->unique('id')
+        ));
+
         $graphBuilder = new AdministrationGraphBuilder;
 
         return view('admin/reports/administration')
@@ -52,7 +60,8 @@ class AdministrationView extends Controller
             ->with('forests', $forests)
             ->with('domains', $domains)
             ->with('adminUsers', $adminUsers)
-            ->with('dotSrc', $graphBuilder->buildDot($zones, $annuaires, $forests, $domains, $adminUsers))
+            ->with('graphTooLarge', $graphTooLarge)
+            ->with('dotSrc', $graphTooLarge ? '' : $graphBuilder->buildDot($zones, $annuaires, $forests, $domains, $adminUsers))
             ->with('imageManifest', $graphBuilder->imageManifest());
     }
 }
