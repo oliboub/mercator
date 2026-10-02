@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\DataScenario\ScenarioBuilder;
+use Faker\Factory;
 use Illuminate\Console\Command;
 use InvalidArgumentException;
 
@@ -56,6 +57,13 @@ class GenerateTestDataCommand extends Command
 
     public function handle(): int
     {
+        // Laravel only defines the fake() helper when Faker is installed
+        if (! class_exists(Factory::class)) {
+            $this->error('La librairie fakerphp/faker est introuvable. Installez-la avec "composer require fakerphp/faker" ou lancez "composer install" sans --no-dev.');
+
+            return self::FAILURE;
+        }
+
         $scenarios = (array) config('data-scenarios.scenarios', []);
         $scenarioName = $this->option('scenario');
 
