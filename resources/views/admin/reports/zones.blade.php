@@ -107,7 +107,7 @@ $dot .= "}\n";
 
 <script>
 document.addEventListener('graphvizReady', () => {
-    window.initGraphvizReport({ dotSrc: @json($dot), engine: @json($engine) });
+    window.initGraphvizReport({ dotSrc: @json($dot), engine: @json($engine), checkSize: false });
 });
 </script>
 @parent

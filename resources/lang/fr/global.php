@@ -100,4 +100,5 @@ return [
     'page' => 'page',
     'elements_per_page' => 'éléments par page',
     'search' => 'Rechercher',
+    'graph_too_large' => 'Graphe trop grand : :count nœuds (maximum :max).',
 ];

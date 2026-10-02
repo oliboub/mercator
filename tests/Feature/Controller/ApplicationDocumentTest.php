@@ -111,6 +111,7 @@ describe('configuration parameter save', function () {
         $response = $this->put(route('admin.config.parameters'), [
             'active_tab'            => 'general',
             'application_documents' => '1',
+            'max_nodes'             => 500,
         ]);
 
         $response->assertRedirect();
