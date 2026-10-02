@@ -18,6 +18,21 @@
                         {{ session('status') }}
                     </div>
                 @endif
+
+                <div class="col-sm-6" style="max-width: 800px;">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                <label for="zones">{{ trans('cruds.zoneAdmin.title') }}</label>
+                                <select name="zones[]" id="zones" class="form-control select2" multiple>
+                                    @foreach($all_zones as $id => $name)
+                                        <option value="{{ $id }}" @selected(in_array($id, $selectedZones, true))>{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <div id="graph-container">
                     <div class="graphviz" id="graph">
                         @include('admin.reports._graph_too_large')
@@ -182,6 +197,14 @@
 
 <script>
 let dotSrc = `{!! $dotSrc !!}`;
+
+// Select2 déclenche un événement jQuery : on l'écoute via jQuery, une fois
+// les modules Vite (jQuery) chargés
+document.addEventListener('DOMContentLoaded', () => {
+    $('#zones').on('change', function () {
+        this.form.submit();
+    });
+});
 
 document.addEventListener('graphvizReady', () => {
     window.initGraphvizReport({ dotSrc, engine: @json($engine), images: @json($imageManifest) });
