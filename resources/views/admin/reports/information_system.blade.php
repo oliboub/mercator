@@ -87,6 +87,8 @@
     </div>
 </div>
 
+{{-- Graphe trop grand : les objets ne sont pas listés non plus --}}
+@if(empty($graphTooLarge))
 <div class="report-scroll-area">
 
         @canAccess(App\Models\MacroProcessus::class)
@@ -256,6 +258,7 @@
             @endif
         @endcan
     </div>
+@endif
 @endsection
 
 @section('scripts')

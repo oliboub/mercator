@@ -90,6 +90,8 @@
     </div>
 </div>
 
+{{-- Graphe trop grand : les objets ne sont pas listés non plus --}}
+@if(empty($graphTooLarge))
 <div class="report-scroll-area">
     @canAccess(App\Models\Site::class)
         @if ($sites->count()>0)
@@ -509,6 +511,7 @@
         @endif
     @endcan
 </div>
+@endif
 @endsection
 
 @section('scripts')

@@ -68,6 +68,8 @@
     </div>
 </div>{{-- .graph-card-sticky --}}
 
+{{-- Graphe trop grand : les objets ne sont pas listés non plus --}}
+@if(empty($graphTooLarge))
 <div class="report-scroll-area">
     @if($entities->count()>0)
         <div class="card">
@@ -111,6 +113,7 @@
         </div>
     @endif
 </div>{{-- .report-scroll-area --}}
+@endif
 @endsection
 
 @section('scripts')

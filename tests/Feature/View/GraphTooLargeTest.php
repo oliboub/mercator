@@ -49,6 +49,8 @@ describe('report views', function () {
         $response->assertViewHas('dotSrc', '');
         $response->assertSee('data-graph-too-large', false);
         $response->assertSee(trans('global.graph_too_large', ['count' => 3, 'max' => 2]));
+        // Objects are not listed below the graph either
+        $response->assertDontSee('report-scroll-area', false);
     });
 
     test('a graph within the limit is built normally', function () {
@@ -61,6 +63,7 @@ describe('report views', function () {
         $response->assertViewHas('graphTooLarge', null);
         expect($response->viewData('dotSrc'))->toContain('E'.$entity->id);
         $response->assertDontSee('data-graph-too-large', false);
+        $response->assertSee('report-scroll-area', false);
     });
 
     test('every report view exposes graphTooLarge', function (string $route) {
@@ -70,6 +73,7 @@ describe('report views', function () {
 
         $response->assertOk();
         $response->assertViewHas('graphTooLarge', null);
+        $response->assertSee('report-scroll-area', false);
     })->with([
         'admin.report.view.ecosystem',
         'admin.report.view.information-system',
