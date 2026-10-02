@@ -13,6 +13,7 @@ use App\Models\Application;
 use App\Models\Process;
 use App\Models\SecurityControl;
 use App\Services\Graph\GdprGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Symfony\Component\HttpFoundation\Response;
 
 class GDPRView extends Controller
@@ -151,6 +152,9 @@ class GDPRView extends Controller
 
         $this->autoloadRelations($macroProcessuses, $processes, $dataProcessings, $applications);
 
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count($macroProcessuses, $processes, $dataProcessings, $applications));
+
         $graphBuilder = new GdprGraphBuilder;
 
         return view('admin/reports/gdpr')
@@ -160,7 +164,8 @@ class GDPRView extends Controller
             ->with('all_process', $all_process)
             ->with('dataProcessings', $dataProcessings)
             ->with('applications', $applications)
-            ->with('dotSrc', $graphBuilder->buildDot($macroProcessuses, $processes, $dataProcessings, $applications))
+            ->with('graphTooLarge', $graphTooLarge)
+            ->with('dotSrc', $graphTooLarge ? '' : $graphBuilder->buildDot($macroProcessuses, $processes, $dataProcessings, $applications))
             ->with('imageManifest', $graphBuilder->imageManifest());
     }
 }

@@ -305,4 +305,5 @@ return [
     'page' => 'page',
     'elements_per_page' => 'elements per page',
     'search' => 'Search',
+    'graph_too_large' => 'Graph too large: :count nodes (maximum :max).',
 ];

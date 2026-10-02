@@ -148,6 +148,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="card-body border-top">
+                    <h6 class="fw-bold mb-3">{{ trans('cruds.configuration.parameters.cartography') }}</h6>
+                    <div class="form-group mb-3">
+                        <label class="d-block mb-1">
+                            {{ trans('cruds.configuration.parameters.max_nodes_helper') }}
+                        </label>
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <label class="form-label" for="max_nodes">
+                                {{ trans('cruds.configuration.parameters.max_nodes') }}
+                            </label>
+                            <input type="number" name="max_nodes" id="max_nodes"
+                                   class="form-control @error('max_nodes') is-invalid @enderror"
+                                   min="0" max="100000" step="1" value="{{ old('max_nodes', $max_nodes) }}">
+                            @error('max_nodes')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group mt-3">

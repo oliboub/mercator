@@ -22,6 +22,7 @@
   array (
     'security_need_auth' => false,
     'application_documents' => false,
+    'max_nodes' => 500,
   ),
   'cpe' => 
   array (

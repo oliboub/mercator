@@ -598,6 +598,9 @@ return [
             'security_need_auth' => 'Authenticité',
             'application_documents' => 'Documents associés aux applications',
             'application_documents_helper' => 'Permet d\'associer des fichiers (documents) aux applications.',
+            'cartography' => 'Cartographie',
+            'max_nodes' => 'Nombre maximum de nœuds',
+            'max_nodes_helper' => 'Au-delà de ce nombre de nœuds, les graphes ne sont pas affichés (0 = pas de limite).',
         ],
         'import' => [
             'title' => 'Import / Export des données',
@@ -841,6 +844,7 @@ return [
             'title' => [
                 'int/ext' => 'Situation',
                 'type' => 'Type',
+                'start' => 'Entités de départ',
             ],
         ],
         'title' => 'Entités',

@@ -20,6 +20,7 @@ use App\Models\StorageDevice;
 use App\Models\WifiTerminal;
 use App\Models\Workstation;
 use App\Services\Graph\PhysicalInfrastructureGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Symfony\Component\HttpFoundation\Response;
 
 class PhysicalInfrastructureView extends Controller
@@ -311,8 +312,14 @@ class PhysicalInfrastructureView extends Controller
             $phones, $physicalSwitches, $physicalRouters, $wifiTerminals, $physicalSecurityDevices
         );
 
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count(
+            $sites, $buildings, $bays, $physicalServers, $workstations, $storageDevices, $peripherals,
+            $phones, $physicalSwitches, $physicalRouters, $wifiTerminals, $physicalSecurityDevices
+        ));
+
         $graphBuilder = new PhysicalInfrastructureGraphBuilder;
-        $dotSrc = $graphBuilder->buildLocationDot(
+        $dotSrc = $graphTooLarge ? '' : $graphBuilder->buildLocationDot(
             $sites,
             $buildings,
             $bays,
@@ -344,6 +351,7 @@ class PhysicalInfrastructureView extends Controller
             ->with('physicalRouters', $physicalRouters)
             ->with('wifiTerminals', $wifiTerminals)
             ->with('physicalSecurityDevices', $physicalSecurityDevices)
+            ->with('graphTooLarge', $graphTooLarge)
             ->with('dotSrc', $dotSrc)
             ->with('imageManifest', $imageManifest);
     }

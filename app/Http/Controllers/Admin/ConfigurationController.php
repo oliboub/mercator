@@ -34,6 +34,7 @@ class ConfigurationController extends Controller
             // Général
             'security_need_auth' => $cfg['parameters']['security_need_auth'] ?? false,
             'application_documents' => $cfg['parameters']['application_documents'] ?? false,
+            'max_nodes' => (int) ($cfg['parameters']['max_nodes'] ?? 500),
             // Certificats
             'cert_mail_from' => $cfg['cert']['mail-from'] ?? '',
             'cert_mail_to' => $cfg['cert']['mail-to'] ?? '',
@@ -118,9 +119,14 @@ class ConfigurationController extends Controller
 
     private function handleGeneral(Request $request): array
     {
+        $validated = $request->validate([
+            'max_nodes' => ['required', 'integer', 'min:0', 'max:100000'],
+        ]);
+
         $cfg = $this->readConfigFile();
         $cfg['parameters']['security_need_auth'] = $request->boolean('security_need_auth');
         $cfg['parameters']['application_documents'] = $request->boolean('application_documents');
+        $cfg['parameters']['max_nodes'] = (int) $validated['max_nodes'];
         $this->writeConfigFile($cfg);
 
         return [trans('cruds.configuration.saved'), true];

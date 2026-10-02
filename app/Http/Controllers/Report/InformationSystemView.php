@@ -15,6 +15,7 @@ use App\Models\Operation;
 use App\Models\Process;
 use App\Models\Task;
 use App\Services\Graph\InformationSystemGraphBuilder;
+use App\Services\Graph\GraphSize;
 use Symfony\Component\HttpFoundation\Response;
 
 class InformationSystemView extends Controller
@@ -164,6 +165,9 @@ class InformationSystemView extends Controller
             $all_process = null;
         }
 
+        // Compte les nœuds avant de construire le DOT : un graphe trop grand n'est ni construit ni envoyé
+        $graphTooLarge = GraphSize::tooLarge(GraphSize::count($macroProcessuses, $processes, $activities, $operations, $tasks, $actors, $informations));
+
         $graphBuilder = new InformationSystemGraphBuilder;
 
         return view('admin/reports/information_system')
@@ -176,7 +180,8 @@ class InformationSystemView extends Controller
             ->with('tasks', $tasks)
             ->with('actors', $actors)
             ->with('informations', $informations)
-            ->with('dotSrc', $graphBuilder->buildDot($macroProcessuses, $processes, $activities, $operations, $tasks, $actors, $informations))
+            ->with('graphTooLarge', $graphTooLarge)
+            ->with('dotSrc', $graphTooLarge ? '' : $graphBuilder->buildDot($macroProcessuses, $processes, $activities, $operations, $tasks, $actors, $informations))
             ->with('imageManifest', $graphBuilder->imageManifest());
     }
 }

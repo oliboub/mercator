@@ -592,6 +592,9 @@ return [
             'security_need_auth_helper' => 'Adds the Authenticity security criterion to the existing Confidentiality, Integrity, Availability and Traceability criteria',
             'application_documents' => 'Documents attached to applications',
             'application_documents_helper' => 'Allows files (documents) to be associated with applications.',
+            'cartography' => 'Cartography',
+            'max_nodes' => 'Maximum number of nodes',
+            'max_nodes_helper' => 'Graphs with more nodes than this are not rendered (0 = no limit).',
         ],
         'import' => [
             'title' => 'Data Import / Export',
@@ -829,6 +832,7 @@ return [
             'title' => [
                 'int/ext' => 'Situation',
                 'type' => 'Type',
+                'start' => 'Starting entities',
             ],
         ],
         'title' => 'Entities',

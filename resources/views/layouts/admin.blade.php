@@ -10,7 +10,11 @@
             colvis:  "{{ trans('global.datatables.colvis') }}",
             copy:    "{{ trans('global.datatables.copy') }}",
             print:   "{{ trans('global.datatables.print') }}",
-            delete:  "{{ trans('global.datatables.delete') }}"
+            delete:  "{{ trans('global.datatables.delete') }}",
+            graphTooLarge: @json(trans('global.graph_too_large'))
+        };
+        window.mercatorGraph = {
+            maxNodes: @json((int) config('mercator.parameters.max_nodes', 500))
         };
     </script>
 

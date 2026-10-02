@@ -50,7 +50,9 @@
                     </table>
                 </div>
                 <div id="graph-container">
-                    <div id="graph" class="graphviz"></div>
+                    <div id="graph" class="graphviz">
+                        @include('admin.reports._graph_too_large')
+                    </div>
                     <div class="graph-resize-handle"></div>
                 </div>
 
@@ -87,6 +89,8 @@
     </div>
 </div>
 
+{{-- Graphe trop grand : les objets ne sont pas listés non plus --}}
+@if(empty($graphTooLarge))
 <div class="report-scroll-area">
     @canAccess(App\Models\Site::class)
         @if ($sites->count()>0)
@@ -377,7 +381,7 @@
         @endif
     @endcan
 </div>
-
+@endif
 @endsection
 
 @section('scripts')
