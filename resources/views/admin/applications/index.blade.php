@@ -32,6 +32,9 @@
                         <th>
                             {{ trans('cruds.application.fields.name') }}
                         </th>
+			<th data-column="type">
+			    {{ trans('cruds.application.fields.type') }}
+			</th>
                         <th>
                             {{ trans('cruds.application.fields.description') }}
                         </th>
@@ -101,6 +104,9 @@
                             <td>
                                 <x-show-link :model="$application" />
                             </td>
+		            <td>
+			        {{ $application->type }}
+			    </td>
                             <td>
                                 {!! $application->description ?? '' !!}
                             </td>
@@ -180,7 +186,7 @@
     'URL' => route('admin.applications.massDestroy'),
     'canDelete' => (bool) auth()->user()->can('application_delete'),
     'serverSidePagination' => true,
-    'hiddenColumns' => ['perimeter', 'vendor', 'editor', 'functional_referent', 'status', 'comments'],
+    'hiddenColumns' => ['perimeter', 'vendor', 'editor', 'functional_referent', 'type', 'status', 'comments'],
     ));
 </script>
 @endsection

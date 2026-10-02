@@ -156,7 +156,11 @@
                                 {{ $processing->retention }}
                             </td>
                             <td>
-                                {{ $processing->controls }}
+                                @foreach($processing->securityControls() as $control)
+                                    <x-show-link :model="$control" />
+                                    @if (!$loop->last),@endif
+                                        <br>       
+                                @endforeach
                             </td>
                             <td>
                                 {{ $processing->lawfulness }}
