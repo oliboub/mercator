@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 /**
  * App\Actor
@@ -94,6 +95,16 @@ class DataProcessing extends Model implements HasIconContract, HasPrefix, HasUni
     public function applications(): BelongsToMany
     {
         return $this->belongsToMany(Application::class)->orderBy('name');
+    }
+
+    /** @return Collection<int, SecurityControl> */
+    public function securityControls(): Collection
+    {
+        return $this->applications
+            ->flatMap(fn ($application) => $application->securityControls)
+            ->merge($this->processes->flatMap(fn ($process) => $process->securityControls))
+            ->unique('id')
+            ->sortBy('name');
     }
 
     /** @return BelongsToMany<Information, $this> */

@@ -239,6 +239,20 @@
 
     <tr>
         <th>
+            {{ trans('cruds.dataProcessing.fields.controls') }}
+        </th>
+        <td colspan='3'>
+            @foreach($dataProcessing->securityControls() as $control)
+                @canShow($control)<a href="{{ route('admin.security-controls.show', $control->id) }}">{{ $control->name }}</a>@elsecanShow{{ $control->name }}@endcanShow
+                @if (!$loop->last)
+                    ,
+                @endif
+            @endforeach
+        </td>
+    </tr>    
+
+    <tr>
+        <th>
             {{ trans('cruds.dataProcessing.fields.documents') }}
         </th>
         <td colspan='3'>
