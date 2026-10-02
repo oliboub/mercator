@@ -844,6 +844,7 @@ return [
             'title' => [
                 'int/ext' => 'Situation',
                 'type' => 'Type',
+                'start' => 'Entités de départ',
             ],
         ],
         'title' => 'Entités',
