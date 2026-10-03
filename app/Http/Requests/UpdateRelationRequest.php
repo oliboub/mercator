@@ -41,6 +41,13 @@ class UpdateRelationRequest extends BaseFormRequest
                 'required',
                 'integer',
             ],
+            'documents' => [
+                'array',
+            ],
+            'documents.*' => [
+                'integer',
+                'exists:documents,id',
+            ],
             'start_validity' => [
                 'date',
                 'nullable',

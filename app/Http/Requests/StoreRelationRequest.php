@@ -40,6 +40,13 @@ class StoreRelationRequest extends BaseFormRequest
                 'required',
                 'integer',
             ],
+            'documents' => [
+                'array',
+            ],
+            'documents.*' => [
+                'integer',
+                'exists:documents,id',
+            ],
         ];
     }
 }
