@@ -2744,7 +2744,7 @@
 <p>Perimeters let you map several entities (establishments, sites, business units) in a single Mercator instance. Each entity manages its own objects, while still being able to link them to those of other perimeters.</p>
 <p>This documentation explains what a perimeter is, how it combines with roles, and how users work within their perimeter.</p>
 <h2 id="introduction-what-is-a-perimeter">Introduction — What is a perimeter?<a class="headerlink" href="#introduction-what-is-a-perimeter" title="Permanent link">&para;</a></h2>
-<p>A <strong>perimeter</strong> groups a subset of the objects in the cartography. Each object (server, application, network, site…) belongs to one and only one perimeter (by default, perimeter no. 1).</p>
+<p>A <strong>scope</strong> groups together a subset of the mapped objects, regardless of their type. Each object (server, application, network, site, etc.) belongs to only one scope.</p>
 <p>Perimeters allow you to:</p>
 <ul>
 <li>Host the cartography of <strong>multiple entities</strong> in a single instance</li>
@@ -2768,7 +2768,7 @@
 <ul>
 <li>Each object carries a <code>perimeter_id</code> integer (never NULL, always ≥ 1)</li>
 <li>A default perimeter always exists with <code>id = 1</code> (created by the database bootstrap migration)</li>
-<li>Object names are <strong>unique per (perimeter_id, name)</strong> — two establishments can each have a "DNS Server"</li>
+<li>Object names are <strong>unique per (perimeter_id, name)</strong> — two entities can each have a "DNSServer"</li>
 <li>Perimeters are managed in a dedicated <code>perimeters</code> table</li>
 </ul>
 </div>

@@ -2744,7 +2744,7 @@
 <p>Les périmètres permettent de cartographier plusieurs entités (établissements, sites, unités métier) dans une seule instance de Mercator. Chaque entité gère ses propres objets, tout en pouvant les relier à ceux des autres périmètres. </p>
 <p>Cette documentation explique ce qu'est un périmètre, comment il se combine avec les rôles, et comment les utilisateurs travaillent au sein de leur périmètre.</p>
 <h2 id="introduction-quest-ce-quun-perimetre">Introduction — Qu'est-ce qu'un périmètre ?<a class="headerlink" href="#introduction-quest-ce-quun-perimetre" title="Permanent link">&para;</a></h2>
-<p>Un <strong>périmètre</strong> regroupe un sous-ensemble des objets de la cartographie. Chaque objet (serveur, application, réseau, site…) n'appartient jamais qu'à un seul périmètre (par défaut le périmètre n° 1).</p>
+<p>Un <strong>périmètre</strong> regroupe un sous-ensemble des objets de la cartographie indépendamment de leur type. Chaque objet (serveur, application, réseau, site…) n'appartient jamais qu'à un seul périmètre.</p>
 <p>Les périmètres permettent de :</p>
 <ul>
 <li>Héberger la cartographie de <strong>plusieurs entités</strong> dans une seule instance</li>
@@ -2768,7 +2768,7 @@
 <ul>
 <li>Chaque objet porte un entier <code>perimeter_id</code> (jamais NULL, toujours ≥ 1)</li>
 <li>Un périmètre par défaut existe toujours avec <code>id = 1</code> (créé par la migration d'initialisation de la base de données)</li>
-<li>Les noms d'objets sont <strong>uniques par (perimeter_id, name)</strong> — deux établissements peuvent chacun avoir un « Serveur DNS »</li>
+<li>Les noms d'objets sont <strong>uniques par (perimeter_id, name)</strong> — deux entités peuvent chacun avoir un « ServeurDNS »</li>
 <li>Les périmètres sont gérés dans une table dédiée <code>perimeters</code></li>
 </ul>
 </div>
