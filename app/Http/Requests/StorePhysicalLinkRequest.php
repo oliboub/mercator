@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StorePhysicalLinkRequest extends BaseFormRequest
 {
+    protected array $htmlFields = ['description'];
+
     public function authorize(): bool
     {
         abort_if(Gate::denies('physical_link_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StorePhysicalServerRequest extends BaseFormRequest
 {
-    protected array $htmlFields = ['description'];
+    protected array $htmlFields = ['description', 'configuration'];
 
     public function authorize(): bool
     {

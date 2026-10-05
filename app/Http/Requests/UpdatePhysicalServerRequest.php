@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 
 class UpdatePhysicalServerRequest extends BaseFormRequest
 {
-    protected array $htmlFields = ['description'];
+    protected array $htmlFields = ['description', 'configuration'];
 
     public function authorize(): bool
     {
