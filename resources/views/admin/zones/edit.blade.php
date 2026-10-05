@@ -16,7 +16,7 @@
 
                 {{-- Ligne 1 : nom, type, attributs --}}
                 <div class="row">
-                    @if (auth()->user()->hasMultiplePerimeters())
+                    @if (auth()->user()->canChoosePerimeterOf($zone))
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="perimeter_id">{{ trans('cruds.perimeter.title_short') }}</label>

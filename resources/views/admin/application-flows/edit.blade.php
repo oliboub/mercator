@@ -18,7 +18,7 @@
 
                 <div class="row">
 
-                    @if (auth()->user()->hasMultiplePerimeters())
+                    @if (auth()->user()->canChoosePerimeterOf($flow))
                 <div class="col-sm-2">
                     <div class="form-group">
                         <label for="perimeter_id">{{ trans('cruds.perimeter.title_short') }}</label>
@@ -26,7 +26,7 @@
                                 name="perimeter_id" id="perimeter_id">
                             @foreach (\App\Models\Perimeter::whereIn('id', auth()->user()->perimeterIds())->orderBy('name')->get() as $perimeterOption)
                                 <option value="{{ $perimeterOption->id }}"
-                                        {{ (int) old('perimeter_id', $applicationFlow->perimeter_id) === $perimeterOption->id ? 'selected' : '' }}>
+                                        {{ (int) old('perimeter_id', $flow->perimeter_id) === $perimeterOption->id ? 'selected' : '' }}>
                                     {{ $perimeterOption->name }}
                                 </option>
                             @endforeach
