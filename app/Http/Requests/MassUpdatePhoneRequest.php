@@ -3,11 +3,10 @@
 namespace App\Http\Requests;
 
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Phone;
 
-class MassUpdatePhoneRequest extends FormRequest
+class MassUpdatePhoneRequest extends BaseMassFormRequest
 {
     public function authorize()
     {

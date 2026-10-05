@@ -4,10 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\Zone;
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassUpdateZoneRequest extends FormRequest
+class MassUpdateZoneRequest extends BaseMassFormRequest
 {
     public function authorize(): bool
     {

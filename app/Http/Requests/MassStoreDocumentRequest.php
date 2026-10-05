@@ -6,9 +6,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 
-class MassStoreDocumentRequest extends FormRequest
+class MassStoreDocumentRequest extends BaseMassFormRequest
 {
     public function authorize(): bool
     {

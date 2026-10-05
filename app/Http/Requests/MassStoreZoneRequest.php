@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassStoreZoneRequest extends FormRequest
+class MassStoreZoneRequest extends BaseMassFormRequest
 {
     public function authorize(): bool
     {

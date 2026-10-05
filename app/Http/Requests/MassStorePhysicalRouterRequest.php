@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassStorePhysicalRouterRequest extends FormRequest
+class MassStorePhysicalRouterRequest extends BaseMassFormRequest
 {
     public function authorize()
     {
