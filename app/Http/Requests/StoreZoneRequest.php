@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StoreZoneRequest extends BaseFormRequest
 {
+    protected array $htmlFields = ['description'];
+
     public function authorize(): bool
     {
         abort_if(Gate::denies('zone_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
