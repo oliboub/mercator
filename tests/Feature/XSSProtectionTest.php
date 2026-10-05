@@ -341,3 +341,106 @@ describe('Scénario attaque User → Admin', function () {
         expect($csp)->toContain("object-src 'none'");
     });
 })->todo('Enable CSP');
+
+// ============================================================
+//  6. API mass-store / mass-update (GHSA-v9jx-m9mc-689x)
+// ============================================================
+
+describe('API mass-store / mass-update — payloads are sanitized', function () {
+
+    beforeEach(function () {
+        Laravel\Passport\Passport::actingAs($this->admin);
+    });
+
+    it('sanitise les champs HTML riches lors d\'un mass-store', function (string $payload) {
+        $response = $this->postJson('/api/entities/mass-store', [
+            'items' => [[
+                'name'          => 'Mass entity',
+                'description'   => $payload,
+                'contact_point' => $payload,
+            ]],
+        ])->assertCreated();
+
+        $entity = Entity::query()->findOrFail($response->json('ids.0'));
+
+        foreach ([$entity->description, $entity->contact_point] as $value) {
+            expect((string) $value)
+                ->not->toContain('<script')
+                ->not->toContain('<SCRIPT')
+                ->not->toContain('javascript:')
+                ->not->toContain('onerror')
+                ->not->toContain('onload')
+                ->not->toContain('onclick');
+        }
+    })->with(xssPayloads());
+
+    it('ne rend pas le payload du PoC sur la page de détail', function () {
+        $payload = '<img src=x onerror="document.body.dataset.ipd=\'executed\'">';
+
+        $response = $this->postJson('/api/entities/mass-store', [
+            'items' => [[
+                'name'        => 'IPD mass-store entity',
+                'description' => $payload,
+            ]],
+        ])->assertCreated();
+
+        $entity = Entity::query()->findOrFail($response->json('ids.0'));
+        expect((string) $entity->description)->not->toContain('onerror');
+
+        $this->get(route('admin.entities.show', $entity))
+            ->assertOk()
+            ->assertDontSee('onerror="document.body', false);
+    });
+
+    it('supprime les balises des champs texte lors d\'un mass-store', function () {
+        $response = $this->postJson('/api/entities/mass-store', [
+            'items' => [[
+                'name' => 'Entité <script>alert(1)</script> test',
+            ]],
+        ])->assertCreated();
+
+        expect(Entity::query()->findOrFail($response->json('ids.0'))->name)
+            ->not->toContain('<script>');
+    });
+
+    it('conserve le HTML légitime lors d\'un mass-store', function () {
+        $response = $this->postJson('/api/entities/mass-store', [
+            'items' => [[
+                'name'        => 'Mass entity',
+                'description' => '<p>Texte avec <strong>gras</strong></p>',
+            ]],
+        ])->assertCreated();
+
+        expect(Entity::query()->findOrFail($response->json('ids.0'))->description)
+            ->toContain('<strong>');
+    });
+
+    it('sanitise les payloads lors d\'un mass-update', function (string $payload) {
+        $entity = Entity::factory()->create();
+
+        $this->putJson('/api/entities/mass-update', [
+            'items' => [[
+                'id'          => $entity->id,
+                'name'        => $entity->name,
+                'description' => $payload,
+            ]],
+        ])->assertOk();
+
+        expect((string) $entity->fresh()->description)
+            ->not->toContain('<script')
+            ->not->toContain('javascript:')
+            ->not->toContain('onerror');
+    })->with(xssPayloads());
+
+    it('sanitise les autres objets lors d\'un mass-store (lans)', function () {
+        $response = $this->postJson('/api/lans/mass-store', [
+            'items' => [[
+                'name'        => 'LAN-XSS',
+                'description' => '<img src=x onerror=alert(1)>',
+            ]],
+        ])->assertCreated();
+
+        expect((string) App\Models\Lan::query()->findOrFail($response->json('ids.0'))->description)
+            ->not->toContain('onerror');
+    });
+});

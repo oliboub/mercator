@@ -3,11 +3,10 @@
 namespace App\Http\Requests;
 
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\ApplicationFlow;
 
-class MassUpdateApplicationFlowRequest extends FormRequest
+class MassUpdateApplicationFlowRequest extends BaseMassFormRequest
 {
     public function authorize()
     {

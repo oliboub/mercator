@@ -4,10 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\Cartographer;
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreCartographerRequest extends FormRequest
+class StoreCartographerRequest extends BaseFormRequest
 {
     public function authorize(): bool
     {

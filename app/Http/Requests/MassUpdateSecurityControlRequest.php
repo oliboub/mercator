@@ -4,10 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\SecurityControl;
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassUpdateSecurityControlRequest extends FormRequest
+class MassUpdateSecurityControlRequest extends BaseMassFormRequest
 {
     public function authorize()
     {

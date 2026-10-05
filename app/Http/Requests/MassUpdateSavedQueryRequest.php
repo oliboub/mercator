@@ -4,10 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\SavedQuery;
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassUpdateSavedQueryRequest extends FormRequest
+class MassUpdateSavedQueryRequest extends BaseMassFormRequest
 {
     public function authorize(): true
     {

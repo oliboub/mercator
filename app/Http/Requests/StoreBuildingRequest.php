@@ -4,11 +4,10 @@ namespace App\Http\Requests;
 
 use App\Models\Building;
 use Gate;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreBuildingRequest extends FormRequest
+class StoreBuildingRequest extends BaseFormRequest
 {
     protected array $htmlFields = ['description'];
 
