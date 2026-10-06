@@ -142,7 +142,7 @@ The role contains permissions: *permission_roles*.
 To retrieve the role↔permission associations, you must use **/api/roles/{id}?include=permissions** — the permissions linked to each role will be embedded in the role’s response.
 The list of permissions and their corresponding {id} values is available via the **/api/permissions** API.
 
-- <img src="/mercator/images/get.png" width="30"> /api/perimeters
+- [<img src="/mercator/images/get.png" width="30"> /api/perimeters](./model.md#perimeters)
 
 Perimeters (`name`: 2–32 characters, unique) require the **configure** permission for every action, like the administration screen. The default perimeter (id 1) and any perimeter still referenced by a role cannot be deleted (`422`). **/api/perimeters/{id}** also returns the ids of the roles attached to the perimeter (`roles`).
 
@@ -176,16 +176,25 @@ DOC_ID=$(echo "$RESPONSE" | jq -r '.id // empty' 2>/dev/null)
         -o "$OUTFILE" \
         -w "HTTP %{http_code}\n"
 ```
+---
 
-## Queries APIs
+## Tools APIs
 
-- <img src="/mercator/images/get.png" width="30"> /api/queries
+### Maps and BPMN API
+
+TBD
+
+## Queries API
+
+- [<img src="/mercator/images/get.png" width="30"> /api/queries](./model.md#queries)
 - <img src="/mercator/images/get.png" width="30"> /api/queries/***id***
 
 ### Requests can also be executed via the API
 - <img src="/mercator/images/get.png" width="30"> /api/queries/execute/1  
     - The **query ID** must be provided.  
     - The query must be of **list type**.
+
+---
 
 ## Reports APIs
 
@@ -286,6 +295,7 @@ Mapping objects can refer to other objects. For example, we can link a process t
 The names of all extra fields
 are: ['actors', 'tasks', 'activities', 'entities', 'applications', 'informations', 'processes', 'databases', 'logical_servers', 'modules', 'domainesForestAds', 'servers', 'vlans', 'lans', 'mans', 'wans', 'operations', 'domaines', 'applicationServices', 'certificates', 'peripherals', 'physicalServers', 'networkSwitches', 'physicalSwitches', 'physicalRouters']
 
+---
 
 ## Examples
 

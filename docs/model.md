@@ -3020,6 +3020,48 @@ The data model export lists MANs and WANs linked to a LAN.
 In the app, a MAN can be linked to a LAN from a MAN object.  
 A WAN can be linked to a LAN from a WAN object.
 
+---
+
+## Tools
+
+### BPMN or MapsInside Tools we find BPMN and Maps. Thses 2 objets grousp are stored in the same table
+
+
+| Table                                    | api         |
+|:-----------------------------------------|:------------|
+| <span style="color: blue;">*graphs*</span> | N/C |
+
+| Champ       | Type         | Description         |
+|:------------|:-------------|:--------------------|
+| id          | int unsigned | auto_increment      |
+| class       | int          | **1** for **Maps** <br> **2** for  **BPMN**     |
+| name        | varchar(255) | MAP or BPMN Name    |
+| type        | varchar(255) | Object Type         |
+| content     | longtext     | Content             |
+| created_at  | timestamp    | Date of creation   |
+| updated_at  | timestamp    | Date of update     |
+| deleted_at  | timestamp    | Date of deletion   |
+
+
+### Queries
+| Table                                    | api         |
+|:-----------------------------------------|:------------|
+| <span style="color: blue;">*saved_queries*</span> | `/api/queries` |
+
+| Champ       | Type         | Description         |
+|:------------|:-------------|:--------------------|
+| id          | int unsigned | auto_increment      |
+| name        | varchar(255) | Query name   |
+| description | text         | Query description |
+| query       | longtext     | Query |
+| is_public   | tinyint      | Set personal or public query |
+| user_id     | int unsigned | id of query owner |
+| created_at  | timestamp    | Date of creation   |
+| updated_at  | timestamp    | Date of update     |
+| deleted_at  | timestamp    | Date of deletion   |
+
+---
+
 ## Configuration
 
 The "documents" section can be found in the configuration menu.
@@ -3112,7 +3154,7 @@ This part allow to see all attached documents, including specific image (icons)
 ### Example of a document fields for a specific image of firewall:
 
 ```json
-    "id": 1,
+"id": 1,
 "filename": "fw.png",
 "mimetype": "image/png",
 "size": 5295,
@@ -3183,6 +3225,18 @@ This section allows you to define access rules on objects, applicable to roles o
 | created_at | timestamp        | Date of creation     |
 | updated_at | timestamp        | Date of deletion  |
 | deleted_at | timestamp        | Date of deletion     |
+
+### Perimeters
+This sections allows you te create perimeters
+
+| Table                                         | api              |
+|:----------------------------------------------|:-----------------|
+| <span style="color: blue;">*perimeters*</span> | `/api/perimeters` |
+
+| Champ      | Type             | Description          |
+|------------|------------------|----------------------|
+| id         | int(10) unsigned | auto_increment       |
+| name       | varchar(32)      | nom du périmètre     |     
 
 ### Permissions
 
