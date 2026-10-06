@@ -182,15 +182,36 @@ Rules:
 - Empty values are skipped and duplicates removed; order of first appearance is kept.
 - A relation with no linked object yields an empty cell.
 - You can also group on a relation field, e.g. `GROUP BY databases.name` to list, per database, the applications that use it.
+- `LIMIT` applies to the objects of the `FROM` model, **before** grouping: `LIMIT 50` reads 50 applications, then groups their values.
 
 !!! tip "Group on `id`"
     Include `id` in `GROUP BY` so two objects sharing the same name are not merged.
+
+### Grouping on a relation field
+
+When the grouping field belongs to a relation, the table is "turned around": you get one row per related value, and the fields of the `FROM` model are concatenated.
+
+```sql
+FROM applications
+FIELDS databases.name, name, logical_servers.name
+GROUP BY databases.name
+OUTPUT list
+```
+
+| databases.name | name | logical_servers.name |
+|----------------|------|----------------------|
+| Oracle | ERP | srv-erp-01 |
+| PostgreSQL | ERP, Portal | srv-erp-01, srv-web-01 |
+
+Applications with no database form a group with an empty `databases.name` cell.
 
 ## Output format (OUTPUT)
 
 ### `OUTPUT list`
 
 Produces a **table** with one row per record. This format suits inventories, exports, and tabular views.
+
+When `FIELDS` contains several relation fields, a record can span several rows (one per combination); use [`GROUP BY`](#group-by) to get a single row per record.
 
 ```sql
 OUTPUT list
@@ -333,10 +354,35 @@ WITH logical_servers
 
 Lists applications not attached to any logical server — a possible indicator of an incomplete cartography.
 
+### One row per server with its applications
+
+```sql
+FROM logical-servers
+FIELDS id, name, environment, applications.name, certificates.name
+WHERE (environment = "production")
+GROUP BY id, name, environment
+OUTPUT list
+```
+
+Inventory of production servers with, on a single row, the hosted applications and the installed certificates. Ready to export as CSV.
+
+### Applications using each database
+
+```sql
+FROM applications
+FIELDS databases.name, name, responsible
+WHERE (EXISTS databases)
+GROUP BY databases.name
+OUTPUT list
+```
+
+Lists, for each database, the applications that use it and their owners. `EXISTS databases` excludes applications without a database, which would otherwise form an empty group.
+
 ## Best practices
 
 - **Use `LIMIT`** to limit the number of results to the necessary value: overly broad queries can be slow on large repositories.
 - **Use `OUTPUT graph`** only when relations are declared in `WITH`; a graph without relations will consist of isolated nodes only.
 - **Check field names** in the [API reference](api.md) — a typo in a field name simply returns nothing, with no error message.
 - **With `EXISTS`**, declare the relation in `WITH` only if you need to display its fields in `FIELDS`; otherwise, `EXISTS` alone is sufficient to filter without extra overhead.
+- **Use `GROUP BY`** as soon as a list shows several relation fields: the Cartesian product quickly multiplies rows and makes the table hard to read.
 - **Save recurring queries** to facilitate teamwork and ensure the reproducibility of cartographies.
