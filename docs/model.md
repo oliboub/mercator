@@ -3029,7 +3029,7 @@ A WAN can be linked to a LAN from a WAN object.
 
 | Table                                    | api         |
 |:-----------------------------------------|:------------|
-| <span style="color: blue;">*graphs*</span> | N/C |
+| <span style="color: blue;">*graphs*</span> | `/api/graphs` |
 
 | Champ       | Type         | Description         |
 |:------------|:-------------|:--------------------|

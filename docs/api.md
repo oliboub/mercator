@@ -147,6 +147,10 @@ The list of permissions and their corresponding {id} values is available via the
 Perimeters (`name`: 2–32 characters, unique) require the **configure** permission for every action, like the administration screen. The default perimeter (id 1) and any perimeter still referenced by a role cannot be deleted (`422`). **/api/perimeters/{id}** also returns the ids of the roles attached to the perimeter (`roles`).
 
 - [<img src="/mercator/images/get.png" width="30"> /api/cartographers](./model.md#cartography)
+- [<img src="/mercator/images/get.png" width="30"> /api/graphs](./model.md#tools)
+
+Graphs hold both maps (`class` = 1) and BPMN diagrams (`class` = 2). The `content` field is the raw XML of the diagram and is stored as is (it is not stripped of its tags like other text fields).
+
 - [<img src="/mercator/images/get.png" width="30"> /api/permissions](./model.md#permissions) `READ ONLY`
 - [<img src="/mercator/images/get.png" width="30"> /api/documents](./model.md#documents)
 

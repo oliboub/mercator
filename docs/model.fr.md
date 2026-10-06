@@ -3072,7 +3072,7 @@ Dans outils on trouve BPMN et Cartes.Ces 2 groupes d'objets sont dans la même t
 
 | Table                                    | api         |
 |:-----------------------------------------|:------------|
-| <span style="color: blue;">*graphs*</span> | N/C |
+| <span style="color: blue;">*graphs*</span> | `/api/graphs` |
 
 | Champ       | Type         | Description         |
 |:------------|:-------------|:--------------------|

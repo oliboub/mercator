@@ -148,6 +148,10 @@ La liste des permissions de de leurs {id} se trouve par l'api **/api/permissions
 Les périmètres (`name` : 2 à 32 caractères, unique) exigent la permission **configure** pour toute action, comme l'écran d'administration. Le périmètre par défaut (id 1) et tout périmètre encore référencé par un rôle ne peuvent pas être supprimés (`422`). **/api/perimeters/{id}** renvoie aussi les ids des rôles rattachés au périmètre (`roles`).
 
 - [<img src="/mercator/images/get.png" width="30"> /api/cartographers](./model.fr.md#cartographie)
+- [<img src="/mercator/images/get.png" width="30"> /api/graphs](./model.fr.md#outils)
+
+Les graphes regroupent les cartes (`class` = 1) et les diagrammes BPMN (`class` = 2). Le champ `content` contient le XML brut du diagramme et est enregistré tel quel (ses balises ne sont pas supprimées comme pour les autres champs texte).
+
 - [<img src="/mercator/images/get.png" width="30"> /api/permissions](./model.fr.md#permissions) `LECTURE UNIQUEMENT`
 - [<img src="/mercator/images/get.png" width="30"> /api/documents](./model.fr.md#documents)
 
