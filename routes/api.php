@@ -367,6 +367,12 @@ Route::middleware(['api.protected'])->group(function () {
     Route::delete('cartographers/mass-destroy', [API\CartographerController::class, 'massDestroy'])->name('cartographers.mass-destroy');
     Route::resource('cartographers', API\CartographerController::class);
 
+    // Graphs
+    Route::post('graphs/mass-store', [API\GraphController::class, 'massStore'])->name('graphs.mass-store');
+    Route::put('graphs/mass-update', [API\GraphController::class, 'massUpdate'])->name('graphs.mass-update');
+    Route::delete('graphs/mass-destroy', [API\GraphController::class, 'massDestroy'])->name('graphs.mass-destroy');
+    Route::resource('graphs', API\GraphController::class);
+
     // Queries
     Route::put('queries/mass-store', [API\QueryController::class, 'massStore'])->name('queries.mass-store');
     Route::put('queries/mass-update', [API\QueryController::class, 'massUpdate'])->name('queries.mass-update');
