@@ -3063,6 +3063,48 @@ Les LAN (Local Area Network) sont des réseaux informatiques reliant des équipe
 L'export du modèle de données référence les MAN et les WAN rattachés à un LAN.  
 Dans l'application, un LAN peut être rattaché à un MAN ou un WAN depuis les objets MAN et WAN.
 
+---
+
+## Outils
+
+### BPMN ou Carte
+Dans outils on trouve BPMN et Cartes.Ces 2 groupes d'obets sont dans la même table:
+
+| Table                                    | api         |
+|:-----------------------------------------|:------------|
+| <span style="color: blue;">*graphs*</span> | N/C |
+
+| Champ       | Type         | Description         |
+|:------------|:-------------|:--------------------|
+| id          | int unsigned | auto_increment      |
+| class       | int          | **1** pour **Cartes** <br> **2** pour  **BPMN**     |
+| name        | varchar(255) | Nom de la carte ou du process BPMN         |
+| type        | varchar(255) | Type de l'objet     |
+| content     | longtext     | Contenu             |
+| created_at  | timestamp    | Date de création    |
+| updated_at  | timestamp    | Date de mise à jour |
+| deleted_at  | timestamp    | Date de suppression |
+
+
+### Requêtes
+| Table                                    | api         |
+|:-----------------------------------------|:------------|
+| <span style="color: blue;">*saved_queries*</span> | `/api/queries` |
+
+| Champ       | Type         | Description         |
+|:------------|:-------------|:--------------------|
+| id          | int unsigned | auto_increment      |
+| name        | varchar(255) | Nom de la requête   |
+| description | text         | Description de la requête |
+| query       | longtext     | Requête sql |
+| is_public   | tinyint      | requête personnelle ou accessible à tous |
+| user_id     | int unsigned | id du propriétaire de la requête |
+| created_at  | timestamp    | Date de création    |
+| updated_at  | timestamp    | Date de mise à jour |
+| deleted_at  | timestamp    | Date de suppression |
+
+---
+
 ## Configuration
 
 Dans le menu configuration, on trouve la partie documents.
@@ -3156,7 +3198,7 @@ Cette partie permet de voir les documents attachés, mais aussi les icônes pers
 #### Exemple d'information d'un document pour une icône de firewall:
 
 ```json
-    "id": 1,
+"id": 1,
 "filename": "fw.png",
 "mimetype": "image/png",
 "size": 5295,
@@ -3228,6 +3270,18 @@ Cette section permet de définir des règles d’accès sur des objets, applicab
 | created_at | timestamp        | Date de création     |
 | updated_at | timestamp        | Date de mise à jour  |
 | deleted_at | timestamp        | Date de suppression  |
+
+### Périmètres
+Cette section permet de créer des périmètres
+
+| Table                                         | api              |
+|:----------------------------------------------|:-----------------|
+| <span style="color: blue;">*perimeters*</span> | `/api/perimeters` |
+
+| Champ      | Type             | Description          |
+|------------|------------------|----------------------|
+| id         | int(10) unsigned | auto_increment       |
+| name       | varchar(32)      | nom du périmètre     |     
 
 ### Permissions
 
