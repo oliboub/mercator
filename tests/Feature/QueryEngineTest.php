@@ -732,3 +732,145 @@ describe('QueryEngineController – POST /admin/queries/execute', function () {
         expect(data_get($json, 'edges'))->toHaveCount(1);
     });
 });
+// ─────────────────────────────────────────────────────────────────────────────
+// GROUP BY — regroupement des valeurs en liste
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('execute – GROUP BY', function () {
+
+    it('sans GROUP BY, produit une ligne par combinaison (produit cartésien)', function () {
+        $app = Application::factory()->create(['name' => 'ERP']);
+        makeDb($app, ['name' => 'db-a']);
+        makeDb($app, ['name' => 'db-b']);
+
+        $result = $this->resolver->execute([
+            'from'   => 'applications',
+            'fields' => ['id', 'name', 'databases.name'],
+            'output' => 'list',
+        ]);
+
+        expect($result->rows)->toHaveCount(2);
+    });
+
+    it('regroupe les valeurs des relations sur une seule ligne par application', function () {
+        $app = Application::factory()->create(['name' => 'ERP']);
+        makeDb($app, ['name' => 'db-a']);
+        makeDb($app, ['name' => 'db-b']);
+        $server = makeServer(['name' => 'srv-1']);
+        $server->applications()->syncWithoutDetaching([$app->id]);
+
+        $result = $this->resolver->execute([
+            'from'     => 'applications',
+            'fields'   => ['id', 'name', 'databases.name', 'logical_servers.name'],
+            'group_by' => ['id', 'name'],
+            'output'   => 'list',
+        ]);
+
+        expect($result->rows)->toHaveCount(1);
+        expect($result->columns)->toBe(['id', 'name', 'databases.name', 'logical_servers.name']);
+
+        $row = $result->rows->first();
+        expect($row['id'])->toBe($app->id);
+        expect($row['name'])->toBe('ERP');
+        expect($row['databases.name'])->toBe('db-a, db-b');
+        expect($row['logical_servers.name'])->toBe('srv-1');
+    });
+
+    it('retourne une cellule vide quand la relation est vide', function () {
+        Application::factory()->create(['name' => 'Isolée']);
+
+        $result = $this->resolver->execute([
+            'from'     => 'applications',
+            'fields'   => ['id', 'name', 'databases.name'],
+            'group_by' => ['id'],
+            'output'   => 'list',
+        ]);
+
+        expect($result->rows)->toHaveCount(1);
+        expect($result->rows->first()['databases.name'])->toBe('');
+    });
+
+    it('déduplique les valeurs identiques dans une cellule', function () {
+        $server = makeServer(['name' => 'srv-a']);
+        $db     = MercatorDatabase::factory()->create(['name' => 'shared-db']);
+        foreach (['App-1', 'App-2'] as $name) {
+            makeApp($server, ['name' => $name])->databases()->syncWithoutDetaching([$db->id]);
+        }
+
+        $result = $this->resolver->execute([
+            'from'     => 'logical-servers',
+            'fields'   => ['name', 'applications.name', 'applications.databases.name'],
+            'group_by' => ['name'],
+            'output'   => 'list',
+        ]);
+
+        expect($result->rows)->toHaveCount(1);
+        $row = $result->rows->first();
+        expect(explode(', ', $row['applications.name']))->toEqualCanonicalizing(['App-1', 'App-2']);
+        expect($row['applications.databases.name'])->toBe('shared-db');
+    });
+
+    it('permet de regrouper sur un champ de relation', function () {
+        $db = MercatorDatabase::factory()->create(['name' => 'shared-db']);
+        foreach (['App-1', 'App-2'] as $name) {
+            Application::factory()->create(['name' => $name])
+                ->databases()->syncWithoutDetaching([$db->id]);
+        }
+
+        $result = $this->resolver->execute([
+            'from'     => 'applications',
+            'fields'   => ['databases.name', 'name'],
+            'group_by' => ['databases.name'],
+            'output'   => 'list',
+        ]);
+
+        expect($result->rows)->toHaveCount(1);
+        expect($result->rows->first()['databases.name'])->toBe('shared-db');
+        expect($result->rows->first()['name'])->toBe('App-1, App-2');
+    });
+});
+
+describe('QueryEngineController – GROUP BY', function () {
+
+    it('retourne 200 avec des lignes regroupées', function () {
+        $app = Application::factory()->create(['name' => 'ERP']);
+        makeDb($app, ['name' => 'db-a']);
+        makeDb($app, ['name' => 'db-b']);
+
+        $response = $this->postJson('/admin/queries/execute', [
+            'from'     => 'applications',
+            'fields'   => ['id', 'name', 'databases.name'],
+            'group_by' => ['id', 'name'],
+            'output'   => 'list',
+        ])->assertOk();
+
+        expect($response->json('rows'))->toHaveCount(1);
+        expect($response->json('rows.0')['databases.name'])->toBe('db-a, db-b');
+    });
+
+    it('retourne 422 si GROUP BY est utilisé avec OUTPUT graph', function () {
+        $this->postJson('/admin/queries/execute', [
+            'from'     => 'applications',
+            'fields'   => ['id', 'name'],
+            'group_by' => ['id'],
+            'output'   => 'graph',
+        ])->assertUnprocessable();
+    });
+
+    it('retourne 422 si un champ de GROUP BY est absent de FIELDS', function () {
+        $this->postJson('/admin/queries/execute', [
+            'from'     => 'applications',
+            'fields'   => ['name', 'databases.name'],
+            'group_by' => ['id'],
+            'output'   => 'list',
+        ])->assertUnprocessable();
+    });
+
+    it('retourne 422 si GROUP BY est utilisé sans FIELDS', function () {
+        $this->postJson('/admin/queries/execute', [
+            'from'     => 'applications',
+            'group_by' => ['id'],
+            'output'   => 'list',
+        ])->assertUnprocessable();
+    });
+});

@@ -48,6 +48,8 @@ final class QueryDslValidator
             'select.*'   => ['string',   'regex:/^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*$/'],
             'fields'     => ['nullable', 'array'],
             'fields.*'   => ['string',   'regex:/^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*$/'],
+            'group_by'   => ['nullable', 'array'],
+            'group_by.*' => ['string',   'regex:/^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*$/'],
             'filters'    => ['nullable', 'array'],
             'traverse'   => ['nullable', 'array'],
             // traverse.* validé manuellement (format mixte : string ou {segments:[...]})
@@ -69,6 +71,11 @@ final class QueryDslValidator
 
         $validated = $validator->validated();
 
+        // ── Validation de GROUP BY ────────────────────────────────
+        if (! empty($data['group_by'])) {
+            $this->validateGroupBy($data);
+        }
+
         // ── Validation du tableau traverse (format mixte) ─────────
         if (! empty($data['traverse'])) {
             $this->validateTraverse($data['traverse']);
@@ -77,17 +84,40 @@ final class QueryDslValidator
         // ── Validation récursive des filtres ─────────────────────
         if (! empty($data['filters'])) {
             $this->validateFilters($data['filters'], 'filters');
+        }
 
-            if (! empty($this->errors)) {
-                $validator = Validator::make([], []);
-                $validator->errors()->merge($this->errors);
-                throw new ValidationException($validator);
-            }
+        if (! empty($this->errors)) {
+            $validator = Validator::make([], []);
+            $validator->errors()->merge($this->errors);
+            throw new ValidationException($validator);
         }
 
         $validated['filters'] = $data['filters'] ?? [];
 
         return $validated;
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Validation de GROUP BY
+    // ─────────────────────────────────────────────────────────────
+
+    protected function validateGroupBy(array $data): void
+    {
+        if (($data['output'] ?? 'list') !== 'list') {
+            $this->errors['group_by'][] = 'GROUP BY n\'est disponible qu\'avec OUTPUT list.';
+        }
+
+        $fields = $data['fields'] ?? [];
+        if (empty($fields)) {
+            $this->errors['group_by'][] = 'GROUP BY requiert une clause FIELDS.';
+            return;
+        }
+
+        foreach ($data['group_by'] as $index => $key) {
+            if (is_string($key) && ! in_array($key, $fields, true)) {
+                $this->errors["group_by.{$index}"][] = "Le champ de regroupement \"{$key}\" doit figurer dans FIELDS.";
+            }
+        }
     }
 
     // ─────────────────────────────────────────────────────────────

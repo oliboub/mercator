@@ -11,6 +11,7 @@ FROM    <Model>
 FIELDS  <field1>, <field2>, <relation.field>, ...
 WHERE   (<condition1>) AND|OR (<condition2>)
 WITH    <relation1>, <relation2>, ...
+GROUP BY <field1>, <field2>, ...
 OUTPUT  list | graph
 LIMIT   <n>
 ```
@@ -21,6 +22,7 @@ LIMIT   <n>
 | `FIELDS` | ➖ | List of fields to display, including relation fields (`relation.field`) |
 | `WHERE` | ➖ | Data filter (see [Conditions](#conditions))                             |
 | `WITH` | ➖ | Relations to display on the graph                                       |
+| `GROUP BY` | ➖ | Groups rows and concatenates the other values (see [GROUP BY](#group-by)) |
 | `OUTPUT` | ➖ | Output format: `list` or `graph` (default: `list`)                      |
 | `LIMIT` | ➖ | Maximum number of records returned (default: 100)                       |
 
@@ -154,6 +156,35 @@ Rules to follow:
 
 !!! tip "When to hide a level?"
     Hide an intermediate node when the pivot relation has no semantic value in the visualisation — for example, subnetworks between a network and its VLANs, or interfaces between a server and its VLANs.
+
+## GROUP BY clause {#group-by}
+
+By default, an `OUTPUT list` query that displays several relation fields produces **one row per combination** (Cartesian product): an application linked to 3 processes and 2 databases appears on 6 rows.
+
+The `GROUP BY` clause instead produces **one row per distinct value** of the grouping fields. Every other column contains the list of distinct values, separated by commas.
+
+```sql
+FROM applications
+FIELDS id, name, processes.name, activities.name, databases.name
+GROUP BY id, name
+OUTPUT list
+```
+
+| id | name | processes.name | activities.name | databases.name |
+|----|------|----------------|-----------------|----------------|
+| 1 | ERP | Purchasing, Sales | Invoicing | Oracle, PostgreSQL |
+| 2 | Portal | | Reception | PostgreSQL |
+
+Rules:
+
+- Every `GROUP BY` field must also appear in `FIELDS`.
+- `GROUP BY` is only available with `OUTPUT list` (including CSV export).
+- Empty values are skipped and duplicates removed; order of first appearance is kept.
+- A relation with no linked object yields an empty cell.
+- You can also group on a relation field, e.g. `GROUP BY databases.name` to list, per database, the applications that use it.
+
+!!! tip "Group on `id`"
+    Include `id` in `GROUP BY` so two objects sharing the same name are not merged.
 
 ## Output format (OUTPUT)
 

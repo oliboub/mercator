@@ -323,7 +323,14 @@ class QueryResolver
         $fields   = $dsl['fields']   ?? [];
         $traverse = $dsl['traverse'] ?? [];
         $select   = $dsl['select']   ?? [];
+        $groupBy  = $dsl['group_by'] ?? [];
         $rows     = [];
+
+        if (! empty($fields) && ! empty($groupBy)) {
+            $rows = $this->buildGroupedRows($items, $fields, $groupBy);
+
+            return new ListResult(rows: collect($rows), columns: array_keys($rows[0] ?? []));
+        }
 
         foreach ($items as $item) {
             if (! empty($fields)) {
@@ -451,6 +458,147 @@ class QueryResolver
             }
             return $ordered;
         }, $result);
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Liste groupée — GROUP BY
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * Construit les lignes regroupées : une ligne par valeur distincte des
+     * champs de regroupement, les autres colonnes contenant la liste des
+     * valeurs distinctes séparées par une virgule (à la GROUP_CONCAT).
+     *
+     * Quand tous les champs de regroupement sont des champs racine, les
+     * relations sont parcourues directement, sans produit cartésien.
+     */
+    protected function buildGroupedRows(Collection $items, array $fields, array $groupBy): array
+    {
+        $rootOnly = collect($groupBy)->every(fn (string $f) => ! str_contains($f, '.'));
+
+        /** @var array<string, array<string, list<string>>> $groups */
+        $groups = [];
+
+        foreach ($items as $item) {
+            $partials = $rootOnly
+                ? [$this->collectItemValues($item, $fields)]
+                : array_map(
+                    fn (array $row) => array_map(fn ($v) => $this->toCellValues($v), $row),
+                    $this->expandRow($item, $fields)
+                );
+
+            foreach ($partials as $partial) {
+                $key = json_encode(array_map(fn (string $f) => $partial[$f] ?? [], $groupBy));
+
+                if (! isset($groups[$key])) {
+                    $groups[$key] = $partial;
+                    continue;
+                }
+
+                foreach ($partial as $column => $values) {
+                    $groups[$key][$column] = array_values(array_unique(
+                        array_merge($groups[$key][$column] ?? [], $values)
+                    ));
+                }
+            }
+        }
+
+        return array_map(function (array $group) use ($groupBy): array {
+            $row = [];
+            foreach ($group as $column => $values) {
+                $row[$column] = in_array($column, $groupBy, true)
+                    ? ($values[0] ?? null)
+                    : implode(', ', $values);
+            }
+
+            return $row;
+        }, array_values($groups));
+    }
+
+    /**
+     * Collecte, pour un objet racine, les valeurs distinctes de chaque champ
+     * (y compris les champs de relations, à n'importe quelle profondeur).
+     * Les champs masqués ($hidden) sont omis, comme dans expandRow().
+     *
+     * @return array<string, list<string>>
+     */
+    protected function collectItemValues(Model $item, array $fields): array
+    {
+        $row = [];
+
+        foreach ($fields as $field) {
+            $values = $this->collectPathValues($item, explode('.', $field));
+            if ($values !== null) {
+                $row[$field] = array_values(array_unique($values));
+            }
+        }
+
+        return $row;
+    }
+
+    /**
+     * Retourne les valeurs atteintes par un chemin pointé, ou null si le
+     * champ final est masqué.
+     *
+     * @return list<string>|null
+     */
+    protected function collectPathValues(Model $item, array $parts): ?array
+    {
+        if (count($parts) === 1) {
+            $field = $parts[0];
+            QueryEngineIntrospector::validateField(get_class($item), $field);
+            if ($this->isHidden($item, $field)) {
+                return null;
+            }
+
+            return $this->toCellValues($this->normalizeValue($item->getAttribute($field)));
+        }
+
+        $relation = array_shift($parts);
+        try {
+            $relMethod = QueryEngineIntrospector::resolveRelationMethod(get_class($item), $relation);
+            $related   = $item->$relMethod;
+        } catch (\Throwable) {
+            return [];
+        }
+
+        $related = $related
+            ? ($related instanceof Model ? collect([$related]) : $related)
+            : collect();
+
+        $values = [];
+        foreach ($related as $relatedItem) {
+            $sub = $this->collectPathValues($relatedItem, $parts);
+            if ($sub === null) {
+                return null;
+            }
+            array_push($values, ...$sub);
+        }
+
+        return $values;
+    }
+
+    /**
+     * Normalise une valeur de cellule en liste de chaînes (vide si null ou '').
+     *
+     * @return list<string>
+     */
+    protected function toCellValues(mixed $value): array
+    {
+        if ($value === null || $value === '') {
+            return [];
+        }
+        if (is_bool($value)) {
+            return [$value ? '1' : '0'];
+        }
+        if (is_int($value) || is_float($value)) {
+            return [$value];
+        }
+        if (is_scalar($value)) {
+            return [(string) $value];
+        }
+
+        return [json_encode($value)];
     }
 
     // ─────────────────────────────────────────────────────────────
