@@ -3068,7 +3068,7 @@ Dans l'application, un LAN peut être rattaché à un MAN ou un WAN depuis les o
 ## Outils
 
 ### BPMN ou Carte
-Dans outils on trouve BPMN et Cartes.Ces 2 groupes d'obets sont dans la même table:
+Dans outils on trouve BPMN et Cartes.Ces 2 groupes d'objets sont dans la même table:
 
 | Table                                    | api         |
 |:-----------------------------------------|:------------|
