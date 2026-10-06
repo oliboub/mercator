@@ -11,6 +11,7 @@ FROM    <Modèle>
 FIELDS  <champ1>, <champ2>, <relation.champ>, ...
 WHERE   (<condition1>) AND|OR (<condition2>)
 WITH    <relation1>, <relation2>, ...
+GROUP BY <champ1>, <champ2>, ...
 OUTPUT  list | graph
 LIMIT   <n>
 ```
@@ -21,6 +22,7 @@ LIMIT   <n>
 | `FIELDS` | ➖ | Liste des champs à afficher, y compris les champs de relations (`relation.champ`) |
 | `WHERE` | ➖ | Filtre sur les données (voir [Conditions](#conditions))                           |
 | `WITH` | ➖ | Relations à afficher dans le graphe                                               |
+| `GROUP BY` | ➖ | Regroupe les lignes et concatène les autres valeurs (voir [GROUP BY](#group-by)) |
 | `OUTPUT` | ➖ | Format de sortie : `list` ou `graph` (`list` par défaut)                          |
 | `LIMIT` | ➖ | Nombre maximum d'enregistrements retournés (défaut : 100)                         |
 
@@ -154,6 +156,35 @@ Les règles à respecter :
 
 !!! tip "Quand masquer un niveau ?"
     Masquez un intermédiaire lorsque la relation pivot n'a pas de valeur sémantique dans la visualisation — par exemple, les sous-réseaux entre un réseau et ses VLANs, ou les interfaces entre un serveur et ses VLANs.
+
+## Clause GROUP BY {#group-by}
+
+Par défaut, une requête `OUTPUT list` qui affiche plusieurs champs de relations produit **une ligne par combinaison** (produit cartésien) : une application liée à 3 processus et 2 bases de données apparaît sur 6 lignes.
+
+La clause `GROUP BY` produit à la place **une ligne par valeur distincte** des champs de regroupement. Chaque autre colonne contient la liste des valeurs distinctes, séparées par une virgule.
+
+```sql
+FROM applications
+FIELDS id, name, processes.name, activities.name, databases.name
+GROUP BY id, name
+OUTPUT list
+```
+
+| id | name | processes.name | activities.name | databases.name |
+|----|------|----------------|-----------------|----------------|
+| 1 | ERP | Achats, Ventes | Facturation | Oracle, PostgreSQL |
+| 2 | Portail | | Accueil | PostgreSQL |
+
+Règles :
+
+- Chaque champ de `GROUP BY` doit figurer dans `FIELDS`.
+- `GROUP BY` n'est disponible qu'avec `OUTPUT list` (y compris pour l'export CSV).
+- Les valeurs vides sont ignorées et les doublons supprimés ; l'ordre de première apparition est conservé.
+- Une relation sans objet lié donne une cellule vide.
+- On peut aussi regrouper sur un champ de relation, par exemple `GROUP BY databases.name` pour lister, par base de données, les applications qui l'utilisent.
+
+!!! tip "Grouper sur `id`"
+    Incluez `id` dans `GROUP BY` pour ne pas fusionner deux objets qui porteraient le même nom.
 
 ## Format de sortie (OUTPUT)
 
