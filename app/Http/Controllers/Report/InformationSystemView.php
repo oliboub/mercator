@@ -182,6 +182,6 @@ class InformationSystemView extends Controller
             ->with('informations', $informations)
             ->with('graphTooLarge', $graphTooLarge)
             ->with('dotSrc', $graphTooLarge ? '' : $graphBuilder->buildDot($macroProcessuses, $processes, $activities, $operations, $tasks, $actors, $informations))
-            ->with('imageManifest', $graphBuilder->imageManifest());
+            ->with('imageManifest', $graphBuilder->imageManifest($processes));
     }
 }
