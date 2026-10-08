@@ -179,7 +179,7 @@ class InformationSystemSection implements ReportSection
             $ownInformations,
             [
                 'withHref' => false,
-                'iconPathResolver' => fn (string $webPath) => public_path(ltrim($webPath, '/')),
+                'iconResolver' => fn (?int $iconId, string $fallback) => $helper->resolveIconPath($iconId, ltrim($fallback, '/')),
             ]
         );
         $helper->insertGraph($section, $dot);
