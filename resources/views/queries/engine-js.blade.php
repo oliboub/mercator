@@ -231,7 +231,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 render:         (data, type, row) => row[c] ?? '',
             })),
             order:      [[0, 'asc']],
-            pageLength: 100,
+            pageLength: 250,
+            lengthMenu: [10, 100, 250, 1000],
             buttons: [
                 { extend: 'colvis', className: 'btn-default' },
                 { extend: 'copy',   className: 'btn-default' },
