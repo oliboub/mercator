@@ -874,3 +874,39 @@ describe('QueryEngineController – GROUP BY', function () {
         ])->assertUnprocessable();
     });
 });
+
+describe('execute – lecture seule', function () {
+
+    it("n'écrit rien en base pendant l'exécution", function () {
+        makeApp(makeServer());
+        QueryEngineIntrospector::flushCache();
+
+        DB::enableQueryLog();
+
+        $this->resolver->execute([
+            'from'   => 'logical-servers',
+            'fields' => ['name', 'applications.name'],
+            'output' => 'list',
+        ]);
+        $this->resolver->execute([
+            'from'     => 'logical-servers',
+            'traverse' => ['applications'],
+            'output'   => 'graph',
+        ]);
+
+        $writes = collect(DB::getQueryLog())
+            ->pluck('query')
+            ->reject(fn (string $sql) => str_starts_with(strtolower(ltrim($sql)), 'select'));
+
+        expect($writes)->toBeEmpty();
+    });
+
+    it('ne compte que les méthodes typées Relation comme relations', function () {
+        $methods = collect(QueryEngineIntrospector::getRelations(LogicalServer::class))->pluck('method');
+
+        expect($methods)->toContain('applications')
+            ->not->toContain('restore')
+            ->not->toContain('forceDelete')
+            ->not->toContain('serverIds');
+    });
+});
