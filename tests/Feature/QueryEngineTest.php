@@ -330,14 +330,14 @@ describe('execute – output list', function () {
         expect($result->rows)->toHaveCount(3);
     });
 
-    it('respecte la limite par défaut de 100', function () {
+    it('retourne tous les résultats sans LIMIT explicite', function () {
         for ($i = 0; $i < 110; $i++) {
             makeServer();
         }
 
         $result = $this->resolver->execute(['from' => 'logical-servers', 'output' => 'list']);
 
-        expect($result->rows)->toHaveCount(100);
+        expect($result->rows)->toHaveCount(110);
     });
 
     it('respecte une limite personnalisée', function () {
