@@ -330,14 +330,14 @@ describe('execute – output list', function () {
         expect($result->rows)->toHaveCount(3);
     });
 
-    it('respecte la limite par défaut de 100', function () {
+    it('retourne tous les résultats sans LIMIT explicite', function () {
         for ($i = 0; $i < 110; $i++) {
             makeServer();
         }
 
         $result = $this->resolver->execute(['from' => 'logical-servers', 'output' => 'list']);
 
-        expect($result->rows)->toHaveCount(100);
+        expect($result->rows)->toHaveCount(110);
     });
 
     it('respecte une limite personnalisée', function () {
@@ -872,5 +872,41 @@ describe('QueryEngineController – GROUP BY', function () {
             'group_by' => ['id'],
             'output'   => 'list',
         ])->assertUnprocessable();
+    });
+});
+
+describe('execute – lecture seule', function () {
+
+    it("n'écrit rien en base pendant l'exécution", function () {
+        makeApp(makeServer());
+        QueryEngineIntrospector::flushCache();
+
+        DB::enableQueryLog();
+
+        $this->resolver->execute([
+            'from'   => 'logical-servers',
+            'fields' => ['name', 'applications.name'],
+            'output' => 'list',
+        ]);
+        $this->resolver->execute([
+            'from'     => 'logical-servers',
+            'traverse' => ['applications'],
+            'output'   => 'graph',
+        ]);
+
+        $writes = collect(DB::getQueryLog())
+            ->pluck('query')
+            ->reject(fn (string $sql) => str_starts_with(strtolower(ltrim($sql)), 'select'));
+
+        expect($writes)->toBeEmpty();
+    });
+
+    it('ne compte que les méthodes typées Relation comme relations', function () {
+        $methods = collect(QueryEngineIntrospector::getRelations(LogicalServer::class))->pluck('method');
+
+        expect($methods)->toContain('applications')
+            ->not->toContain('restore')
+            ->not->toContain('forceDelete')
+            ->not->toContain('serverIds');
     });
 });

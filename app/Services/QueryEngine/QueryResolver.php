@@ -42,7 +42,14 @@ class QueryResolver
             $builder->with($eagerLoad);
         }
 
-        $items = $builder->limit($dsl['limit'] ?? 100)->get();
+        // Sans LIMIT explicite, une liste renvoie tous les résultats ;
+        // un graphe garde une limite par défaut (exploration coûteuse).
+        $limit = $dsl['limit'] ?? (($dsl['output'] ?? 'list') === 'graph' ? 100 : null);
+        if ($limit !== null) {
+            $builder->limit($limit);
+        }
+
+        $items = $builder->get();
 
         return match ($dsl['output'] ?? 'list') {
             'graph' => $this->buildGraph($items, $dsl['from'], $traverse),
