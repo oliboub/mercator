@@ -43,9 +43,12 @@
                                             @canAccessAny(\App\Models\Network::class, \App\Models\Subnetwork::class, \App\Models\NetworkSwitch::class, \App\Models\Gateway::class, \App\Models\ExternalConnectedEntity::class, \App\Models\Container::class, \App\Models\Cluster::class, \App\Models\LogicalServer::class, \App\Models\Backup::class, \App\Models\SecurityDevice::class, \App\Models\Router::class, \App\Models\Certificate::class, \App\Models\Vlan::class)
                                             <option value="5">{{ trans("cruds.report.cartography.logical_infrastructure") }}</option>
                                             @endcanAccessAny
-                                            @canAccessAny(\App\Models\ApplicationFlow::class, \App\Models\LogicalFlow::class)
+                                            @canAccess(\App\Models\LogicalFlow::class)
+                                            <option value="10">{{ trans("cruds.logicalFlow.title") }}</option>
+                                            @endcanAccess
+                                            @canAccess(\App\Models\ApplicationFlow::class)
                                             <option value="9">{{ trans("cruds.applicationFlow.title") }}</option>
-                                            @endcanAccessAny
+                                            @endcanAccess
                                             @canAccessAny(\App\Models\Site::class, \App\Models\Building::class, \App\Models\Bay::class, \App\Models\Zone::class, \App\Models\PhysicalServer::class, \App\Models\Workstation::class, \App\Models\Phone::class, \App\Models\Peripheral::class, \App\Models\StorageDevice::class, \App\Models\PhysicalSwitch::class, \App\Models\PhysicalRouter::class, \App\Models\WifiTerminal::class, \App\Models\PhysicalSecurityDevice::class, \App\Models\Wan::class, \App\Models\Man::class, \App\Models\Lan::class)
                                             <option value="6">{{ trans("cruds.report.cartography.physical_infrastructure") }}</option>
                                             @endcanAccessAny
@@ -391,9 +394,10 @@
 
                 const passesFilter =
                     filter.length === 0
-                    || (filter.includes(targetNode.vue) && edge.edgeType !== 'CABLE' && edge.edgeType !== 'FLUX')
+                    || (filter.includes(targetNode.vue) && edge.edgeType !== 'CABLE' && edge.edgeType !== 'FLUX' && edge.edgeType !== 'LFLUX')
                     || (filter.includes("8") && edge.edgeType === 'CABLE')
                     || (filter.includes("9") && edge.edgeType === 'FLUX')
+                    || (filter.includes("10") && edge.edgeType === 'LFLUX')
                     || (filter.includes("1") && edge.edgeType === 'FLUX')
                     || (filter.includes("2") && edge.edgeType === 'FLUX');
 
@@ -447,9 +451,10 @@
                 const passesFilter =
                     (
                         filter.length === 0
-                        || (filter.includes(targetNode.vue) && edge.edgeType !== 'CABLE' && edge.edgeType !== 'FLUX')
+                        || (filter.includes(targetNode.vue) && edge.edgeType !== 'CABLE' && edge.edgeType !== 'FLUX' && edge.edgeType !== 'LFLUX')
                         || (filter.includes("8") && edge.edgeType === 'CABLE')
                         || (filter.includes("9") && edge.edgeType === 'FLUX')
+                        || (filter.includes("10") && edge.edgeType === 'LFLUX')
                         || (filter.includes("1") && edge.edgeType === 'FLUX')
                         || (filter.includes("2") && edge.edgeType === 'FLUX')
                     ) && matchAttr;
@@ -479,6 +484,7 @@
                         || neighborEdge.edgeType === 'LINK'
                         || (filter.includes("8") && neighborEdge.edgeType === 'CABLE')
                         || (filter.includes("9") && neighborEdge.edgeType === 'FLUX')
+                        || (filter.includes("10") && neighborEdge.edgeType === 'LFLUX')
                         || (filter.includes("1") && neighborEdge.edgeType === 'FLUX')
                         || (filter.includes("2") && neighborEdge.edgeType === 'FLUX');
 
@@ -538,7 +544,7 @@
             for (const edge of edgeList) {
                 if (edge.attachedNodeId !== targetNodeId) continue;
 
-                if (edge.edgeType === 'FLUX') {
+                if (edge.edgeType === 'FLUX' || edge.edgeType === 'LFLUX') {
                     const isFrom    = edge.edgeDirection === 'FROM';
                     const [from, to] = isFrom
                         ? [targetNodeId, sourceNodeId]

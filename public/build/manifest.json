@@ -133,7 +133,7 @@
     "isEntry": true
   },
   "resources/graphs/map.edit.ts": {
-    "file": "assets/map.edit-DdmSwWYn.js",
+    "file": "assets/map.edit-v3m0bQFQ.js",
     "name": "map.edit",
     "src": "resources/graphs/map.edit.ts",
     "isEntry": true,
@@ -154,7 +154,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DxwizHvB.js",
+    "file": "assets/app-BFfqOCAT.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
