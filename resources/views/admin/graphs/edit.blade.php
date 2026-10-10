@@ -61,6 +61,7 @@
                                             <option value="3">{{ trans("cruds.report.cartography.applications") }}</option>
                                             <option value="4">{{ trans("cruds.report.cartography.administration") }}</option>
                                             <option value="5">{{ trans("cruds.report.cartography.logical_infrastructure") }}</option>
+                                            <option value="10">{{ trans("cruds.logicalFlow.title") }}</option>
                                             <option value="9">{{ trans("cruds.applicationFlow.title") }}</option>
                                             <option value="6">{{ trans("cruds.report.cartography.physical_infrastructure") }}</option>
                                             <option value="7">{{ trans("cruds.report.cartography.network_infrastructure") }}</option>
