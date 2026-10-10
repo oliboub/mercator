@@ -893,6 +893,7 @@ server per physical server.
 | logical_servers      | List int [,] | IDs list of related logical_servers |
 | activities           | List int [,] | IDs list of related activities      |
 | containers           | List int [,] | IDs list of related containers      |
+| administrators       | List int [,] | IDs list of related admin-users     |
 | created_at           | timestamp    | Date of creation                    |
 | updated_at           | timestamp    | Date of update                      |
 | deleted_at           | timestamp    | Date of deletion                    |
