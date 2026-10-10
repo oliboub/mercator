@@ -2744,6 +2744,7 @@ réseau (NAS), réseau de stockage (SAN), disque dur…
 | name        | varchar(255) | Nom de l'infrastructure de stockage         |
 | type        | varchar(255) | Type de l’infrastructure de stockage        |
 | description | longtext     | Description de l'infrastructure de stockage |
+| icon_id     | int unsigned | Référence vers une image spécifique         |
 | vendor      | varchar(255) | Vendeur / éditeur pour recherche CPE        |
 | product     | varchar(255) | Produit d'un éditeur pour recherche CPE     |
 | version     | varchar(255) | Version d'un produit pour recherche CPE     |
