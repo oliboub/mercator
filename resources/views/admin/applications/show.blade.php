@@ -117,13 +117,15 @@
                     <th>
                         {{ trans('cruds.application.fields.administrators') }}
                     </th>
-                    <td>
+                    <td colspan=3>
                         @foreach($application->administrators as $administrator)
                             <a href="{{ route('admin.admin-users.show', $administrator->id) }}">{{ $administrator->user_id }}</a>
                             @if(!$loop->last)
                                 ,
                             @endif
                         @endforeach
+                    </td>
+                    <td colspan=2>
                     </td>
                 </tbody>
             </table>
@@ -140,13 +142,13 @@
                     <th width="10%">
                         {{ trans('cruds.application.fields.technology') }}
                     </th>
-                    <td colspan="2">
+                    <td colspan="4">
                         {{ $application->technology }}
                     </td>
                     <th>
                         {{ trans('cruds.application.fields.external') }}
                     </th>
-                    <td colspan="4">
+                    <td colspan="2">
                         {{ $application->external }}
                     </td>
                 </tr>
