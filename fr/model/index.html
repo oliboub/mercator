@@ -3616,6 +3616,7 @@ champ </em><em>informations</em>**</p>
         list logical_servers
         list activities
         list containers
+        list administrators
         timestamp created_at
         timestamp updated_at
         timestamp deleted_at
@@ -4001,7 +4002,12 @@ a un serveur logique par serveur physique.</p>
 <tr>
 <td style="text-align: left;">containers</td>
 <td style="text-align: left;">List int [,]</td>
-<td style="text-align: left;">Liste d'id de(s) containers associé(s)</td>
+<td style="text-align: left;">Liste d'id de(s) container(s) associé(s)</td>
+</tr>
+<tr>
+<td style="text-align: left;">administrators</td>
+<td style="text-align: left;">List int [,]</td>
+<td style="text-align: left;">Liste d'id de(s) admin-user(s) associé(s)</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -8224,6 +8230,11 @@ réseau (NAS), réseau de stockage (SAN), disque dur…</p>
 <td style="text-align: left;">description</td>
 <td style="text-align: left;">longtext</td>
 <td style="text-align: left;">Description de l'infrastructure de stockage</td>
+</tr>
+<tr>
+<td style="text-align: left;">icon_id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">Référence vers une image spécifique</td>
 </tr>
 <tr>
 <td style="text-align: left;">vendor</td>
