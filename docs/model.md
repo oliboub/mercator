@@ -2702,6 +2702,7 @@ network (SAN), hard disk...
 | name        | varchar(255) | Name of storage infrastructure                    |
 | type        | varchar(255) | Storage infrastructure type (NAS, SAN, HDD, etc.) |
 | description | longtext     | Description of the storage infrastructure         |
+| icon_id     | int unsigned | Reference to a specific icon                      |
 | site_id     | int unsigned | Reference to the site                             |
 | building_id | int unsigned | Reference to building / room                      |
 | bay_id      | int unsigned | Reference to the rack                             |
