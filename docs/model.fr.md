@@ -763,6 +763,7 @@ erDiagram
         list logical_servers
         list activities
         list containers
+        list administrators
         timestamp created_at
         timestamp updated_at
         timestamp deleted_at
@@ -931,8 +932,9 @@ a un serveur logique par serveur physique.
 | services             | List int [,] | Liste d'id de(s) service(s) lié(s)                                  |
 | databases            | List int [,] | Liste d'id de(s) database(s) liée(s)                                |
 | logical_servers      | List int [,] | Liste d'id de(s) serveur(s) logique(s) servant(s) cette application |
-| activities           | List int [,] | Liste d'id de(s) activité(s) associée(s)                           |
-| containers           | List int [,] | Liste d'id de(s) containers associé(s)                              |
+| activities           | List int [,] | Liste d'id de(s) activité(s) associée(s)                            |
+| containers           | List int [,] | Liste d'id de(s) container(s) associé(s)                            |
+| administrators       | List int [,] | Liste d'id de(s) admin-user(s) associé(s)                           |
 | created_at           | timestamp    | Date de création                                                    |
 | updated_at           | timestamp    | Date de mise à jour                                                 |
 | deleted_at           | timestamp    | Date de suppression                                                 |
