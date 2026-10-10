@@ -80,7 +80,7 @@
                                 <x-show-link :model="$physicalSwitch" />
                             </td>
                             <td>
-                                {!! $physicalSwitch->type ?? '' !!}
+                                {{ $physicalSwitch->type ?? '' }}
                             </td>
                             <td>
                                 <?php

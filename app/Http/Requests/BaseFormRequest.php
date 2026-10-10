@@ -39,6 +39,15 @@ abstract class BaseFormRequest extends FormRequest
         return $this->htmlFields;
     }
 
+    /**
+     * Sanitise des attributs qui ne passent pas par une requête HTTP
+     * (ex : import Excel), avec les mêmes règles que le formulaire.
+     */
+    public function sanitizeAttributes(array $data): array
+    {
+        return $this->sanitize($data, $this->htmlFields);
+    }
+
     protected function prepareForValidation(): void
     {
         $this->merge($this->sanitize($this->all(), $this->htmlFields));

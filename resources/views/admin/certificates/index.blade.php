@@ -79,7 +79,7 @@
                                 <x-show-link :model="$certificate" />
                             </td>
                             <td>
-                                {!! $certificate->type ?? '' !!}
+                                {{ $certificate->type ?? '' }}
                             </td>
                             <td>
                                 <?php

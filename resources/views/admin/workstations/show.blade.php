@@ -205,9 +205,9 @@
                         <th width="10%">{{ trans('cruds.workstation.fields.address_ip') }}</th>
                         <td width="15%">{{ $workstation->address_ip }}</td>
                         <th width="10%">{{ trans('cruds.workstation.fields.mac_address') }}</th>
-                        <td width="15%">{!! $workstation->mac_address !!}</td>
+                        <td width="15%">{{ $workstation->mac_address }}</td>
                         <th width="10%">{{ trans('cruds.workstation.fields.network_port_type') }}</th>
-                        <td width="15%">{!! $workstation->network_port_type !!}</td>
+                        <td width="15%">{{ $workstation->network_port_type }}</td>
                    </tr>
                </tbody>
             </table>

@@ -267,7 +267,7 @@
         <div class="row">
             <div class="col-sm">
                 <div class="form-group">
-                    <textarea class="form-control ckeditor {{ $errors->has('configuration') ? 'is-invalid' : '' }}" name="configuration" id="configuration">{!! old('configuration', $server->configuration) !!}</textarea>
+                    <textarea class="form-control ckeditor {{ $errors->has('configuration') ? 'is-invalid' : '' }}" name="configuration" id="configuration">{{ old('configuration', $server->configuration) }}</textarea>
                     @if($errors->has('configuration'))
                         <div class="invalid-feedback">
                             {{ $errors->first('configuration') }}

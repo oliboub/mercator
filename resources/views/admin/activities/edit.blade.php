@@ -104,7 +104,7 @@
                            for="description">{{ trans('cruds.activity.fields.description') }}</label>
                     <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                               name="description"
-                              id="description">{!! old('description', $activity->description) !!}</textarea>
+                              id="description">{{ old('description', $activity->description) }}</textarea>
                     @if($errors->has('description'))
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}
@@ -433,7 +433,7 @@
                         <div class="form-group">
                             <label for="drp">{{ trans('cruds.activity.fields.drp') }}</label>
                             <textarea class="form-control ckeditor {{ $errors->has('drp') ? 'is-invalid' : '' }}"
-                                      name="drp" id="drp">{!! old('drp', $activity->drp) !!}</textarea>
+                                      name="drp" id="drp">{{ old('drp', $activity->drp) }}</textarea>
                             @if($errors->has('drp'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('drp') }}

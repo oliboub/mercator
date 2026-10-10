@@ -94,7 +94,7 @@
                                    for="description">{{ trans('cruds.application.fields.description') }}</label>
                             <textarea
                                     class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
-                                    name="description" id="description">{!! old('description') !!}</textarea>
+                                    name="description" id="description">{{ old('description') }}</textarea>
                             @if($errors->has('description'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('description') }}
@@ -139,7 +139,8 @@
 		        </div>
 		    </div>
 		</div>
-                <!------------------------------------------------------------------------------------------------------------->
+
+		<!------------------------------------------------------------------------------------------------------------->
 
                 @if (config('mercator.parameters.application_documents'))
                 <div class="row">
@@ -157,6 +158,28 @@
                     </div>
                 </div>
                  @endif
+
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                             <label class="recommended"
+                                    for="application_block_id">{{ trans('cruds.application.fields.application_block') }}</label>
+                             <select class="form-control select2 {{ $errors->has('application_block') ? 'is-invalid' : '' }}"
+                                     name="application_block_id" id="application_block_id">
+                                 <option value="">...</option>
+                                 @foreach($applicationBlocks as $id => $applicationBlock)
+                                     <option value="{{ $id }}" {{ old('application_block_id') == $id ? 'selected' : '' }}>{{ $applicationBlock }}</option>
+                                 @endforeach
+                             </select>
+                             @if($errors->has('application_block'))
+                                 <div class="invalid-feedback">
+                                     {{ $errors->first('application_block') }}
+                                 </div>
+                             @endif
+                             <span class="help-block">{{ trans('cruds.application.fields.application_block_helper') }}</span>
+                         </div>
+                     </div>
+                </div>
 
             </div>
             <!------------------------------------------------------------------------------------------------------------->
@@ -284,7 +307,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="logical_servers">{{ trans('cruds.application.fields.administrators') }}</label>
                             <select class="form-control select2 {{ $errors->has('administrators') ? 'is-invalid' : '' }}"
@@ -310,26 +333,7 @@
             <!------------------------------------------------------------------------------------------------------------->
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="recommended"
-                                   for="application_block_id">{{ trans('cruds.application.fields.application_block') }}</label>
-                            <select class="form-control select2 {{ $errors->has('application_block') ? 'is-invalid' : '' }}"
-                                    name="application_block_id" id="application_block_id">
-                                <option value="">...</option>
-                                @foreach($applicationBlocks as $id => $applicationBlock)
-                                    <option value="{{ $id }}" {{ old('application_block_id') == $id ? 'selected' : '' }}>{{ $applicationBlock }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('application_block'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('application_block') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.application.fields.application_block_helper') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label class="label-maturity-1"
                                    for="technology">{{ trans('cruds.application.fields.technology') }}</label>

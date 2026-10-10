@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('.check-all-wrapper input').click(function (e) {
         console.log("check-all-wrapper");
         e.preventDefault();
-        $('input[data-check=' + $(this).prop('id') + ']:not(:checked)').each(function () {
+        $('input[data-check=' + $(this).prop('id') + ']:not(:checked):not(:disabled)').each(function () {
             $(this).prop('checked', true);
         });
     });

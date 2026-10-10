@@ -99,7 +99,7 @@
                             <textarea
                                     class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                                     name="description"
-                                    id="description">{!! old('description', $application->description) !!}</textarea>
+                                    id="description">{{ old('description', $application->description) }}</textarea>
                             @if($errors->has('description'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('description') }}
@@ -126,7 +126,8 @@
                         </div>
                     </div>
                 </div>
-		<div class="row">
+
+        <div class="row">
 		    <div class="col-md-9">
 		        <div class="form-group">
 		            <label for="comments">{{ trans('cruds.application.fields.comments') }}</label>
@@ -161,6 +162,27 @@
                     </div>
                 </div>
               @endif
+
+              <div class="row">
+                  <div class="col-6">
+                      <div class="form-group">
+                          <label for="application_block_id">{{ trans('cruds.application.fields.application_block') }}</label>
+                          <select class="form-control select2 {{ $errors->has('application_block') ? 'is-invalid' : '' }}"
+                                  name="application_block_id" id="application_block_id">
+                              <option value="">...</option>
+                              @foreach($applicationBlocks as $id => $applicationBlock)
+                                  <option value="{{ $id }}" {{ ($application->applicationBlock ? $application->applicationBlock->id : old('application_block_id')) == $id ? 'selected' : '' }}>{{ $applicationBlock }}</option>
+                              @endforeach
+                          </select>
+                          @if($errors->has('application_block'))
+                              <div class="invalid-feedback">
+                                  {{ $errors->first('application_block') }}
+                              </div>
+                          @endif
+                          <span class="help-block">{{ trans('cruds.application.fields.application_block_helper') }}</span>
+                      </div>
+                  </div>
+              </div>
 
             </div>
             <!------------------------------------------------------------------------------------------------------------->
@@ -289,7 +311,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="logical_servers">{{ trans('cruds.application.fields.administrators') }}</label>
                             <select class="form-control select2 {{ $errors->has('administrators') ? 'is-invalid' : '' }}"
@@ -316,25 +338,7 @@
             <div class="card-body">
 
                 <div class="row">
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="application_block_id">{{ trans('cruds.application.fields.application_block') }}</label>
-                            <select class="form-control select2 {{ $errors->has('application_block') ? 'is-invalid' : '' }}"
-                                    name="application_block_id" id="application_block_id">
-                                <option value="">...</option>
-                                @foreach($applicationBlocks as $id => $applicationBlock)
-                                    <option value="{{ $id }}" {{ ($application->applicationBlock ? $application->applicationBlock->id : old('application_block_id')) == $id ? 'selected' : '' }}>{{ $applicationBlock }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('application_block'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('application_block') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.application.fields.application_block_helper') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-4">
+                    <div class="col-8">
                         <div class="form-group">
                             <label class="label-maturity-1"
                                    for="technology">{{ trans('cruds.application.fields.technology') }}</label>

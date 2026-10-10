@@ -91,7 +91,7 @@
                                 <x-show-link :model="$workstation" />
                             </td>
                             <td>
-                                {!! $workstation->type ?? '' !!}
+                                {{ $workstation->type ?? '' }}
                             </td>
                             <td>
                                 <?php
@@ -103,10 +103,10 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $workstation->status ?? '' !!}
+                                {{ $workstation->status ?? '' }}
                             </td>
                             <td>
-                                {!! $workstation->serial_number ?? '' !!}
+                                {{ $workstation->serial_number ?? '' }}
                             </td>
                             <td>
                                 @if ($workstation->user!==null)

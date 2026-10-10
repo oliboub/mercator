@@ -110,10 +110,10 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $info->description ?? '' !!}
+                                {!! clean($info->description ?? '') !!}
                             </td>
                             <td>
-                                {!! $info->owner ?? '' !!}
+                                {{ $info->owner ?? '' }}
                             </td>
                             <td nowrap>
                                 @php

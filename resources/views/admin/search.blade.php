@@ -53,12 +53,12 @@
                 <td>
                     @if ($loop->first)
                         @canShow($item['instance'])
-                            <a href="{{ $item['url'] }}">{!! $item['data'][$field] !!}</a>
+                            <a href="{{ $item['url'] }}">{!! clean((string) $item['data'][$field]) !!}</a>
                         @else
-                            {!! $item['data'][$field] !!}
+                            {!! clean((string) $item['data'][$field]) !!}
                         @endcanShow
                     @else
-                        {!! $item['data'][$field] !!}
+                        {!! clean((string) $item['data'][$field]) !!}
                     @endif
                 </td>
             @endforeach

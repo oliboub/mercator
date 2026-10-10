@@ -92,10 +92,10 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $network->description ?? '' !!}
+                                {!! clean($network->description ?? '') !!}
                             </td>
                             <td>
-                                {!! $network->protocol_type ?? '' !!}
+                                {{ $network->protocol_type ?? '' }}
                             </td>
                             <td>
                                 @if ($network->security_need_c==1)

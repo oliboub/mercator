@@ -111,7 +111,7 @@
                                 <x-show-link :model="$processing" />
                             </td>
                             <td>
-                                {!! $processing->description !!}
+                                {!! clean($processing->description ?? '') !!}
                             </td>
                             <td>
                                 @foreach($processing->processes as $p)

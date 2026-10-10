@@ -108,7 +108,7 @@
                             <textarea
                                     class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                                     name="description"
-                                    id="description">{!! old('description', $wifiTerminal->description) !!}</textarea>
+                                    id="description">{{ old('description', $wifiTerminal->description) }}</textarea>
                             @if($errors->has('description'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('description') }}

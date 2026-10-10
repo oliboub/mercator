@@ -72,6 +72,26 @@ class RoleAssignment
     }
 
     /**
+     * Identifiants des permissions que l'acteur détient, tous périmètres confondus (null = toutes).
+     * Sert à griser les cases du formulaire de rôle ; le contrôle par périmètre reste fait à
+     * l'enregistrement (authorizeRolePermissions).
+     *
+     * @return list<int>|null
+     */
+    public static function grantablePermissionIds(User $actor): ?array
+    {
+        if ($actor->isAdmin()) {
+            return null;
+        }
+
+        return Permission::query()
+            ->whereIn('title', array_merge([], ...array_values($actor->permissionsByPerimeter())))
+            ->pluck('id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+    }
+
+    /**
      * L'acteur peut-il modifier ou supprimer ce rôle ? Seulement s'il pourrait l'attribuer.
      */
     public static function canManageRole(User $actor, Role $role): bool

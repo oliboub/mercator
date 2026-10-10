@@ -75,7 +75,7 @@
                                 <x-show-link :model="$cluster" />
                             </td>
                             <td>
-                                {!! $cluster->type ?? '' !!}
+                                {{ $cluster->type ?? '' }}
                             </td>
                             <td>
                                 @php
