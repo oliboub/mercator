@@ -82,7 +82,13 @@ class SanitizeHtml extends Command
     {
         $result = [];
 
-        foreach (glob(app_path('Http/Requests/{Store,Update}*Request.php'), GLOB_BRACE) as $file) {
+        // GLOB_BRACE n'existe pas sous musl (Alpine) : deux glob() distincts
+        $files = array_merge(
+            glob(app_path('Http/Requests/Store*Request.php')) ?: [],
+            glob(app_path('Http/Requests/Update*Request.php')) ?: [],
+        );
+
+        foreach ($files as $file) {
             if (! preg_match('/^(?:Store|Update)(\w+)Request$/', basename($file, '.php'), $matches)) {
                 continue;
             }
