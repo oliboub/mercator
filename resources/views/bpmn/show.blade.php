@@ -232,8 +232,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 @if (!empty($graph->content))
-    $graph = `{!! $graph->content !!}`;
-    loadGraph($graph);
+    const xmlContent = @json($graph->content);
+    loadGraph(xmlContent);
 @endif
 });
 </script>

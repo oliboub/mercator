@@ -78,7 +78,7 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $lan->description !!}
+                                {{ $lan->description }}
                             </td>
                             <td nowrap>
                                 @can('lan_show')

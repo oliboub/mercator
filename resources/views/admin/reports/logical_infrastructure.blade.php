@@ -585,7 +585,7 @@
 @section('scripts')
     @vite(['resources/js/graphviz.js'])
     <script>
-        let dotSrc = `{!! $dotSrc !!}`;
+        let dotSrc = @json($dotSrc);
 
         document.addEventListener('graphvizReady', () => {
             window.initGraphvizReport({ dotSrc, engine: @json($engine), images: @json($imageManifest) });

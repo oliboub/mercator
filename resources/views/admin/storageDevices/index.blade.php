@@ -80,7 +80,7 @@
                                 <x-show-link :model="$storageDevice" />
                             </td>
                             <td>
-                                {!! $storageDevice->type ?? '' !!}
+                                {{ $storageDevice->type ?? '' }}
                             </td>
                             <td>
                                 <?php
@@ -92,7 +92,7 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $storageDevice->address_ip ?? '' !!}
+                                {{ $storageDevice->address_ip ?? '' }}
                             </td>
                             <td>
                                 @if ($storageDevice->site!==null)

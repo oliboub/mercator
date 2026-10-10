@@ -114,7 +114,7 @@
                                    class="label-maturity-1">{{ trans('cruds.physicalSwitch.fields.description') }}</label>
                             <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                                       name="description"
-                                      id="description">{!! old('description', $physicalSwitch->description) !!}</textarea>
+                                      id="description">{{ old('description', $physicalSwitch->description) }}</textarea>
                             @if($errors->has('description'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('description') }}

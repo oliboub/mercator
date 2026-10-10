@@ -100,7 +100,7 @@
                            for="description">{{ trans('cruds.gateway.fields.description') }}</label>
                     <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                               name="description"
-                              id="description">{!! old('description', $gateway->description) !!}</textarea>
+                              id="description">{{ old('description', $gateway->description) }}</textarea>
                     @if($errors->has('description'))
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}

@@ -197,7 +197,7 @@
                         {{ trans('cruds.information.fields.constraints') }}
                     </th>
                     <td>
-                        {!! $information->constraints !!}
+                        {!! clean($information->constraints ?? '') !!}
                     </td>
                 </tr>
             </tbody>

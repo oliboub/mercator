@@ -119,7 +119,7 @@
 @section('scripts')
 @vite(['resources/js/graphviz.js'])
 <script id="dot-input">
-let dotSrc = `{!! $dotSrc !!}`;
+let dotSrc = @json($dotSrc);
 
 // Select2 déclenche un événement jQuery : on l'écoute via jQuery, une fois
 // les modules Vite (jQuery) chargés

@@ -105,7 +105,7 @@
                                 ?>
                             </td>
                             <td>
-                                {!! $process->description ?? '' !!}
+                                {!! clean($process->description ?? '') !!}
                             </td>
                             <td>
                                 @foreach($process->operations as $operation)

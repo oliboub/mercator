@@ -105,7 +105,7 @@
                        for="description">{{ trans('cruds.information.fields.description') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                           name="description"
-                          id="description">{!! old('description', $information->description) !!}</textarea>
+                          id="description">{{ old('description', $information->description) }}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}
@@ -370,7 +370,7 @@
                 <label for="constraints">{{ trans('cruds.information.fields.constraints') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('constraints') ? 'is-invalid' : '' }}"
                           name="constraints"
-                          id="constraints">{!! old('constraints', $information->constraints) !!}</textarea>
+                          id="constraints">{{ old('constraints', $information->constraints) }}</textarea>
                 @if($errors->has('constraints'))
                     <div class="invalid-feedback">
                         {{ $errors->first('constraints') }}

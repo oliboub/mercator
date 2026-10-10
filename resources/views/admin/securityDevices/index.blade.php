@@ -75,7 +75,7 @@
                                 <x-show-link :model="$securityDevice" />
                             </td>
                             <td>
-                                {!! $securityDevice->type ?? '' !!}
+                                {{ $securityDevice->type ?? '' }}
                             </td>
                             <td>
                                 @php

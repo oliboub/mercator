@@ -159,7 +159,7 @@
                     <label class="label-maturity-1"
                            for="description">{{ trans('cruds.relation.fields.description') }}</label>
                     <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
-                              name="description" id="description">{!! old('description') !!}</textarea>
+                              name="description" id="description">{{ old('description') }}</textarea>
                     @if($errors->has('description'))
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}
@@ -263,7 +263,7 @@
                         <div class="form-group">
                             <label for="comments">{{ trans('cruds.relation.fields.comments') }}</label>
                             <textarea class="form-control ckeditor {{ $errors->has('comments') ? 'is-invalid' : '' }}"
-                                      name="comments" id="comments">{!! old('comments') !!}</textarea>
+                                      name="comments" id="comments">{{ old('comments') }}</textarea>
                             @if($errors->has('comments'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('comments') }}

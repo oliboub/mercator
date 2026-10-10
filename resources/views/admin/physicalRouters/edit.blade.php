@@ -111,7 +111,7 @@
                            for="description">{{ trans('cruds.physicalRouter.fields.description') }}</label>
                     <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                               name="description"
-                              id="description">{!! old('description', $physicalRouter->description) !!}</textarea>
+                              id="description">{{ old('description', $physicalRouter->description) }}</textarea>
                     @if($errors->has('description'))
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}

@@ -128,7 +128,7 @@ let _nodes = new Map();
 
 const _graphContents = {
 @foreach($graphs as $graph)
-    "{{ $graph->id }}": {!! json_encode($graph->content) !!},
+    "{{ $graph->id }}": @json($graph->content),
 @endforeach
 };
 

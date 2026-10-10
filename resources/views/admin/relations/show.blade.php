@@ -143,7 +143,7 @@
                         {{ trans('cruds.relation.fields.comments') }}
                     </th>
                     <td>
-                        {!! $relation->comments !!}
+                        {!! clean($relation->comments ?? '') !!}
                     </td>
                 </tr>
                 <tr>

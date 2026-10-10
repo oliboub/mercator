@@ -41,7 +41,7 @@
                 {{ trans('cruds.information.fields.description') }}
             </th>
             <td colspan="5">
-                {!! $information->description !!}
+                {!! clean($information->description ?? '') !!}
             </td>
         </tr>
 

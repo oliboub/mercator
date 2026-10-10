@@ -67,7 +67,7 @@ let _nodes = new Map();
 @endforeach
 
 document.addEventListener("DOMContentLoaded", function () {
-    const xmlContent = `{!! $graph->content !!}`;
+    const xmlContent = @json($graph->content);
     loadGraph(xmlContent);
 });
 </script>

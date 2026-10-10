@@ -1844,6 +1844,7 @@ return [
         'title' => 'Rôles',
         'title_short' => 'Rôle',
         'title_singular' => 'Rôle',
+        'permission_not_held' => 'Vous ne détenez pas cette permission : vous ne pouvez pas l\'attribuer.',
     ],
     'router' => [
         'description' => 'Composant gérant les connexions entre différents réseaux.',

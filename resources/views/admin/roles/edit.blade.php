@@ -185,7 +185,7 @@
                         <div class="form-switch{{ $disabled ? '' : ' form-switch-lg' }}">
                             <input class="form-check-input" type="checkbox" name="permissions[]"
                                 data-check="profile_password_edit" data-action="edit" id="profile_password_edit"
-                                value="256" @disabled($disabled) @checked(in_array('profile_password_edit', old('permissions', [])) || ($role && $role->permissions->contains(256)))>
+                                value="256" @disabled($disabled || (isset($grantable) && ! in_array(256, $grantable, true))) @checked(in_array('profile_password_edit', old('permissions', [])) || ($role && $role->permissions->contains(256)))>
                             <label class="form-check-label" for="for_profile_password_edit }}">edit</label>
                         </div>
                     </div>

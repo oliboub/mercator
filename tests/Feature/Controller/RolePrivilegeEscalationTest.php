@@ -117,6 +117,27 @@ describe('web', function () {
             ->and($this->managerRole->permissions()->count())->toBe(4);
     });
 
+    test('form greys out permissions the manager does not hold', function () {
+        $roleEditId = Permission::query()->where('title', 'role_edit')->value('id');
+        $checkbox = fn (string $html, int $id) => preg_match('/<input[^>]*id="perm_'.$id.'"[^>]*>/s', $html, $m) ? $m[0] : '';
+
+        foreach ([route('admin.roles.create'), route('admin.roles.edit', $this->managerRole)] as $url) {
+            $html = $this->get($url)->assertOk()->getContent();
+
+            expect($checkbox($html, $this->userEditId))->toContain('disabled')
+                ->and($checkbox($html, $roleEditId))->not->toContain('disabled');
+        }
+    });
+
+    test('admin sees every permission enabled', function () {
+        $this->actingAs($this->admin);
+
+        $html = $this->get(route('admin.roles.create'))->assertOk()->getContent();
+
+        expect(preg_match('/<input[^>]*id="perm_'.$this->userEditId.'"[^>]*>/s', $html, $m))->toBe(1)
+            ->and($m[0])->not->toContain('disabled');
+    });
+
     test('admin can still add any permission to any role', function () {
         $this->actingAs($this->admin);
 

@@ -517,7 +517,7 @@
 @section('scripts')
     @vite(['resources/js/graphviz.js'])
     <script>
-        let dotSrc = `{!! $dotSrc !!}`;
+        let dotSrc = @json($dotSrc);
 
         // ─── Listeners formulaire (DOM uniquement, pas besoin du WASM) ────────
         document.addEventListener("DOMContentLoaded", function () {

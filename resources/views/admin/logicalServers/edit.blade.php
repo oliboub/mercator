@@ -123,7 +123,7 @@
                             <textarea
                                     class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                                     name="description"
-                                    id="description">{!! old('description', $logicalServer->description) !!}</textarea>
+                                    id="description">{{ old('description', $logicalServer->description) }}</textarea>
                             @if($errors->has('description'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('description') }}
@@ -361,7 +361,7 @@
                             <textarea
                                     class="form-control ckeditor {{ $errors->has('configuration') ? 'is-invalid' : '' }}"
                                     name="configuration"
-                                    id="configuration">{!! old('configuration', $logicalServer->configuration) !!}</textarea>
+                                    id="configuration">{{ old('configuration', $logicalServer->configuration) }}</textarea>
                             @if($errors->has('configuration'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('configuration') }}

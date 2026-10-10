@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Chargement du graphe
     //--------------------------------------------------------------
     @if (!empty($content))
-        loadGraph(`{!! $content !!}`);
+        loadGraph(@json($content));
     @endif
 
     //--------------------------------------------------------------

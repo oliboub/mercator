@@ -78,7 +78,9 @@ class RolesController extends Controller
         $request->merge(['permissions' => $role->permissions()->pluck('id')->toArray()]);
         $request->flash();
 
-        return view('admin.roles.create', compact('permissions_sorted', 'perimeters'));
+        $grantable = RoleAssignment::grantablePermissionIds(auth()->user());
+
+        return view('admin.roles.create', compact('permissions_sorted', 'perimeters', 'grantable'));
     }
 
     public function create()
@@ -90,7 +92,9 @@ class RolesController extends Controller
         $permissions_sorted = $this->getSortedPerms($permissions);
         $perimeters = Perimeter::query()->orderBy('id')->get();
 
-        return view('admin.roles.create', compact('permissions_sorted', 'perimeters'));
+        $grantable = RoleAssignment::grantablePermissionIds(auth()->user());
+
+        return view('admin.roles.create', compact('permissions_sorted', 'perimeters', 'grantable'));
     }
 
     public function store(StoreRoleRequest $request)
@@ -125,7 +129,9 @@ class RolesController extends Controller
         $cartographers = $role->cartographerEntries()->with('cartographiable')->orderBy('cartographiable_type')->get();
         $cartographiableModels = Cartographer::cartographiableModelsList();
 
-        return view('admin.roles.edit', compact('permissions_sorted', 'role', 'cartographers', 'cartographiableModels', 'perimeters'));
+        $grantable = RoleAssignment::grantablePermissionIds(auth()->user());
+
+        return view('admin.roles.edit', compact('permissions_sorted', 'role', 'cartographers', 'cartographiableModels', 'perimeters', 'grantable'));
     }
 
     public function update(UpdateRoleRequest $request, Role $role)

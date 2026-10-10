@@ -1829,6 +1829,7 @@ return [
         ],
         'title' => 'Roles',
         'title_singular' => 'Role',
+        'permission_not_held' => 'You do not hold this permission, so you cannot grant it.',
         'check_all' => 'Check all',
     ],
     'router' => [

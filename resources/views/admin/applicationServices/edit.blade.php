@@ -102,7 +102,7 @@
                            for="description">{{ trans('cruds.applicationService.fields.description') }}</label>
                     <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}"
                               name="description"
-                              id="description">{!! old('description', $applicationService->description) !!}</textarea>
+                              id="description">{{ old('description', $applicationService->description) }}</textarea>
                     @if($errors->has('description'))
                         <div class="invalid-feedback">
                             {{ $errors->first('description') }}
