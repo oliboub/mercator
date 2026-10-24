@@ -21,7 +21,7 @@ beforeEach(function () {
         RoleUserTableSeeder::class,
     ]);
 
-    $this->user = User::query()->where('login','admin@admin.com')->first();
+    $this->user = User::query()->where('login', 'admin@admin.com')->first();
     $this->actingAs($this->user);
 
 });
@@ -70,6 +70,23 @@ describe('create', function () {
         $response->assertForbidden();
     });
 
+});
+
+describe('clone', function () {
+    test('can display clone form with multi-valued string fields', function () {
+        $application = Application::factory()->create([
+            'attributes' => 'Critical Internal',
+            'responsible' => 'Alice, Bob',
+            'technology' => 'PHP, MySQL',
+            'external' => 'SaaS',
+        ]);
+
+        $response = $this->get(route('admin.applications.clone', $application->id));
+
+        $response->assertOk();
+        $response->assertViewIs('admin.applications.create');
+        $response->assertSee($application->name.' (copy)', false);
+    });
 });
 
 describe('show', function () {
