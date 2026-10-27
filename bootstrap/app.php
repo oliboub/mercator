@@ -24,6 +24,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
 use Illuminate\Foundation\Http\Middleware\TrimStrings;
 use Illuminate\Http\Middleware\HandleCors;
@@ -55,17 +56,22 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         // Middlewares spécifiques au groupe 'web'
-        $middleware->web(append: [
-            ForceXForwardedProto::class,
-            VerifyCsrfToken::class,
-            UseCachedAuthUser::class,
-            SetLocale::class,
-            LicenseWarning::class,
-            SecurityHeaders::class,
-            CreateFreshApiToken::class, // ✅
-            RefreshCartographerPermissions::class,
-            RefreshRolePermissions::class,
-        ]);
+        $middleware->web(
+            append: [
+                ForceXForwardedProto::class,
+                UseCachedAuthUser::class,
+                SetLocale::class,
+                LicenseWarning::class,
+                SecurityHeaders::class,
+                CreateFreshApiToken::class, // ✅
+                RefreshCartographerPermissions::class,
+                RefreshRolePermissions::class,
+            ],
+            replace: [
+                // Replace the framework's PreventRequestForgery with VerifyCsrfToken (HttpOnly XSRF)
+                PreventRequestForgery::class => VerifyCsrfToken::class,
+            ],
+        );
 
         $middleware->api(prepend: [
             ForceJsonResponse::class,   // ✅ force les erreurs en JSON sur l'API
