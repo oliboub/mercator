@@ -704,6 +704,18 @@
         document.addEventListener("DOMContentLoaded", function () {
             const events = @json($application->events);
 
+            function escapeHtml(value) {
+                if (value == null) {
+                    return '';
+                }
+                return String(value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
             function renderEvents() {
                 if (!events.length) {
                     return '<p class="text-muted">{{ trans('cruds.application.fields.events_placeholder') }}</p>';
@@ -712,10 +724,10 @@
                 events.forEach(function (event) {
                     ret += `
                         <li class="mb-3 border-bottom pb-2">
-                            <div>${event.message}</div>
+                            <div>${escapeHtml(event.message)}</div>
                             <small class="text-muted">
                                 Date : ${moment(event.created_at).format('DD-MM-YYYY')}
-                                | Utilisateur : ${event.user.name}
+                                | Utilisateur : ${escapeHtml(event.user.name)}
                             </small>
                         </li>`;
                 });

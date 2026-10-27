@@ -909,6 +909,18 @@
                 bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
             }
 
+            function escapeHtml(value) {
+                if (value == null) {
+                    return '';
+                }
+                return String(value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
             /**
              * Construction de la liste des événements
              */
@@ -925,8 +937,8 @@
                                 <button class="delete_event btn btn-sm btn-outline-danger position-absolute end-0 top-0" type="button">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
-                                <div class="pe-5">${event.message}</div>
-                                <small class="text-muted">Date : ${moment(event.created_at).format('DD-MM-YYYY')} | Utilisateur : ${event.user.name}</small>
+                                <div class="pe-5">${escapeHtml(event.message)}</div>
+                                <small class="text-muted">Date : ${moment(event.created_at).format('DD-MM-YYYY')} | Utilisateur : ${escapeHtml(event.user.name)}</small>
                             </li>`;
                     });
                     ret += '</ul>';
