@@ -68,7 +68,7 @@
                     <span style="color: black;">BPMN</span>
                 </span>
             </th>
-            <td colspan="5" style="vertical-align: middle;">
+            <td colspan="6" style="vertical-align: middle;">
                 @foreach($information->graphs() as $graph)
                     @canShow($graph)
                         <a href="{{ route('admin.bpmn.show', $graph->id) }}">
