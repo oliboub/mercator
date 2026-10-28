@@ -35,7 +35,7 @@ class InformationSystemGraphBuilder
         array $options = []
     ): string {
         $withHref = $options['withHref'] ?? true;
-        // Resolves a per-record Document icon (only Process has one) or the type's static fallback
+        // Resolves a per-record Document icon (Process and Information have one) or the type's static fallback
         // to whatever the consumer can actually embed: a route URL for the interactive/WASM
         // renderer (default), or a filesystem path for the server-side Word rasterization.
         $iconResolver = $options['iconResolver'] ?? fn (?int $iconId, string $fallback) => $iconId === null
@@ -122,7 +122,7 @@ class InformationSystemGraphBuilder
         }
 
         foreach ($informations as $information) {
-            $lines[] = $this->node('I', $information->id, $information->name, $iconResolver(null, '/images/information.png'), $information->getUID(), $withHref);
+            $lines[] = $this->node('I', $information->id, $information->name, $iconResolver($information->icon_id, '/images/information.png'), $information->getUID(), $withHref);
 
             foreach ($information->children as $child) {
                 if (isset($informationIds[$child->id])) {
@@ -138,9 +138,10 @@ class InformationSystemGraphBuilder
 
     /**
      * @param  Collection<int, Process>  $processes
+     * @param  Collection<int, Information>  $informations
      * @return array<int, array{path: string, width: string, height: string}>
      */
-    public function imageManifest(Collection $processes = new Collection): array
+    public function imageManifest(Collection $processes = new Collection, Collection $informations = new Collection): array
     {
         $manifest = [
             ['path' => '/images/macroprocess.png', 'width' => '64px', 'height' => '64px'],
@@ -156,6 +157,14 @@ class InformationSystemGraphBuilder
             foreach ($processes as $process) {
                 if ($process->icon_id !== null) {
                     $manifest[] = ['path' => route('admin.documents.show', $process->icon_id), 'width' => '64px', 'height' => '64px'];
+                }
+            }
+        }
+
+        if (Cartographer::canAccess(Information::class)) {
+            foreach ($informations as $information) {
+                if ($information->icon_id !== null) {
+                    $manifest[] = ['path' => route('admin.documents.show', $information->icon_id), 'width' => '64px', 'height' => '64px'];
                 }
             }
         }

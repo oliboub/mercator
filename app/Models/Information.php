@@ -27,6 +27,7 @@ use Illuminate\Support\Collection;
  * @property string $name
  * @property string|null $type
  * @property string|null $attributes
+ * @property int|null $icon_id
  * @property string|null $description
  * @property string|null $owner
  * @property string|null $administrator
@@ -74,6 +75,7 @@ class Information extends Model implements HasIconContract, HasPrefix, HasUnique
         'name',
         'type',
         'attributes',
+        'icon_id',
         'description',
         'owner',
         'administrator',

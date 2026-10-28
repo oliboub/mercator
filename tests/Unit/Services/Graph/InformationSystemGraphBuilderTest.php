@@ -90,3 +90,16 @@ test('buildDot and imageManifest use the process custom icon when set', function
     expect($dot)->toContain($iconUrl)
         ->and(collect($builder->imageManifest($processes))->pluck('path'))->toContain($iconUrl);
 });
+
+test('buildDot and imageManifest use the information custom icon when set', function () {
+    $document = Document::factory()->create();
+    Information::factory()->create(['icon_id' => $document->id]);
+    $informations = Information::with('children')->get();
+
+    $builder = new InformationSystemGraphBuilder;
+    $dot = $builder->buildDot(collect(), collect(), collect(), collect(), collect(), collect(), $informations);
+    $iconUrl = route('admin.documents.show', $document->id);
+
+    expect($dot)->toContain($iconUrl)
+        ->and(collect($builder->imageManifest(collect(), $informations))->pluck('path'))->toContain($iconUrl);
+});

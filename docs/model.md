@@ -346,6 +346,7 @@ erDiagram
         string name
         string type
         string attributes
+        int icon_id
         text description
         string owner
         string administrator
@@ -628,6 +629,7 @@ Information can be linked to multiple information.
 | name               | varchar(255) | Name of information                            |
 | type               | varchar(255) | Type of information                            |
 | attributes         | varchar(255) | Attributes (#tag...)                           |
+| icon_id            | int unsigned | Reference to a specific icon                   |
 | description        | longtext     | Description of information                     |
 | owner              | varchar(255) | Owner of information                           |
 | administrator      | varchar(255) | Information administrator                      |

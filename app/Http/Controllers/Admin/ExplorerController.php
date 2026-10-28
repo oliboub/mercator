@@ -1621,7 +1621,7 @@ class ExplorerController extends Controller
     private function buildInformation(): void
     {
         $information = Cartographer::scopedQuery(Information::query())
-            ->select('id', 'name')
+            ->select('id', 'name', 'icon_id')
             ->get();
 
         foreach ($information as $info) {
@@ -1629,7 +1629,7 @@ class ExplorerController extends Controller
                 2,
                 $this->formatId(Information::$prefix, $info->id),
                 $info->name,
-                '/images/information.png',
+                $this->getIcon($info->icon_id, '/images/information.png'),
                 'information', 260
             );
         }

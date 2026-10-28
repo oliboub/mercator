@@ -394,6 +394,7 @@ erDiagram
         string name
         string type
         string attributes
+        int icon_id
         text description
         string owner
         string administrator
@@ -670,6 +671,7 @@ Les informations peuvent former des hiérarchies parent-enfant via des liaisons 
 | name               | varchar(255) | Nom de l'information                                 |
 | type               | varchar(255) | Type de l'information                                |
 | attributes         | varchar(255) | Attributs (#tag...)                                  |
+| icon_id            | int unsigned | Référence vers une image spécifique                  |
 | description        | longtext     | Description de l'information                         |
 | owner              | varchar(255) | Propriétaire de l'information                        |
 | administrator      | varchar(255) | Administrateur de l'information                      |
