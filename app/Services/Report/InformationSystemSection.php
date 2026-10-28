@@ -403,7 +403,7 @@ class InformationSystemSection implements ReportSection
 
             $helper->addTextRow($table, trans('cruds.information.fields.type'), $information->type);
             $helper->addTextRow($table, trans('cruds.information.fields.attributes'), $this->formatAttributes($information->attributes));
-            $helper->addHTMLRow($table, trans('cruds.information.fields.description'), $information->description);
+            $helper->addDescriptionCellWithIcon($table, trans('cruds.information.fields.description'), $information->description, $information, '/images/information.png');
             $helper->addTextRow($table, trans('cruds.information.fields.owner'), $information->owner);
             $helper->addTextRow($table, trans('cruds.information.fields.administrator'), $information->administrator);
             $helper->addTextRow($table, trans('cruds.information.fields.storage'), $information->storage);
