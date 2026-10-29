@@ -2719,6 +2719,7 @@ thus understand their context of use.</p>
         string name
         string type
         string attributes
+        int icon_id
         text description
         string owner
         string administrator
@@ -3487,6 +3488,11 @@ Information can be linked to multiple information.</p>
 <td style="text-align: left;">attributes</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Attributes (#tag...)</td>
+</tr>
+<tr>
+<td style="text-align: left;">icon_id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">Reference to a specific icon</td>
 </tr>
 <tr>
 <td style="text-align: left;">description</td>

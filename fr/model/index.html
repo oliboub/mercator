@@ -2729,6 +2729,7 @@ et ainsi de comprendre leur contexte d’emploi.</p>
         string name
         string type
         string attributes
+        int icon_id
         text description
         string owner
         string administrator
@@ -3458,6 +3459,11 @@ Les informations peuvent former des hiérarchies parent-enfant via des liaisons 
 <td style="text-align: left;">attributes</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Attributs (#tag...)</td>
+</tr>
+<tr>
+<td style="text-align: left;">icon_id</td>
+<td style="text-align: left;">int unsigned</td>
+<td style="text-align: left;">Référence vers une image spécifique</td>
 </tr>
 <tr>
 <td style="text-align: left;">description</td>
