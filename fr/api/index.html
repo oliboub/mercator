@@ -2197,9 +2197,24 @@ La liste des permissions de de leurs {id} se trouve par l'api <strong>/api/permi
 <li><img src="/mercator/images/get.png" width="30"> /api/queries/execute/1<ul>
 <li>l'id de la requête doit être fourni.</li>
 <li>La requête doit être de type liste.</li>
+<li>Le résultat est renvoyé au format <strong>CSV</strong>.</li>
 </ul>
 </li>
 </ul>
+<h4 id="une-requete-peut-aussi-etre-executee-sans-etre-enregistree">Une requête peut aussi être exécutée sans être enregistrée<a class="headerlink" href="#une-requete-peut-aussi-etre-executee-sans-etre-enregistree" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>POST</strong> /api/queries/execute<ul>
+<li>Le DSL est envoyé en <strong>JSON</strong> dans le corps de la requête.</li>
+<li>Nécessite le droit <code>query_create</code> ou <code>query_edit</code>, ainsi que le droit <strong>show</strong> sur chaque objet lu par la requête.</li>
+<li>Le résultat est renvoyé en <strong>JSON</strong> : <code>columns</code>, <code>rows</code> et <code>meta</code> pour une liste, <code>nodes</code>, <code>edges</code> et <code>meta</code> pour un graphe.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://mercator/api/queries/execute<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;token&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">'{"from": "applications", "fields": ["name", "logical_servers.name"], "filters": [{"field": "name", "operator": "like", "value": "A%"}], "output": "list", "limit": 100}'</span>
+</code></pre></div>
 <hr />
 <h2 id="les-apis-des-rapports">Les APIs des rapports<a class="headerlink" href="#les-apis-des-rapports" title="Permanent link">&para;</a></h2>
 <ul>

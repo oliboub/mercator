@@ -1250,6 +1250,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#a-query-can-also-be-executed-without-saving-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A query can also be executed without saving it
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1892,6 +1903,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#a-query-can-also-be-executed-without-saving-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A query can also be executed without saving it
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2232,9 +2254,24 @@ The list of permissions and their corresponding {id} values is available via the
 <li><img src="/mercator/images/get.png" width="30"> /api/queries/execute/1  <ul>
 <li>The <strong>query ID</strong> must be provided.  </li>
 <li>The query must be of <strong>list type</strong>.</li>
+<li>The result is returned as a <strong>CSV</strong> file.</li>
 </ul>
 </li>
 </ul>
+<h3 id="a-query-can-also-be-executed-without-saving-it">A query can also be executed without saving it<a class="headerlink" href="#a-query-can-also-be-executed-without-saving-it" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>POST</strong> /api/queries/execute<ul>
+<li>The DSL is sent as <strong>JSON</strong> in the request body.</li>
+<li>Requires the <code>query_create</code> or <code>query_edit</code> permission, plus the <strong>show</strong> permission on every object read by the query.</li>
+<li>The result is returned as <strong>JSON</strong>: <code>columns</code>, <code>rows</code> and <code>meta</code> for a list, <code>nodes</code>, <code>edges</code> and <code>meta</code> for a graph.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://mercator/api/queries/execute<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;token&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">'{"from": "applications", "fields": ["name", "logical_servers.name"], "filters": [{"field": "name", "operator": "like", "value": "A%"}], "output": "list", "limit": 100}'</span>
+</code></pre></div>
 <hr />
 <h2 id="reports-apis">Reports APIs<a class="headerlink" href="#reports-apis" title="Permanent link">&para;</a></h2>
 <ul>
