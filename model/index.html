@@ -2731,7 +2731,9 @@ thus understand their context of use.</p>
         int security_need_t
         int security_need_auth
         text constraints
-        string retention
+        string retention_period
+        string final_disposition
+        text retention_notes
         list parents
         list children
         list processes
@@ -3550,9 +3552,19 @@ Information can be linked to multiple information.</p>
 <td style="text-align: left;">Legal and regulatory constraints</td>
 </tr>
 <tr>
-<td style="text-align: left;">retention</td>
+<td style="text-align: left;">retention_period</td>
 <td style="text-align: left;">varchar(255)</td>
-<td style="text-align: left;">Information retention period</td>
+<td style="text-align: left;">Retention period</td>
+</tr>
+<tr>
+<td style="text-align: left;">final_disposition</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Final disposition after the retention period</td>
+</tr>
+<tr>
+<td style="text-align: left;">retention_notes</td>
+<td style="text-align: left;">longtext</td>
+<td style="text-align: left;">Notes on retention (sorting criteria...)</td>
 </tr>
 <tr>
 <td style="text-align: left;">parents</td>
@@ -3586,7 +3598,15 @@ Information can be linked to multiple information.</p>
 </tr>
 </tbody>
 </table>
-<p>The field "retention" is not used and therefore is absent in the app.</p>
+<p>The "Retention" section documents the legal archiving of the information:</p>
+<ul>
+<li>the retention period ("retention_period"), e.g. "6 months" or "Agreement duration + 5 years";</li>
+<li>the final disposition once this period is over ("final_disposition"), e.g. destruction, sorting, transfer to the
+  archives;</li>
+<li>free-text notes ("retention_notes") describing sorting criteria or any other useful detail.</li>
+</ul>
+<p>In the app, the retention period and the final disposition are drop-down lists offering the values already in use,
+in which a new value can also be typed.</p>
 <p>In the app, the field for the authenticity need ("security_need_auth") is hidden by default. It is mandatory for
 entities subject to the regulation (EU) 2022/2554 (DORA).<br/>
 This default configuration can be changed in the menu Configuration &gt; Parameters.</p>

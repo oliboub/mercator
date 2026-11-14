@@ -3,7 +3,7 @@ entries:
   mercator:
   - apiVersion: v2
     appVersion: 2026.11.12
-    created: "2026-11-14T05:06:49.950023191Z"
+    created: '2026-11-12T19:09:38.322656178+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -16,7 +16,7 @@ entries:
     description: Mercator is a powerful and versatile open-source web application
       designed to facilitate the mapping of information systems, as outlined in the
       Mapping The Information System Guide by ANSSI.
-    digest: 66223ca8d69c3705847b2a62fb2b8097b3984ff5ba5fdd3f1be2adc479e3f393
+    digest: 1a9f21b94aceed5ad67857f31a2f147ba05027b0be30772438177a3c07b04869
     home: https://github.com/sourcentis/mercator
     icon: https://raw.githubusercontent.com/sourcentis/mercator/refs/heads/master/public/images/mercator.png
     maintainers:
@@ -25,11 +25,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/oliboub/mercator/releases/download/mercator-2026.11.12/mercator-2026.11.12.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.11.12.tgz
     version: 2026.11.12
   - apiVersion: v2
     appVersion: 2026.11.10
-    created: "2026-11-10T20:44:48.816877012+01:00"
+    created: '2026-11-12T19:09:38.309885174+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -51,11 +51,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.11.10.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.11.10.tgz
     version: 2026.11.10
   - apiVersion: v2
     appVersion: 2026.11.07
-    created: "2026-11-10T20:44:48.802588508+01:00"
+    created: '2026-11-12T19:09:38.297057834+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -77,11 +77,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.11.07.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.11.07.tgz
     version: 2026.11.07
   - apiVersion: v2
     appVersion: 2026.11.03
-    created: "2026-11-10T20:44:48.786124715+01:00"
+    created: '2026-11-12T19:09:38.284065725+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -103,11 +103,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.11.03.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.11.03.tgz
     version: 2026.11.03
   - apiVersion: v2
     appVersion: 2026.10.22
-    created: "2026-11-10T20:44:48.770346408+01:00"
+    created: '2026-11-12T19:09:38.271139603+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -129,11 +129,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.22.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.22.tgz
     version: 2026.10.22
   - apiVersion: v2
     appVersion: 2026.10.11
-    created: "2026-11-10T20:44:48.755124809+01:00"
+    created: '2026-11-12T19:09:38.258318914+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -155,11 +155,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.11.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.11.tgz
     version: 2026.10.11
   - apiVersion: v2
     appVersion: 2026.10.10
-    created: "2026-11-10T20:44:48.739935267+01:00"
+    created: '2026-11-12T19:09:38.246082204+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -181,11 +181,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.10.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.10.tgz
     version: 2026.10.10
   - apiVersion: v2
     appVersion: 2026.10.09
-    created: "2026-11-10T20:44:48.717516098+01:00"
+    created: '2026-11-12T19:09:38.233922865+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -207,11 +207,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.09.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.09.tgz
     version: 2026.10.09
   - apiVersion: v2
     appVersion: 2026.10.05
-    created: "2026-11-10T20:44:48.701451705+01:00"
+    created: '2026-11-12T19:09:38.220907914+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -233,11 +233,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.05.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.05.tgz
     version: 2026.10.05
   - apiVersion: v2
     appVersion: 2026.10.03
-    created: "2026-11-10T20:44:48.684728718+01:00"
+    created: '2026-11-12T19:09:38.202184285+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -259,11 +259,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.10.03.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.10.03.tgz
     version: 2026.10.03
   - apiVersion: v2
     appVersion: 2026.09.17
-    created: "2026-11-10T20:44:48.667400448+01:00"
+    created: '2026-11-12T19:09:38.187930692+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -285,11 +285,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.09.17.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.09.17.tgz
     version: 2026.09.17
   - apiVersion: v2
     appVersion: 2026.08.28
-    created: "2026-11-10T20:44:48.651190392+01:00"
+    created: '2026-11-12T19:09:38.173142036+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -311,11 +311,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.08.28.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.08.28.tgz
     version: 2026.08.28
   - apiVersion: v2
     appVersion: 2026.08.18
-    created: "2026-11-10T20:44:48.631035291+01:00"
+    created: '2026-11-12T19:09:38.160842234+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -337,11 +337,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.08.18.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.08.18.tgz
     version: 2026.08.18
   - apiVersion: v2
     appVersion: 2026.08.16
-    created: "2026-11-10T20:44:48.613737463+01:00"
+    created: '2026-11-12T19:09:38.148511725+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -363,11 +363,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.08.16.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.08.16.tgz
     version: 2026.08.16
   - apiVersion: v2
     appVersion: 2026.08.14
-    created: "2026-11-10T20:44:48.596049673+01:00"
+    created: '2026-11-12T19:09:38.135571504+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -389,11 +389,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.08.14.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.08.14.tgz
     version: 2026.08.14
   - apiVersion: v2
     appVersion: 2026.06.28
-    created: "2026-11-10T20:44:48.575295078+01:00"
+    created: '2026-11-12T19:09:38.122867531+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -415,11 +415,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.06.28.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.06.28.tgz
     version: 2026.06.28
   - apiVersion: v2
     appVersion: 2026.06.19
-    created: "2026-11-10T20:44:48.557981546+01:00"
+    created: '2026-11-12T19:09:38.109949292+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -441,11 +441,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.06.19.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.06.19.tgz
     version: 2026.06.19
   - apiVersion: v2
     appVersion: 2026.06.11
-    created: "2026-11-10T20:44:48.54306915+01:00"
+    created: '2026-11-12T19:09:38.096617909+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -467,11 +467,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.06.11.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.06.11.tgz
     version: 2026.06.11
   - apiVersion: v2
     appVersion: 2026.06.05
-    created: "2026-11-10T20:44:48.523210939+01:00"
+    created: '2026-11-12T19:09:38.084640335+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -493,11 +493,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.06.05.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.06.05.tgz
     version: 2026.06.05
   - apiVersion: v2
     appVersion: 2026.05.30
-    created: "2026-11-10T20:44:48.501904569+01:00"
+    created: '2026-11-12T19:09:38.071913672+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -519,11 +519,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.05.30.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.05.30.tgz
     version: 2026.05.30
   - apiVersion: v2
     appVersion: 2026.05.25
-    created: "2026-11-10T20:44:48.482916751+01:00"
+    created: '2026-11-12T19:09:38.059373681+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -545,11 +545,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.05.25.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.05.25.tgz
     version: 2026.05.25
   - apiVersion: v2
     appVersion: 2026.05.19
-    created: "2026-11-10T20:44:48.466570384+01:00"
+    created: '2026-11-12T19:09:38.04743564+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -571,11 +571,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.05.19.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.05.19.tgz
     version: 2026.05.19
   - apiVersion: v2
     appVersion: 2026.05.12
-    created: "2026-11-10T20:44:48.448646256+01:00"
+    created: '2026-11-12T19:09:38.034656894+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -597,11 +597,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.05.12.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.05.12.tgz
     version: 2026.05.12
   - apiVersion: v2
     appVersion: 2026.05.09
-    created: "2026-11-10T20:44:48.428046934+01:00"
+    created: '2026-11-12T19:09:38.021773769+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -623,11 +623,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.05.09.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.05.09.tgz
     version: 2026.05.09
   - apiVersion: v2
     appVersion: 2026.04.27
-    created: "2026-11-10T20:44:48.411217899+01:00"
+    created: '2026-11-12T19:09:38.009224089+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -649,11 +649,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.04.27.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.04.27.tgz
     version: 2026.04.27
   - apiVersion: v2
     appVersion: 2026.04.23
-    created: "2026-11-10T20:44:48.389502943+01:00"
+    created: '2026-11-12T19:09:37.995882036+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -675,11 +675,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2026.04.23.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2026.04.23.tgz
     version: 2026.04.23
   - apiVersion: v2
     appVersion: 2026.04.23
-    created: "2026-11-10T20:44:48.370640604+01:00"
+    created: '2026-11-12T19:09:37.983307207+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -701,11 +701,11 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-2.1.2.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-2.1.2.tgz
     version: 2.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-11-10T20:44:48.352405369+01:00"
+    created: '2026-11-12T19:09:37.970089102+01:00'
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -724,6 +724,6 @@ entries:
     name: mercator
     type: application
     urls:
-    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.10/mercator-0.1.0.tgz
+    - https://github.com/sourcentis/mercator/releases/download/mercator-2026.11.12/mercator-0.1.0.tgz
     version: 0.1.0
-generated: "2026-11-14T05:06:49.950198915Z"
+generated: '2026-11-14T05:06:49.950198915Z'

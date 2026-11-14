@@ -2741,7 +2741,9 @@ et ainsi de comprendre leur contexte d’emploi.</p>
         int security_need_t
         int security_need_auth
         text constraints
-        string retention
+        string retention_period
+        string final_disposition
+        text retention_notes
         list parents
         list children
         list processes
@@ -3521,9 +3523,19 @@ Les informations peuvent former des hiérarchies parent-enfant via des liaisons 
 <td style="text-align: left;">Contraintes légales et réglementaires</td>
 </tr>
 <tr>
-<td style="text-align: left;">retention</td>
+<td style="text-align: left;">retention_period</td>
 <td style="text-align: left;">varchar(255)</td>
-<td style="text-align: left;">Durée de rétention de l'information</td>
+<td style="text-align: left;">Durée de rétention (durée d'utilité administrative)</td>
+</tr>
+<tr>
+<td style="text-align: left;">final_disposition</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Sort final une fois la durée de rétention atteinte</td>
+</tr>
+<tr>
+<td style="text-align: left;">retention_notes</td>
+<td style="text-align: left;">longtext</td>
+<td style="text-align: left;">Observations sur la rétention (critères de tri...)</td>
 </tr>
 <tr>
 <td style="text-align: left;">parents</td>
@@ -3557,7 +3569,16 @@ Les informations peuvent former des hiérarchies parent-enfant via des liaisons 
 </tr>
 </tbody>
 </table>
-<p>Le champ "retention" n'est pas utilisé pour le moment et est donc absent de l'application.</p>
+<p>La section « Rétention » documente l'archivage légal de l'information :</p>
+<ul>
+<li>la durée de rétention ou durée d'utilité administrative (DUA) ("retention_period"), ex. : « 6 mois » ou « Durée de la
+  convention + 5 ans » ;</li>
+<li>le sort final réservé à l'information une fois cette durée atteinte ("final_disposition"), ex. : destruction, tri,
+  versement aux archives ;</li>
+<li>des observations libres ("retention_notes") décrivant les critères de tri ou toute autre précision utile.</li>
+</ul>
+<p>Dans l'application, la durée de rétention et le sort final sont des listes déroulantes proposant les valeurs déjà
+utilisées, dans lesquelles une nouvelle valeur peut aussi être saisie.</p>
 <p>Dans l'application, le besoin en authenticité est masqué par défaut. Il est obligatoire dans le cas
 d'une entité soumise à la directive UE 2022/2554 (DORA).<br/>
 Il s'active depuis le menu Configuration &gt; Paramètres.</p>
