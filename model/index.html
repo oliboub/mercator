@@ -2345,11 +2345,6 @@ limited to the individual study of each entity.</p>
         date end_date
         text comments
         int importance
-        int security_need_c
-        int security_need_i
-        int security_need_a
-        int security_need_t
-        int security_need_auth
         timestamp created_at
         timestamp updated_at
         timestamp deleted_at
@@ -2575,31 +2570,6 @@ An application can be linked with an entity (as operations manager) from these t
 <td style="text-align: left;">Importance of relationship</td>
 </tr>
 <tr>
-<td style="text-align: left;">security_need_c</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Confidentiality level needed</td>
-</tr>
-<tr>
-<td style="text-align: left;">security_need_i</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Integrity level needed</td>
-</tr>
-<tr>
-<td style="text-align: left;">security_need_a</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Available level needed</td>
-</tr>
-<tr>
-<td style="text-align: left;">security_need_t</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Traceability level needed</td>
-</tr>
-<tr>
-<td style="text-align: left;">security_need_auth</td>
-<td style="text-align: left;">int</td>
-<td style="text-align: left;">Authenticity level needed</td>
-</tr>
-<tr>
 <td style="text-align: left;">created_at</td>
 <td style="text-align: left;">timestamp</td>
 <td style="text-align: left;">Date of creation</td>
@@ -2616,9 +2586,6 @@ An application can be linked with an entity (as operations manager) from these t
 </tr>
 </tbody>
 </table>
-<p>In the app, the field for the authenticity need ("security_need_auth") is hidden by default. It is mandatory for
-entities subject to the regulation (EU) 2022/2554 (DORA).<br/>
-This default configuration can be changed in the menu Configuration &gt; Parameters.</p>
 <p>The data model export lists the reference documents attached to a relationship.<br/>
 In the application, a document can be attached to a relationship from a relationships object.</p>
 <p>The financial values of a contract can be indicated in dedicated fields.</p>
@@ -4445,6 +4412,11 @@ homogeneity.</p>
 <td style="text-align: left;">external</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">External</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -7853,12 +7825,12 @@ room.</p>
 </tr>
 <tr>
 <td style="text-align: left;">install_date</td>
-<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">date</td>
 <td style="text-align: left;">Date of server installation</td>
 </tr>
 <tr>
 <td style="text-align: left;">update_date</td>
-<td style="text-align: left;">datetime</td>
+<td style="text-align: left;">date</td>
 <td style="text-align: left;">Date of server upgrade</td>
 </tr>
 <tr>
@@ -7890,6 +7862,31 @@ room.</p>
 <td style="text-align: left;">logical_servers</td>
 <td style="text-align: left;">List int [,]</td>
 <td style="text-align: left;">IDs list of related logical(s) servers(s)</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -8111,6 +8108,16 @@ have been gathered into the following table:</p>
 <td style="text-align: left;">IDs list of linked applications</td>
 </tr>
 <tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
+</tr>
+<tr>
 <td style="text-align: left;">created_at</td>
 <td style="text-align: left;">timestamp</td>
 <td style="text-align: left;">Date of creation</td>
@@ -8306,6 +8313,36 @@ network (SAN), hard disk...</p>
 <td style="text-align: left;">Version of a product for CPE search</td>
 </tr>
 <tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
+</tr>
+<tr>
 <td style="text-align: left;">created_at</td>
 <td style="text-align: left;">timestamp</td>
 <td style="text-align: left;">Date of creation</td>
@@ -8430,6 +8467,26 @@ scanner, etc.).</p>
 <td style="text-align: left;">ID related to the provider of this peripheral</td>
 </tr>
 <tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
+</tr>
+<tr>
 <td style="text-align: left;">created_at</td>
 <td style="text-align: left;">timestamp</td>
 <td style="text-align: left;">Date of creation</td>
@@ -8518,6 +8575,36 @@ scanner, etc.).</p>
 <td style="text-align: left;">address_ip</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">IP address of the phone</td>
+</tr>
+<tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -8618,6 +8705,36 @@ with a network switch (either physical or logical) through a physical link objec
 <td style="text-align: left;">version</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Version of a product for CPE search</td>
+</tr>
+<tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -8730,6 +8847,36 @@ with a network switch (either physical or logical) through a physical link objec
 <td style="text-align: left;">Version of a product for CPE search</td>
 </tr>
 <tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
+</tr>
+<tr>
 <td style="text-align: left;">created_at</td>
 <td style="text-align: left;">timestamp</td>
 <td style="text-align: left;">Date of creation</td>
@@ -8830,6 +8977,26 @@ A VLAN can be linked to a physical router from a physical router object.</p>
 <td style="text-align: left;">version</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">Version of a product for CPE search</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
@@ -8934,6 +9101,36 @@ information system security.</p>
 <td style="text-align: left;">address_ip</td>
 <td style="text-align: left;">varchar(255)</td>
 <td style="text-align: left;">IP address</td>
+</tr>
+<tr>
+<td style="text-align: left;">manufacturer</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Manufacturer</td>
+</tr>
+<tr>
+<td style="text-align: left;">model</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Model</td>
+</tr>
+<tr>
+<td style="text-align: left;">serial_number</td>
+<td style="text-align: left;">varchar(255)</td>
+<td style="text-align: left;">Serial number</td>
+</tr>
+<tr>
+<td style="text-align: left;">install_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">Commissioning date</td>
+</tr>
+<tr>
+<td style="text-align: left;">warranty_end_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of warranty / support contract</td>
+</tr>
+<tr>
+<td style="text-align: left;">end_of_life_date</td>
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">End of life / decommissioning date</td>
 </tr>
 <tr>
 <td style="text-align: left;">created_at</td>
